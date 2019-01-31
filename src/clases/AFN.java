@@ -3,33 +3,40 @@ package clases;
 import java.util.HashSet;
 
 public class AFN {
+
     private static int IdAFN = 0;
-    public HashSet<String> EstadosAceptacion;
-    public HashSet<String> Alfabeto;
-    public HashSet<String> Estados;
     private static char Epsilon = '\0';
 
-    public void CrearBasico() {
+    /* EL AUTÓMATA DE THOMPSON SÓLO POSEE UN ESTADO DE ACEPTACIÓN */
+    public HashSet<String> EstadosAceptacion;
+
+    public HashSet<String> Alfabeto;
+    public HashSet<String> Estados;
+
+    private Estado EstadoInicial = new Estado();
+    private Estado EstadoAceptacion = new Estado();
+
+    /* CREAR UN AUTÓMATA BÁSICO */
+    public void CrearBasico(char s) {
+        Estado E = new Estado();
+    }
+
+
+    public void opcional() {
 
     }
 
 
-    public void Opcional() {
+    public void cerraduraPositiva() {
 
     }
 
 
-    public void CerraduraPositiva() {
+    public void unir() {
 
     }
 
-
-    public void Unir() {
-
-    }
-
-
-    public void Concatenar() {
+    public void concatenar() {
 
     }
 
