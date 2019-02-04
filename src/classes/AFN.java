@@ -63,7 +63,7 @@ public class AFN {
 
         /* CREAMOS LAS NUEVAS TRANSICIONES DEL ESTADO INICIAL CON EPSILON
          * A LOS ESTADOS INICIALES DE AMBOS AUTÓMATAS */
-        nuevoOrigen.Transiciones.pushTransicion(Epsilon, this.EstadoInicial); //falla
+        nuevoOrigen.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
         nuevoOrigen.Transiciones.pushTransicion(Epsilon, B.EstadoInicial);
 
         this.EstadoInicial = nuevoOrigen;
@@ -108,7 +108,12 @@ public class AFN {
         return this;
     }
 
-    public void Opcional() {
+    public AFN Concatenar(AFN B) {
+        Estado nuevoOrigen = new Estado();
+        return this;
+    }
+
+    public void Opcional() {// ?
 
     }
 
@@ -120,11 +125,16 @@ public class AFN {
 
     }
 
-    public void Concatenar() {
+    public void CerraduraEpsilon() {
 
     }
 
-    /* GETTERS AND SETTERS*///////////////////////////////////////////////////////
+
+    public void CerraduraKleen() {
+
+    }
+
+    /* GETTERS AND SETTERS *///////////////////////////////////////////////////////
     public static int getID() {
         return ID;
     }
@@ -192,20 +202,6 @@ public class AFN {
             E.imprimeTransiciones();
             System.out.print("\n");
         }
-        System.out.print("\n");
-
-
-
-
-
-        /*it = conjuntoTransiciones.iterator();
-        Transicion Transiciones;
-        Pair<Character, Estado> P;
-        while (it.hasNext()) {
-            Transiciones = (Transicion) it.next();
-            Transiciones.imprimeTransiciones();
-        }
-        */
         System.out.print("\n");
     }
     //////////////////////////////////////////////////////////////////////////////
