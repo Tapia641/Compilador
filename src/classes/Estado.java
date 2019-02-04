@@ -1,14 +1,21 @@
 package classes;
 
+import javafx.util.Pair;
+
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Estado {
     /* DATOS INICIALES DE UN ESTADO */
     private int ID = 0;
     private boolean EstadoAceptacion;
 
+    /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
+    public Transicion Transiciones;
+
     public Estado() {
         this.EstadoAceptacion = false;
+        this.Transiciones = new Transicion();
     }
 
     public int getID() {
@@ -23,12 +30,14 @@ public class Estado {
         EstadoAceptacion = estadoAceptacion;
     }
 
-    public boolean getEstadoAceptacion() {
-        return EstadoAceptacion;
-    }
-
-    public boolean isEstadoAceptacion() {
-        return EstadoAceptacion;
+    public void imprimeTransiciones() {
+        HashSet<Pair<Character, Estado>> t = Transiciones.getTransiciones();
+        Iterator it = t.iterator();
+        Pair<Character, Estado> P;
+        while (it.hasNext()) {
+            P = (Pair) it.next();
+            System.out.println(P.getKey() + " -> " + P.getValue().getID());
+        }
     }
 
 }

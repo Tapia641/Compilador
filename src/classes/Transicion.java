@@ -23,12 +23,12 @@ public class Transicion {
         return Transiciones;
     }
 
-    public void imprimeTransiciones() {
-        Iterator it = Transiciones.iterator();
-        Pair<Character, Estado> P;
-        while (it.hasNext()) {
-            P = (Pair) it.next();
-            System.out.print(P.getKey() + " -> " + P.getValue().getID() + "\n");
-        }
+    public void clearTransiciones() {
+        this.Transiciones.clear();
     }
+
+    public void uneTransiciones(Transicion t) {
+        this.Transiciones.addAll(t.Transiciones);
+    }
+
 }
