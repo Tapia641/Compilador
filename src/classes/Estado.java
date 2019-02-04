@@ -1,46 +1,37 @@
 package classes;
 
-import javafx.util.Pair;
 import java.util.HashSet;
 
 public class Estado {
-    private int IdEstado = 0;
+    /* DATOS INICIALES DE UN ESTADO */
+    private int ID = 0;
     private boolean EstadoAceptacion;
 
-    private HashSet<Pair<Integer, Character>> Transiciones;
+    /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
+    //private HashSet<Transicion> conjuntoTransiciones;
 
     public Estado() {
         this.EstadoAceptacion = false;
-        this.IdEstado = IdEstado++;
     }
 
-    public void pushTransicion(int ID, char S) {
-        Pair<Integer, Character> P = new Pair<>(ID, S);
-        Transiciones = new HashSet<>();
-        Transiciones.add(P);
+    public int getID() {
+        return ID;
     }
 
-    public void setIdEstado(int idEstado) {
-        IdEstado = idEstado;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public void setEstadoAceptacion(boolean estadoAceptacion) {
         EstadoAceptacion = estadoAceptacion;
     }
 
-    public void setTransiciones(HashSet<Pair<Integer, Character>> transiciones) {
-        Transiciones = transiciones;
-    }
-
-    public int getIdEstado() {
-        return IdEstado;
+    public boolean getEstadoAceptacion() {
+        return EstadoAceptacion;
     }
 
     public boolean isEstadoAceptacion() {
         return EstadoAceptacion;
     }
 
-    public HashSet<Pair<Integer, Character>> getTransiciones() {
-        return Transiciones;
-    }
 }

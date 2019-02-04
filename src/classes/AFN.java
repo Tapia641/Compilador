@@ -1,65 +1,88 @@
 package classes;
 
 import java.util.HashSet;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.Iterator;
 
 /* CREA AUTÓMATAS DE THOMPSON */
 public class AFN {
 
-    /* CONFIGURACIÓN BÁSICA DE UN AFN */
-    public static int ID = 0; //static int para que no se repitan
-    public static final char Epsilon = 223; // En ASCII
+    /* AFN */
+    private static int ID = 0; //static int para que no se repitan
+    private static final char Epsilon = 245; // En ASCII
 
-    /* ENUMERAMOS LOS ESTADOS */
-    public SortedSet<Integer> EstadosAFN;
-    public int EstadoAFNInicial;
-    public HashSet<Integer> EstadosAceptacion;
+    /* ESTADOS */
+    private HashSet<Estado> Estados;
+    private Estado EstadoInicial;
+    private HashSet<Estado> EstadosAceptacion;
 
-    /* ALFABETO CONFORMADO DE TIPO CARÁCTER*/
-    public SortedSet<Character> Alfabeto;
+    /* ALFABETO CONFORMADO DE TIPO CARÁCTER */
+    private HashSet<Character> Alfabeto;
+
+    public HashSet<Transicion> conjuntoTransiciones;
 
     /* CONSTRUCTOR */
     public AFN() {
-        EstadosAFN = new TreeSet<>();
+        Estados = new HashSet<>();
         EstadosAceptacion = new HashSet<>();
-        Alfabeto = new TreeSet<>();
+        Alfabeto = new HashSet<>();
     }
 
-    /* CONSTRUCTOR CON ID*/
-    public AFN(int ID) {
-        EstadosAFN = new TreeSet<>();
-        EstadosAceptacion = new HashSet<>();
-        Alfabeto = new TreeSet<>();
-        this.ID = ID;
-    }
-
-    /* CONSTRUCTOR CON S*/
+    /* CREA UN AFN SIMPLE */
     public AFN crearBasico(char S) {
-        //  CREAMOS EL ESTADO INICIAL
-        Estado E1 = new Estado();
+        /* CREAMOS EL ESTADO ORIGEN */
+        Estado Origen = new Estado();
+        Origen.setID(ID++);
+        EstadoInicial = Origen;
 
-        //  AÑADIMOS LA TRANSICION DEL ID -> s
-        E1.pushTransicion(ID++, S);
+        /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL ORIGEN) */
+        Estados.add(Origen);
+
+        /* CREAMOS EL ESTADO DE DESTINO (ACEPTACIÓN) */
+        Estado Destino = new Estado();
+        Destino.setID(ID++);
+        Destino.setEstadoAceptacion(true);
+
+        /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL DESTINO) */
+        Estados.add(Destino);
+
+        /* AÑADIMOS LA TRANSICION DEL S -> (ID) AL ESTADO DE ACEPTACIÓN */
+        Transicion T = new Transicion();
+        T.pushTransicion(S, Destino);
+        EstadosAceptacion.add(Destino);
 
         // SI EL CARÁCTER NO ESTÁ EN EL ALFABETO, LO AÑADIMOS
         if (!Alfabeto.contains(S))
             Alfabeto.add(S);
 
-        //  TENEMOS UN NUEVO ESTADO PARA EL AFN (EL ID)
-        EstadosAFN.add(ID);
+        return this;
+    }
 
-        //  LO MARCAMOS COMO ESTADO INICIAL
-        EstadoAFNInicial = ID;
+    public AFN Unir(AFN B) {
+        /* CREAMOS UN NUEVO ESTADO ORIGEN */
+        Estado nuevoOrigen = new Estado();
+        nuevoOrigen.setID(ID++);
+        this.EstadoInicial = nuevoOrigen;
 
-        //  CREAMOS EL ESTADO DE ACEPTACION
-        Estado E2 = new Estado();
-        E2.setIdEstado(ID++);
-        E2.setEstadoAceptacion(true);
+        /* CREAMOS UN NUEVO ESTADO DESTINO */
+        for (Estado i : this.EstadosAceptacion) {
+            i.setEstadoAceptacion(false);
+        }
+        Estado nuevoDestino = new Estado();
+        nuevoDestino.setID(ID++);
+        nuevoDestino.setEstadoAceptacion(true);
+        this.EstadosAceptacion.add(nuevoDestino);
 
-        //  AÑADIMOS EL NUEVO ESTADO (ESTADO DE ACEPTACIÓN)
-        EstadosAFN.add(ID);
-        EstadosAceptacion.add(ID);
+
+        /*  */
+        Transicion T = new Transicion();
+        T.pushTransicion(Epsilon, this.EstadoInicial);
+        T.pushTransicion(Epsilon, B.EstadoInicial);
+        this.Alfabeto.add(Epsilon);
+
+        B.EstadoInicial = null;
+
+        /* QUITAMOS ESTADOS INICIALES DE AMBOS AUTÓMATAS*/
+
 
         return this;
     }
@@ -74,10 +97,6 @@ public class AFN {
 
     public void CerraduraEstrella() {
 
-    }
-
-    public AFN Unir(AFN B) {
-        return this;
     }
 
     public void Concatenar() {
@@ -97,36 +116,63 @@ public class AFN {
         return Epsilon;
     }
 
-    public SortedSet<Integer> getEstadosAFN() {
-        return EstadosAFN;
+    public HashSet<Estado> getEstados() {
+        return Estados;
     }
 
-    public void setEstadosAFN(SortedSet<Integer> estadosAFN) {
-        EstadosAFN = estadosAFN;
+    public void setEstados(HashSet<Estado> estados) {
+        Estados = estados;
     }
 
-    public int getEstadoAFNInicial() {
-        return EstadoAFNInicial;
+    public Estado getEstadoInicial() {
+        return EstadoInicial;
     }
 
-    public void setEstadoAFNInicial(int estadoAFNInicial) {
-        EstadoAFNInicial = estadoAFNInicial;
+    public void setEstadoInicial(Estado estadoInicial) {
+        EstadoInicial = estadoInicial;
     }
 
-    public HashSet<Integer> getEstadosAceptacion() {
+    public HashSet<Estado> getEstadosAceptacion() {
         return EstadosAceptacion;
     }
 
-    public void setEstadosAceptacion(HashSet<Integer> estadosAceptacion) {
+    public void setEstadosAceptacion(HashSet<Estado> estadosAceptacion) {
         EstadosAceptacion = estadosAceptacion;
     }
 
-    public SortedSet<Character> getAlfabeto() {
+    public HashSet<Character> getAlfabeto() {
         return Alfabeto;
     }
 
-    public void setAlfabeto(SortedSet<Character> alfabeto) {
+    public void setAlfabeto(HashSet<Character> alfabeto) {
         Alfabeto = alfabeto;
+    }
+
+    public void imprimeAFN() {
+        /* IMPRIMIMOS LOS ESTADOS ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO*/
+        System.out.print("Estados: ");
+        Iterator it = Estados.iterator();
+        Estado E;
+        while (it.hasNext()) {
+            E = (Estado) it.next();
+            System.out.print(E.getID() + ", ");
+        }
+        System.out.print("\n");
+
+        System.out.println("Estado inicial: " + this.EstadoInicial.getID());
+
+        /* IMPRIMIMOS LOS ESTADOS DE ACEPTACIÓN ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO */
+        System.out.print("Estados de aceptacion: ");
+        it = EstadosAceptacion.iterator();
+        while (it.hasNext()) {
+            E = (Estado) it.next();
+            System.out.print(E.getID() + " ");
+        }
+        System.out.print("\n");
+
+        System.out.println("Alfabeto: " + this.Alfabeto + "\n");
+
+        System.out.println("Transiciones: " + "" + "\n");
     }
     //////////////////////////////////////////////////////////////////////////////
 }
