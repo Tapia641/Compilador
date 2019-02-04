@@ -112,25 +112,25 @@ public class AFN {
         return this;
     }
 
-    public void Opcional() {// ?
-
+    public AFN Opcional() {// ?
+        return this;
     }
 
-    public void CerraduraPositiva() {
-
+    public AFN CerraduraPositiva() {
+        return this;
     }
 
-    public void CerraduraEstrella() {
-
+    public AFN CerraduraEstrella() {
+        return this;
     }
 
-    public void CerraduraEpsilon() {
-
+    public AFN CerraduraEpsilon() {
+        return this;
     }
 
 
-    public void CerraduraKleen() {
-
+    public AFN CerraduraKleen() {
+        return this;
     }
 
     /* GETTERS AND SETTERS *///////////////////////////////////////////////////////
