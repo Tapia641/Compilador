@@ -10,14 +10,20 @@ public class Main {
         f2 = new AFN();
         f3 = new AFN();
 
+        System.out.println("Creando autómatas básicos...");
         f1.crearBasico('A');
         f2.crearBasico('B');
-        f3.crearBasico('C');
 
-        //f1.Unir(f2);
+        System.out.println("Imprimiendo...");
         f1.imprimeAFN();
         f2.imprimeAFN();
-        f3.imprimeAFN();
+
+        System.out.println("Uniendo f1 con f2...");
+        f1.Unir(f2);
+        f1.imprimeAFN();
+
+        f2.crearBasico('C');
+        f2.imprimeAFN();
 
     }
 

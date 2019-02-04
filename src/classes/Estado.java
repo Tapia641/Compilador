@@ -7,9 +7,6 @@ public class Estado {
     private int ID = 0;
     private boolean EstadoAceptacion;
 
-    /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
-    //private HashSet<Transicion> conjuntoTransiciones;
-
     public Estado() {
         this.EstadoAceptacion = false;
     }

@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.util.Pair;
+
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -8,8 +10,7 @@ public class AFN {
 
     /* AFN */
     private static int ID = 0; //static int para que no se repitan
-    private static final char Epsilon = 245; // En ASCII
-
+    private static final char Epsilon = '&'; // Mi epsi ;)
     /* ESTADOS */
     private HashSet<Estado> Estados;
     private Estado EstadoInicial;
@@ -18,13 +19,15 @@ public class AFN {
     /* ALFABETO CONFORMADO DE TIPO CARÁCTER */
     private HashSet<Character> Alfabeto;
 
-    public HashSet<Transicion> conjuntoTransiciones;
+    /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
+    private HashSet<Transicion> conjuntoTransiciones;
 
     /* CONSTRUCTOR */
     public AFN() {
         Estados = new HashSet<>();
         EstadosAceptacion = new HashSet<>();
         Alfabeto = new HashSet<>();
+        conjuntoTransiciones = new HashSet<>();
     }
 
     /* CREA UN AFN SIMPLE */
@@ -49,6 +52,7 @@ public class AFN {
         Transicion T = new Transicion();
         T.pushTransicion(S, Destino);
         EstadosAceptacion.add(Destino);
+        conjuntoTransiciones.add(T);
 
         // SI EL CARÁCTER NO ESTÁ EN EL ALFABETO, LO AÑADIMOS
         if (!Alfabeto.contains(S))
@@ -58,31 +62,51 @@ public class AFN {
     }
 
     public AFN Unir(AFN B) {
+        Transicion T = new Transicion();
+        /*  */
+        T.pushTransicion(Epsilon, this.EstadoInicial); //falla
+        T.pushTransicion(Epsilon, B.EstadoInicial);
+        this.Alfabeto.add(Epsilon);
+
         /* CREAMOS UN NUEVO ESTADO ORIGEN */
         Estado nuevoOrigen = new Estado();
         nuevoOrigen.setID(ID++);
         this.EstadoInicial = nuevoOrigen;
 
         /* CREAMOS UN NUEVO ESTADO DESTINO */
-        for (Estado i : this.EstadosAceptacion) {
-            i.setEstadoAceptacion(false);
-        }
         Estado nuevoDestino = new Estado();
         nuevoDestino.setID(ID++);
         nuevoDestino.setEstadoAceptacion(true);
         this.EstadosAceptacion.add(nuevoDestino);
 
 
-        /*  */
-        Transicion T = new Transicion();
-        T.pushTransicion(Epsilon, this.EstadoInicial);
-        T.pushTransicion(Epsilon, B.EstadoInicial);
-        this.Alfabeto.add(Epsilon);
+        this.conjuntoTransiciones.add(T);
 
-        B.EstadoInicial = null;
+        for (Estado i : this.EstadosAceptacion) {
+            /* QUITAMOS LOS ANTERIORES */
+            i.setEstadoAceptacion(false);
+        }
 
-        /* QUITAMOS ESTADOS INICIALES DE AMBOS AUTÓMATAS*/
+        for (Estado i : B.EstadosAceptacion) {
+            /* QUITAMOS LOS ANTERIORES */
+            i.setEstadoAceptacion(false);
+        }
 
+        /* QUITAMOS ESTADOS DE ACEPTACIÓN DE AMBOS AUTÓMATAS */
+        this.EstadosAceptacion.clear();
+        B.EstadosAceptacion.clear();
+
+        this.EstadoInicial = nuevoOrigen;
+        this.EstadosAceptacion.add(nuevoDestino);
+        this.Alfabeto.addAll(B.Alfabeto); // Unión de alfabetos
+        this.Estados.addAll(B.Estados); // Unión de estados
+        this.conjuntoTransiciones.addAll(B.conjuntoTransiciones);
+
+        /* LIMPIAMOS EL AUTOMATA B */
+        B.Alfabeto.clear();
+        B.Estados.clear();
+        B.setEstadoInicial(new Estado());
+        B.conjuntoTransiciones.clear();
 
         return this;
     }
@@ -170,9 +194,17 @@ public class AFN {
         }
         System.out.print("\n");
 
-        System.out.println("Alfabeto: " + this.Alfabeto + "\n");
+        System.out.println("Alfabeto: " + this.Alfabeto);
 
-        System.out.println("Transiciones: " + "" + "\n");
+        System.out.println("Transiciones: ");
+        it = conjuntoTransiciones.iterator();
+        Transicion T;
+        Pair<Character, Estado> P;
+        while (it.hasNext()) {
+            T = (Transicion) it.next();
+            T.imprimeTransiciones();
+        }
+        System.out.print("\n");
     }
     //////////////////////////////////////////////////////////////////////////////
 }
