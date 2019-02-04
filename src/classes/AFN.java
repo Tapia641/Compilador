@@ -91,7 +91,7 @@ public class AFN {
         /* BORRAMOS EL CONJUNTO DE ESTADOS DE ACEPTACIÓN */
         this.EstadosAceptacion.clear();
 
-
+        /* AÑADIMOS UN ÚNICO ESTADO DE ACEPTACIÓN */
         this.EstadosAceptacion.add(nuevoDestino);
         this.Estados.add(nuevoDestino);
 

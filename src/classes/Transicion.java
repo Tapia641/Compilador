@@ -15,7 +15,6 @@ public class Transicion {
 
     public void pushTransicion(char S, Estado E) {
         Pair<Character, Estado> P = new Pair<>(S, E);
-        Transiciones = new HashSet<>();
         Transiciones.add(P);
     }
 
