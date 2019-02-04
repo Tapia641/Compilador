@@ -30,14 +30,17 @@ public class Estado {
         EstadoAceptacion = estadoAceptacion;
     }
 
-    public void imprimeTransiciones() {
+    public String imprimeTransiciones() {
+        String cadena = "";
+
         HashSet<Pair<Character, Estado>> t = Transiciones.getTransiciones();
         Iterator it = t.iterator();
         Pair<Character, Estado> P;
         while (it.hasNext()) {
             P = (Pair) it.next();
-            System.out.println(P.getKey() + " -> " + P.getValue().getID());
+            cadena += (P.getKey() + " -> " + P.getValue().getID() + "\n");
         }
+        return cadena;
     }
 
 }

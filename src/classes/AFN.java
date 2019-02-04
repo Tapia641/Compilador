@@ -109,7 +109,6 @@ public class AFN {
     }
 
     public AFN Concatenar(AFN B) {
-        Estado nuevoOrigen = new Estado();
         return this;
     }
 
@@ -179,30 +178,35 @@ public class AFN {
         Alfabeto = alfabeto;
     }
 
-    public void imprimeAFN() {
+    public String imprimeAFN() {
+        /* ALMACENAMOS TODO EN UN STRING */
+        String cadena = "";
+
         /* IMPRIMIMOS LOS ESTADOS ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO*/
-        System.out.println("Alfabeto: " + this.Alfabeto);
-        System.out.println("Estado inicial: " + this.EstadoInicial.getID());
-        System.out.print("Estados de aceptacion: ");
+        cadena += ("Alfabeto: " + this.Alfabeto + "\n");
+        cadena += ("Estado inicial: " + this.EstadoInicial.getID() + "\n");
+        cadena += ("Estados de aceptacion: ");
 
         /* IMPRIMIMOS LOS ESTADOS DE ACEPTACIÓN ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO */
-        Iterator it = Estados.iterator();
+        Iterator it = EstadosAceptacion.iterator();
+        ;
         Estado E;
-        it = EstadosAceptacion.iterator();
         while (it.hasNext()) {
             E = (Estado) it.next();
-            System.out.print(E.getID() + " ");
+            cadena += (E.getID() + " \n");
         }
 
-        System.out.println("\nTransiciones: ");
+        cadena += "\nTransiciones: ";
         it = Estados.iterator();
         while (it.hasNext()) {
             E = (Estado) it.next();
-            System.out.print("Estado: " + E.getID() + "\n");
-            E.imprimeTransiciones();
-            System.out.print("\n");
+            cadena += ("Estado: " + E.getID() + "\n");
+            cadena += E.imprimeTransiciones();
+            cadena += "\n";
         }
-        System.out.print("\n");
+        cadena += "\n";
+
+        return cadena;
     }
     //////////////////////////////////////////////////////////////////////////////
 }
