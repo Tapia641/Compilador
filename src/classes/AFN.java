@@ -11,6 +11,7 @@ public class AFN {
     /* AFN */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
+
     /* ESTADOS */
     private HashSet<Estado> Estados;
     private Estado EstadoInicial;
@@ -54,7 +55,7 @@ public class AFN {
         EstadosAceptacion.add(Destino);
         conjuntoTransiciones.add(T);
 
-        // SI EL CARÁCTER NO ESTÁ EN EL ALFABETO, LO AÑADIMOS
+        /* SI EL CARÁCTER NO ESTÁ EN EL ALFABETO, LO AÑADIMOS */
         if (!Alfabeto.contains(S))
             Alfabeto.add(S);
 
@@ -62,26 +63,6 @@ public class AFN {
     }
 
     public AFN Unir(AFN B) {
-        Transicion T = new Transicion();
-        /*  */
-        T.pushTransicion(Epsilon, this.EstadoInicial); //falla
-        T.pushTransicion(Epsilon, B.EstadoInicial);
-        this.Alfabeto.add(Epsilon);
-
-        /* CREAMOS UN NUEVO ESTADO ORIGEN */
-        Estado nuevoOrigen = new Estado();
-        nuevoOrigen.setID(ID++);
-        this.EstadoInicial = nuevoOrigen;
-
-        /* CREAMOS UN NUEVO ESTADO DESTINO */
-        Estado nuevoDestino = new Estado();
-        nuevoDestino.setID(ID++);
-        nuevoDestino.setEstadoAceptacion(true);
-        this.EstadosAceptacion.add(nuevoDestino);
-
-
-        this.conjuntoTransiciones.add(T);
-
         for (Estado i : this.EstadosAceptacion) {
             /* QUITAMOS LOS ANTERIORES */
             i.setEstadoAceptacion(false);
@@ -96,11 +77,32 @@ public class AFN {
         this.EstadosAceptacion.clear();
         B.EstadosAceptacion.clear();
 
+        Transicion T = new Transicion();
+
+        /* CREAMOS LAS NUEVAS TRANSICIONES DEL ESTADO INICIAL CON EPSILON
+         * A LOS ESTADOS INICIALES DE AMBOS AUTÓMATAS */
+        T.pushTransicion(Epsilon, this.EstadoInicial);
+        T.pushTransicion(Epsilon, B.EstadoInicial);
+        this.Alfabeto.add(Epsilon);
+
+        this.conjuntoTransiciones.add(T);
+        this.conjuntoTransiciones.addAll(B.conjuntoTransiciones);
+
+        /* CREAMOS UN NUEVO ESTADO ORIGEN */
+        Estado nuevoOrigen = new Estado();
+        nuevoOrigen.setID(ID++);
         this.EstadoInicial = nuevoOrigen;
+        this.Estados.add(nuevoOrigen);
+
+        /* CREAMOS UN NUEVO ESTADO DESTINO */
+        Estado nuevoDestino = new Estado();
+        nuevoDestino.setID(ID++);
+        nuevoDestino.setEstadoAceptacion(true);
         this.EstadosAceptacion.add(nuevoDestino);
+        this.Estados.add(nuevoDestino);
+
         this.Alfabeto.addAll(B.Alfabeto); // Unión de alfabetos
         this.Estados.addAll(B.Estados); // Unión de estados
-        this.conjuntoTransiciones.addAll(B.conjuntoTransiciones);
 
         /* LIMPIAMOS EL AUTOMATA B */
         B.Alfabeto.clear();
