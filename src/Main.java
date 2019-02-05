@@ -22,19 +22,7 @@ public class Main {
         System.out.println(f1.imprimeAFN());
 
         /* MOSTRANDO INTERFAZ */
-        /*
-        InterfazPrimaria compilador = new InterfazPrimaria();
-
-        /* PRIMERAS CONFIGURACIONES
-        compilador.setSize(900, 700);
-        compilador.setTitle(" PROYECTO PARA LA MATERIA DE COMPILADORES ");
-        compilador.setLocationRelativeTo(null);
-
-        //compilador.Operaciones();
-
-        compilador.setVisible(true);
-        System.exit(0);
-        */
+        /* InterfazPrimaria compilador = new InterfazPrimaria(); */
 
     }
 
