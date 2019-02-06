@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 public class Transicion {
 
+    /* CONJUNTO DE TRANSICIONES */
     private HashSet<Pair<Character, Estado>> Transiciones;
 
     public Transicion() {
