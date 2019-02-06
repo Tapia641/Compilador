@@ -66,6 +66,7 @@ public class AFN {
         nuevoOrigen.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
         nuevoOrigen.Transiciones.pushTransicion(Epsilon, B.EstadoInicial);
 
+        /* AGREGAMOS EL QUE CREAMOS (NUEVOORIGEN) */
         this.EstadoInicial = nuevoOrigen;
         this.Alfabeto.add(Epsilon);
         this.Estados.add(nuevoOrigen);
@@ -109,6 +110,23 @@ public class AFN {
     }
 
     public AFN Concatenar(AFN B) {
+        Estado nuevoOrigen = new Estado();
+        Estado nuevoDestino = new Estado();
+
+        nuevoDestino.setEstadoAceptacion(true);
+
+        nuevoOrigen.Transiciones.pushTransicion(Epsilon, nuevoDestino);
+
+        /* QUITAMOS LOS ESTADOS DE ACEPTACIÓN */
+        for (Estado i : this.EstadosAceptacion) {
+            i.setEstadoAceptacion(false);
+            //i.Transiciones.pushTransicion(Epsilon, B.EstadoInicial.Transiciones.);
+        }
+
+        return this;
+    }
+
+    public AFN CerraduraEpsilon(AFN B) {
         return this;
     }
 
@@ -121,10 +139,6 @@ public class AFN {
     }
 
     public AFN CerraduraEstrella() {
-        return this;
-    }
-
-    public AFN CerraduraEpsilon() {
         return this;
     }
 
@@ -189,7 +203,7 @@ public class AFN {
 
         /* IMPRIMIMOS LOS ESTADOS DE ACEPTACIÓN ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO */
         Iterator it = EstadosAceptacion.iterator();
-        ;
+
         Estado E;
         while (it.hasNext()) {
             E = (Estado) it.next();
