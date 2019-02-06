@@ -19,12 +19,10 @@ Ejemplos
 * AFN
 * AFD
 
-## Autores
+## Contribuyentes
 
-* **Luis Tapia** - *Initial work* - [Tapia641](https://github.com/Tapia641)
+* **Luis Tapia** - *Autor* - [Tapia641](https://github.com/Tapia641)
 
 ## Licencia
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
+This project is licensed under the MIT License
