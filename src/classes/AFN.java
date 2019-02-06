@@ -110,18 +110,31 @@ public class AFN {
     }
 
     public AFN Concatenar(AFN B) {
-        Estado nuevoOrigen = new Estado();
-        Estado nuevoDestino = new Estado();
-
-        nuevoDestino.setEstadoAceptacion(true);
-
-        nuevoOrigen.Transiciones.pushTransicion(Epsilon, nuevoDestino);
 
         /* QUITAMOS LOS ESTADOS DE ACEPTACIÓN */
         for (Estado i : this.EstadosAceptacion) {
             i.setEstadoAceptacion(false);
-            //i.Transiciones.pushTransicion(Epsilon, B.EstadoInicial.Transiciones.);
+
+            /*GUARDAMOS LAS TRANSICIONES DEL ESTADO INICIAL DE B EN THIS*/
+            i.Transiciones.uneTransiciones(B.EstadoInicial.Transiciones);
         }
+
+        /* BORRAMOS EL CONJUNTO DE ESTADOS DE ACEPTACIÓN */
+        this.EstadosAceptacion.clear();
+
+        /* AÑADIMOS UN ÚNICO ESTADO DE ACEPTACIÓN */
+        this.EstadosAceptacion.addAll(B.EstadosAceptacion);
+
+        /* REALIZAMOS LA UNIÓN */
+        this.Alfabeto.addAll(B.Alfabeto); // Unión de alfabetos
+        this.Estados.addAll(B.Estados); // Unión de estados
+
+
+        /* LIMPIAMOS EL AUTOMATA B */
+        B.Alfabeto.clear();
+        B.Estados.clear();
+        B.setEstadoInicial(new Estado());
+        B.EstadosAceptacion.clear();
 
         return this;
     }
@@ -210,7 +223,7 @@ public class AFN {
             cadena += (E.getID() + " \n");
         }
 
-        cadena += "\nTransiciones: ";
+        cadena += "\nTransiciones: \n";
         it = Estados.iterator();
         while (it.hasNext()) {
             E = (Estado) it.next();

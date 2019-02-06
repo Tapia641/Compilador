@@ -21,6 +21,12 @@ public class Main {
         f1.Unir(f2);
         System.out.println(f1.imprimeAFN());
 
+
+        System.out.println("Concatenando f1 con f2...");
+        f2.crearBasico('C');
+        f1.Concatenar(f2);
+        System.out.println(f1.imprimeAFN());
+
         /* MOSTRANDO INTERFAZ */
         /* InterfazPrimaria compilador = new InterfazPrimaria(); */
 
