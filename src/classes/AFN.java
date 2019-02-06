@@ -129,7 +129,6 @@ public class AFN {
         this.Alfabeto.addAll(B.Alfabeto); // Unión de alfabetos
         this.Estados.addAll(B.Estados); // Unión de estados
 
-
         /* LIMPIAMOS EL AUTOMATA B */
         B.Alfabeto.clear();
         B.Estados.clear();
