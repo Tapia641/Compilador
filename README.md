@@ -21,7 +21,7 @@ Ejemplos
 
 ## Contribuyentes
 
-* **Luis Tapia** - *Autor* - [Tapia641](https://github.com/Tapia641)
+* **Luis Enrique Hernández Tapia** - *Autor* - [Tapia641](https://github.com/Tapia641)
 
 ## Licencia
 
