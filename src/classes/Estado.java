@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class Estado {
+    
     /* DATOS INICIALES DE UN ESTADO */
     private int ID = 0;
     private boolean EstadoAceptacion;
