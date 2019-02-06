@@ -1,4 +1,5 @@
 # Proyecto para la materia de compiladores.
+GitHub:     https://github.com/Tapia641/Compilador
 
 Simple interfaz gráfica que construye AFN.
 
@@ -11,7 +12,7 @@ Instrucciones para hacer uso de la aplicación.
 Cosas que necesitas para ejecutar correctamente la aplicación
 
 ```
-Give examples
+Ejemplos
 ```
 ## Conocimientos adquiridos
 
