@@ -11,9 +11,10 @@ Instrucciones para hacer uso de la aplicación.
 
 Cosas que necesitas para ejecutar correctamente la aplicación
 
-```
 Graphviz - Graph Visualization Software:
-  Disponible en https://graphviz.gitlab.io/download/
+  https://graphviz.gitlab.io/download/
+```
+Graphviz - Graph Visualization Software
 ```
 ## Conocimientos adquiridos
 
