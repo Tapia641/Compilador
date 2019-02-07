@@ -11,9 +11,9 @@ Instrucciones para hacer uso de la aplicación.
 
 Cosas que necesitas para ejecutar correctamente la aplicación
 
-```
-Ejemplos
-```
+
+* Graphviz - Graph Visualization Software: - [Instrucciones de uso](https://github.com/Tapia641/Graphviz-with-java.git)
+
 ## Conocimientos adquiridos
 
 * AFN
@@ -21,7 +21,7 @@ Ejemplos
 
 ## Contribuyentes
 
-* **Luis Tapia** - *Autor* - [Tapia641](https://github.com/Tapia641)
+* **Luis Enrique Hernández Tapia** - *Autor* - [Tapia641](https://github.com/Tapia641)
 
 ## Licencia
 
