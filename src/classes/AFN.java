@@ -12,7 +12,7 @@ public class AFN {
     /* AFN */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
-    private static int TOKEN = 10;
+    private static long TOKEN = 10; // Pensando como ponerlo
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
@@ -240,11 +240,46 @@ public class AFN {
     }
 
     public AFN CerraduraEstrella() {
+
+        /* AÑADIMOS UNA CERRADURA DEL ESTADO DE ACEPTACIÓN AL ESTADO INICIAL */
+        for (Estado i : this.EstadosAceptacion) {
+            i.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
+        }
+
+        /* CREAMOS UN NUEVO ESTADO ORIGEN */
+        Estado nuevoOrigen = new Estado();
+        nuevoOrigen.setID(ID++);
+        nuevoOrigen.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
+        this.Estados.add(nuevoOrigen);
+        this.EstadoInicial = nuevoOrigen;
+
+        /* CREAMOS UN NUEVO ESTADO DESTINO */
+        Estado nuevoDestino = new Estado();
+        nuevoDestino.setID(ID++);
+        nuevoDestino.setEstadoAceptacion(true);
+        this.Estados.add(nuevoDestino);
+
+        for (Estado i : this.EstadosAceptacion) {
+            i.setEstadoAceptacion(false);
+            i.Transiciones.pushTransicion(Epsilon, nuevoDestino);
+        }
+        this.EstadosAceptacion.clear();
+        this.EstadosAceptacion.add(nuevoDestino);
+        this.EstadoInicial.Transiciones.pushTransicion(Epsilon, nuevoDestino);
+
         return this;
     }
 
 
     public AFN CerraduraKleen() {
+        return this;
+    }
+
+    public AFN setTOKENAFN() {
+        for (Estado i : this.EstadosAceptacion) {
+            TOKEN += 10;
+            i.setTOKEN(TOKEN);
+        }
         return this;
     }
 

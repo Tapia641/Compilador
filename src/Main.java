@@ -1,14 +1,20 @@
 import classes.AFN;
+import interfaces.InterfazPrimaria;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        AFN f1, f2, f3, f4;
+        AFN f1, f2, f3, f4, f5, f6, f7, f8;
         f1 = new AFN();
         f2 = new AFN();
         f3 = new AFN();
         f4 = new AFN();
+        f5 = new AFN();
+        f6 = new AFN();
+        f7 = new AFN();
+        f8 = new AFN();
+
 
 
         f1.crearBasico('S');
@@ -32,6 +38,18 @@ public class Main {
 
         System.out.println(f3.imprimeAFN());
 
+        f5.crearBasico('L');
+        f6.crearBasico('L');
+        f7.crearBasico('D');
+        f6.Unir(f7);
+        f6.CerraduraEstrella();
+        f5.Concatenar(f6);
+        System.out.println(f5.imprimeAFN());
+
+        f8.crearBasico('T');
+        f8.CerraduraEstrella();
+        System.out.println(f8.imprimeAFN());
+
 
         /*
         System.out.println("Probando cerradura epsilon con f1...");
@@ -41,9 +59,7 @@ public class Main {
         for (Estado i : C) {
             System.out.println(i.imprimeTransiciones());
         }
-
-        /* MOSTRANDO INTERFAZ */
-        /* InterfazPrimaria compilador = new InterfazPrimaria(); */
+        */
 
     }
 

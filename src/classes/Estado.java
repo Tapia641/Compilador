@@ -10,7 +10,7 @@ public class Estado {
     /* DATOS INICIALES DE UN ESTADO */
     private int ID = 0;
     private boolean EstadoAceptacion;
-    private int TOKEN = 10;
+    private long TOKEN = 0;
 
     /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
     public Transicion Transiciones;
@@ -18,6 +18,14 @@ public class Estado {
     public Estado() {
         this.EstadoAceptacion = false;
         this.Transiciones = new Transicion();
+    }
+
+    public long getTOKEN() {
+        return TOKEN;
+    }
+
+    public void setTOKEN(long TOKEN) {
+        this.TOKEN = TOKEN;
     }
 
     public int getID() {
