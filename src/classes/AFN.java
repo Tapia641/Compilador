@@ -130,6 +130,7 @@ public class AFN {
 
         /* REALIZAMOS LA UNIÓN */
         this.Alfabeto.addAll(B.Alfabeto); // Unión de alfabetos
+        B.Estados.remove(B.EstadoInicial); //Correción importante
         this.Estados.addAll(B.Estados); // Unión de estados
 
         /* LIMPIAMOS EL AUTOMATA B */
@@ -184,6 +185,7 @@ public class AFN {
     }
 
     public AFN CerraduraPositiva() {
+
         return this;
     }
 
