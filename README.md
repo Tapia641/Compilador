@@ -12,7 +12,7 @@ Instrucciones para hacer uso de la aplicación.
 Cosas que necesitas para ejecutar correctamente la aplicación
 
 
-* Graphviz - Graph Visualization Software: - [Descargar](https://graphviz.gitlab.io/download/)
+* Graphviz - Graph Visualization Software: - [Instrucciones de uso](https://github.com/Tapia641/Graphviz-with-java.git)
 
 ## Conocimientos adquiridos
 
