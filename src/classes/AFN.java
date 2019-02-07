@@ -1,7 +1,10 @@
 package classes;
 
+import javafx.util.Pair;
+
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Stack;
 
 /* CREA AUTÓMATAS DE THOMPSON */
 public class AFN {
@@ -138,8 +141,38 @@ public class AFN {
         return this;
     }
 
-    public AFN CerraduraEpsilon(AFN B) {
-        return this;
+    public HashSet<Estado> CerraduraEpsilon(Estado E) {
+
+        /* CONJUNTO DE ESTADOS */
+        HashSet<Estado> C = new HashSet<>();
+
+        /* PILA PARA ALAMACENAR A LOS QUE ALCANZA CON EPSILON */
+        Stack<Estado> S = new Stack<>();
+
+        /* INGRESAMOS EL PRIMER ESTADO A ANALIZAR */
+        S.add(E);
+
+        while (!S.empty()) {
+            S.pop();
+            if (!C.contains(E)) {
+                C.add(E);
+
+                /* PREGUNTAMOS SI TIENE TRANSICIONES EPSILON */
+                HashSet<Pair<Character, Estado>> t = E.Transiciones.getTransiciones();
+                Iterator it = t.iterator();
+                Pair<Character, Estado> P;
+                while (it.hasNext()) {
+                    P = (Pair) it.next();
+                    /* SI TIENE UNA TRANSICION EPSILON */
+                    if (P.getKey() == Epsilon) {
+                        /* AÑADIMOS EL ESTADO AL QUE ALCANZA */
+                        S.add(P.getValue());
+                    }
+                }
+            }
+        }
+
+        return C;
     }
 
     public AFN Opcional() {// ?

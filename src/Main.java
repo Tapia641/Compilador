@@ -1,5 +1,10 @@
 import classes.AFN;
+import classes.Estado;
 import interfaces.InterfazPrimaria;
+import javafx.util.Pair;
+
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Main {
 
@@ -26,6 +31,14 @@ public class Main {
         f2.crearBasico('C');
         f1.Concatenar(f2);
         System.out.println(f1.imprimeAFN());
+
+        System.out.println("Probando cerradura epsilon con f1...");
+        HashSet<Estado> C = new HashSet<>();
+        C.addAll(f1.CerraduraEpsilon(f1.getEstadoInicial()));
+
+        for (Estado i : C) {
+            System.out.println(i.imprimeTransiciones());
+        }
 
         /* MOSTRANDO INTERFAZ */
         /* InterfazPrimaria compilador = new InterfazPrimaria(); */
