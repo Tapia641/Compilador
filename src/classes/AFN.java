@@ -151,14 +151,15 @@ public class AFN {
 
         /* INGRESAMOS EL PRIMER ESTADO A ANALIZAR */
         S.add(E);
+        C.add(E);
 
+        Estado K;
         while (!S.empty()) {
-            S.pop();
-            if (!C.contains(E)) {
-                C.add(E);
+            K = S.pop();
+            if (!C.contains(K)) {
 
                 /* PREGUNTAMOS SI TIENE TRANSICIONES EPSILON */
-                HashSet<Pair<Character, Estado>> t = E.Transiciones.getTransiciones();
+                HashSet<Pair<Character, Estado>> t = K.Transiciones.getTransiciones();
                 Iterator it = t.iterator();
                 Pair<Character, Estado> P;
                 while (it.hasNext()) {
@@ -176,6 +177,9 @@ public class AFN {
     }
 
     public AFN Opcional() {// ?
+        for (Estado i : this.EstadosAceptacion) {
+            this.EstadoInicial.Transiciones.pushTransicion(Epsilon, i);
+        }
         return this;
     }
 
