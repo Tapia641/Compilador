@@ -1,16 +1,15 @@
 import classes.AFN;
-import classes.Estado;
-import interfaces.InterfazPrimaria;
-
-import java.util.HashSet;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        AFN f1, f2;
+        AFN f1, f2, f3, f4;
         f1 = new AFN();
         f2 = new AFN();
+        f3 = new AFN();
+        f4 = new AFN();
+
 
         f1.crearBasico('S');
         f1.Opcional();
@@ -18,8 +17,21 @@ public class Main {
         f2.CerraduraPositiva();
         f1.Concatenar(f2);
 
-
         System.out.println(f1.imprimeAFN());
+
+        f3.crearBasico('S');
+        f3.Opcional();
+        f4.crearBasico('D');
+        f4.CerraduraPositiva();
+        f3.Concatenar(f4);
+        f4.crearBasico('.');
+        f3.Concatenar(f4);
+        f4.crearBasico('D');
+        f4.CerraduraPositiva();
+        f3.Concatenar(f4);
+
+        System.out.println(f3.imprimeAFN());
+
 
         /*
         System.out.println("Probando cerradura epsilon con f1...");

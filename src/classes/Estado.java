@@ -10,6 +10,7 @@ public class Estado {
     /* DATOS INICIALES DE UN ESTADO */
     private int ID = 0;
     private boolean EstadoAceptacion;
+    private int TOKEN = 10;
 
     /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
     public Transicion Transiciones;

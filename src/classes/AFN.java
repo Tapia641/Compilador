@@ -12,6 +12,7 @@ public class AFN {
     /* AFN */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
+    private static int TOKEN = 10;
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
