@@ -1,10 +1,8 @@
 import classes.AFN;
 import classes.Estado;
 import interfaces.InterfazPrimaria;
-import javafx.util.Pair;
 
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class Main {
 
