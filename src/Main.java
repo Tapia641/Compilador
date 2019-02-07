@@ -12,13 +12,15 @@ public class Main {
         f1 = new AFN();
         f2 = new AFN();
 
-        f1.crearBasico('A');
-        f2.crearBasico('B');
-        //f1.Unir(f2);
-        //f2.crearBasico('C');
+        f1.crearBasico('S');
+        f1.Opcional();
+        f2.crearBasico('D');
+        f2.CerraduraPositiva();
         f1.Concatenar(f2);
 
+
         System.out.println(f1.imprimeAFN());
+
         /*
         System.out.println("Probando cerradura epsilon con f1...");
         HashSet<Estado> C = new HashSet<>();

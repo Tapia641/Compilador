@@ -177,14 +177,63 @@ public class AFN {
         return C;
     }
 
-    public AFN Opcional() {// ?
+    public AFN CerraduraPositiva() {
+
+        /* AÑADIMOS UNA CERRADURA DEL ESTADO DE ACEPTACIÓN AL ESTADO INICIAL */
         for (Estado i : this.EstadosAceptacion) {
-            this.EstadoInicial.Transiciones.pushTransicion(Epsilon, i);
+            i.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
         }
+
+        /* CREAMOS UN NUEVO ESTADO ORIGEN */
+        Estado nuevoOrigen = new Estado();
+        nuevoOrigen.setID(ID++);
+        nuevoOrigen.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
+        this.Estados.add(nuevoOrigen);
+        this.EstadoInicial = nuevoOrigen;
+
+        /* CREAMOS UN NUEVO ESTADO DESTINO */
+        Estado nuevoDestino = new Estado();
+        nuevoDestino.setID(ID++);
+        nuevoDestino.setEstadoAceptacion(true);
+        this.Estados.add(nuevoDestino);
+
+        for (Estado i : this.EstadosAceptacion) {
+            i.setEstadoAceptacion(false);
+            i.Transiciones.pushTransicion(Epsilon, nuevoDestino);
+        }
+        this.EstadosAceptacion.clear();
+        this.EstadosAceptacion.add(nuevoDestino);
+
         return this;
     }
 
-    public AFN CerraduraPositiva() {
+    public AFN Opcional() {// ?
+
+        /* CREAMOS UN NUEVO ESTADO ORIGEN */
+        Estado nuevoOrigen = new Estado();
+        nuevoOrigen.setID(ID++);
+        nuevoOrigen.Transiciones.pushTransicion(Epsilon, this.EstadoInicial);
+        this.Estados.add(nuevoOrigen);
+        this.EstadoInicial = nuevoOrigen;
+
+        /* CREAMOS UN NUEVO ESTADO DESTINO */
+        Estado nuevoDestino = new Estado();
+        nuevoDestino.setID(ID++);
+        nuevoDestino.setEstadoAceptacion(true);
+        this.Estados.add(nuevoDestino);
+
+        for (Estado i : this.EstadosAceptacion) {
+            i.setEstadoAceptacion(false);
+            i.Transiciones.pushTransicion(Epsilon, nuevoDestino);
+        }
+        this.EstadosAceptacion.clear();
+        this.EstadosAceptacion.add(nuevoDestino);
+
+
+        /* SÓLO AÑADIMOS UNA TRANSICIÓN DEL ESTADO INICIAL AL ESTADO DE ACEPTACIÓN */
+        for (Estado i : this.EstadosAceptacion) {
+            this.EstadoInicial.Transiciones.pushTransicion(Epsilon, i);
+        }
 
         return this;
     }
