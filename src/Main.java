@@ -1,5 +1,5 @@
 import classes.AFN;
-import interfaces.InterfazPrimaria;
+import draw.Draw;
 
 public class Main {
 
@@ -24,6 +24,8 @@ public class Main {
         f1.Concatenar(f2);
 
         System.out.println(f1.imprimeAFN());
+        Draw p = new Draw();
+        p.Dibuja(f1.dibujarAFN());
 
         f3.crearBasico('S');
         f3.Opcional();
@@ -44,11 +46,16 @@ public class Main {
         f6.Unir(f7);
         f6.CerraduraEstrella();
         f5.Concatenar(f6);
+
         System.out.println(f5.imprimeAFN());
+        p.Dibuja(f5.dibujarAFN());
+
 
         f8.crearBasico('T');
         f8.CerraduraEstrella();
         System.out.println(f8.imprimeAFN());
+        p.Dibuja(f8.dibujarAFN());
+
 
 
         /*

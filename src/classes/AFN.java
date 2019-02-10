@@ -358,5 +358,37 @@ public class AFN {
 
         return cadena;
     }
+
+    public String dibujarAFN() {
+        String cadena = "";
+
+        /* FORMATO DEL DIBUJO */
+        cadena += "node [shape=circle];\n" +
+                "node [style=filled];\n" +
+                "node [fillcolor=\"#EEEEEE\"];\n" +
+                "node [color=\"#EEEEEE\"];\n" +
+                "edge [color=\"#31CEF0\"];\n";
+
+        /* ESTRUCTURA PARA .DOT */
+        //"EstadoOrigen -> EstadoDestino [label=\"Transicion\"];\n"
+
+        /* IMPRIMIMOS LOS ESTADOS DE ACEPTACIÓN ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO */
+        Iterator it = Estados.iterator();
+        Estado E;
+
+        HashSet<Pair<Character, Estado>> t;
+
+        while (it.hasNext()) {
+            E = (Estado) it.next();
+            for (Pair<Character, Estado> i : E.getTransiciones()) {
+                cadena += (E.getID() + " -> " + i.getValue().getID() + " [label=\"" + i.getKey() + "\"];\n");
+            }
+        }
+
+        /* FIN DE FORMATO*/
+        cadena += "rankdir=LR;\n";
+
+        return cadena;
+    }
     //////////////////////////////////////////////////////////////////////////////
 }

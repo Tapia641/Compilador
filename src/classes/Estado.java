@@ -53,4 +53,8 @@ public class Estado {
         return cadena;
     }
 
+    public HashSet<Pair<Character, Estado>> getTransiciones() {
+        return Transiciones.getTransiciones();
+    }
+
 }
