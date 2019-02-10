@@ -61,7 +61,7 @@ public class Draw {
         // String repesentationType= "circo";
 
         // File out = new File("/tmp/out"+gv.getImageDpi()+"."+ type); // Linux
-        File out = new File("C:/Users/Tapia/Desktop/out." + type); // Windows
+        File out = new File("C:/Users/Default/Desktop/out." + type); // Windows
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, repesentationType), out);
     }
 
