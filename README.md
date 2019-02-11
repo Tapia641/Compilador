@@ -13,6 +13,7 @@ Cosas que necesitas para ejecutar correctamente la aplicación
 
 
 * Graphviz - Graph Visualization Software: - [Version2](https://github.com/Tapia641/Graphviz-with-java.git)
+* JavaFX Material Design Library: [Repositorio](https://github.com/jfoenixadmin/JFoenix)
 
 ## Conocimientos adquiridos
 
