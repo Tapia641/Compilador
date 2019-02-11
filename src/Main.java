@@ -2,7 +2,7 @@ import classes.AFN;
 import draw.Draw;
 
 public class Main {
-
+/*
     public static void main(String[] args) {
 
         AFN f1, f2, f3, f4, f5, f6, f7, f8;
@@ -56,18 +56,6 @@ public class Main {
         System.out.println(f8.imprimeAFN());
         p.Dibuja(f8.dibujarAFN());
 
-
-
-        /*
-        System.out.println("Probando cerradura epsilon con f1...");
-        HashSet<Estado> C = new HashSet<>();
-        C.addAll(f1.CerraduraEpsilon(f1.getEstadoInicial()));
-
-        for (Estado i : C) {
-            System.out.println(i.imprimeTransiciones());
-        }
-        */
-
     }
-
+*/
 }
