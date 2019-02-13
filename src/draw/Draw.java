@@ -80,7 +80,7 @@ public class Draw {
 
         String repesentationType = "dot";
 
-        File out = new File("C:/Users/Tapia/Desktop/automata." + type); // Windows
+        File out = new File("C:/Users/Desktop/Desktop/automata." + type); // Windows
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, repesentationType), out);
     }
 
