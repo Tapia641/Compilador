@@ -1,9 +1,13 @@
 import classes.AFN;
 import draw.Draw;
 
+import java.util.HashSet;
+
 public class Main {
-/*
     public static void main(String[] args) {
+
+        HashSet<AFN> conjuntoAFN = new HashSet<>();
+        Draw p = new Draw();
 
         AFN f1, f2, f3, f4, f5, f6, f7, f8;
         f1 = new AFN();
@@ -16,46 +20,51 @@ public class Main {
         f8 = new AFN();
 
 
-
-        f1.crearBasico('S');
-        f1.Opcional();
-        f2.crearBasico('D');
+        f1.CrearBasico('S');
+        f1.CerraduraOpcional();
+        f2.CrearBasico('D');
         f2.CerraduraPositiva();
         f1.Concatenar(f2);
 
-        System.out.println(f1.imprimeAFN());
-        Draw p = new Draw();
-        p.Dibuja(f1.dibujarAFN());
+        conjuntoAFN.add(f1);
 
-        f3.crearBasico('S');
-        f3.Opcional();
-        f4.crearBasico('D');
+        //System.out.println(f1.ImprimeAFN());
+        //p.Dibuja(f1.DibujarAFN());
+
+        f3.CrearBasico('S');
+        f3.CerraduraOpcional();
+        f4.CrearBasico('D');
         f4.CerraduraPositiva();
         f3.Concatenar(f4);
-        f4.crearBasico('.');
+        f4.CrearBasico('.');
         f3.Concatenar(f4);
-        f4.crearBasico('D');
+        f4.CrearBasico('D');
         f4.CerraduraPositiva();
         f3.Concatenar(f4);
 
-        System.out.println(f3.imprimeAFN());
+        conjuntoAFN.add(f3);
 
-        f5.crearBasico('L');
-        f6.crearBasico('L');
-        f7.crearBasico('D');
+
+        //System.out.println(f3.ImprimeAFN());
+
+        f5.CrearBasico('L');
+        f6.CrearBasico('L');
+        f7.CrearBasico('D');
         f6.Unir(f7);
         f6.CerraduraEstrella();
         f5.Concatenar(f6);
-
-        System.out.println(f5.imprimeAFN());
-        p.Dibuja(f5.dibujarAFN());
+        conjuntoAFN.add(f5);
 
 
-        f8.crearBasico('T');
+        //System.out.println(f5.ImprimeAFN());
+        //p.Dibuja(f5.DibujarAFN());
+
+
+        f8.CrearBasico('T');
         f8.CerraduraEstrella();
-        System.out.println(f8.imprimeAFN());
-        p.Dibuja(f8.dibujarAFN());
+
+        conjuntoAFN.add(f8);
+        //System.out.println(f8.ImprimeAFN());
 
     }
-*/
 }

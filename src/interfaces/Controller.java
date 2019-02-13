@@ -5,22 +5,20 @@ import com.jfoenix.controls.JFXTextArea;
 import draw.Draw;
 import javafx.fxml.FXML;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 import javax.swing.*;
 import java.util.HashSet;
 
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class Controller {
 
     @FXML
     private JFXTextArea JFXTextAreaTabla = null;
     private HashSet<AFN> ConjuntoAFN = new HashSet<>();
+
     @FXML
     private ImageView ImageViewGrafo;
 
@@ -32,11 +30,12 @@ public class Controller {
             if (S.equals("")) {
                 JOptionPane.showMessageDialog(null, "Cadena vacia", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                AFN f = new AFN().crearBasico(S.charAt(0));
+                AFN f = new AFN().CrearBasico(S.charAt(0));
                 ConjuntoAFN.add(f);
-                JFXTextAreaTabla.setText(f.imprimeAFN());
+                JFXTextAreaTabla.setText(f.ImprimeAFN());
                 Draw p = new Draw();
-                p.Dibuja(f.dibujarAFN());
+                p.Dibuja(f.DibujarAFN());
+                ImageViewGrafo.setImage(new Image("C:/Users/Default/Desktop/automata.png"));
             }
         } else
             JOptionPane.showMessageDialog(null, "Ingresaste más de un carácter", "¡Error!", JOptionPane.ERROR_MESSAGE);

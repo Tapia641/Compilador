@@ -12,7 +12,6 @@ public class AFN {
     /* AFN */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
-    private static long TOKEN = 10; // Pensando como ponerlo
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
@@ -30,7 +29,7 @@ public class AFN {
     }
 
     /* CREA UN AFN SIMPLE */
-    public AFN crearBasico(char S) {
+    public AFN CrearBasico(char S) {
 
         /* CREAMOS EL ESTADO ORIGEN */
         Estado Origen = new Estado();
@@ -143,41 +142,6 @@ public class AFN {
         return this;
     }
 
-    public HashSet<Estado> CerraduraEpsilon(Estado E) {
-
-        /* CONJUNTO DE ESTADOS */
-        HashSet<Estado> C = new HashSet<>();
-
-        /* PILA PARA ALAMACENAR A LOS QUE ALCANZA CON EPSILON */
-        Stack<Estado> S = new Stack<>();
-
-        /* INGRESAMOS EL PRIMER ESTADO A ANALIZAR */
-        S.add(E);
-        C.add(E);
-
-        Estado K;
-        while (!S.empty()) {
-            K = S.pop();
-            if (!C.contains(K)) {
-
-                /* PREGUNTAMOS SI TIENE TRANSICIONES EPSILON */
-                HashSet<Pair<Character, Estado>> t = K.Transiciones.getTransiciones();
-                Iterator it = t.iterator();
-                Pair<Character, Estado> P;
-                while (it.hasNext()) {
-                    P = (Pair) it.next();
-                    /* SI TIENE UNA TRANSICION EPSILON */
-                    if (P.getKey() == Epsilon) {
-                        /* AÑADIMOS EL ESTADO AL QUE ALCANZA */
-                        S.add(P.getValue());
-                    }
-                }
-            }
-        }
-
-        return C;
-    }
-
     public AFN CerraduraPositiva() {
 
         /* AÑADIMOS UNA CERRADURA DEL ESTADO DE ACEPTACIÓN AL ESTADO INICIAL */
@@ -208,7 +172,7 @@ public class AFN {
         return this;
     }
 
-    public AFN Opcional() {// ?
+    public AFN CerraduraOpcional() {// ?
 
         /* CREAMOS UN NUEVO ESTADO ORIGEN */
         Estado nuevoOrigen = new Estado();
@@ -275,14 +239,6 @@ public class AFN {
         return this;
     }
 
-    public AFN setTOKENAFN() {
-        for (Estado i : this.EstadosAceptacion) {
-            TOKEN += 10;
-            i.setTOKEN(TOKEN);
-        }
-        return this;
-    }
-
     /* GETTERS AND SETTERS *///////////////////////////////////////////////////////
     public static int getID() {
         return ID;
@@ -328,7 +284,7 @@ public class AFN {
         Alfabeto = alfabeto;
     }
 
-    public String imprimeAFN() {
+    public String ImprimeAFN() {
         /* ALMACENAMOS TODO EN UN STRING */
         String cadena = "";
 
@@ -359,7 +315,7 @@ public class AFN {
         return cadena;
     }
 
-    public String dibujarAFN() {
+    public String DibujarAFN() {
         String cadena = "";
 
         /* FORMATO DEL DIBUJO */
