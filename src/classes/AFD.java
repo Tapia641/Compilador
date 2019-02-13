@@ -72,9 +72,13 @@ public class AFD {
 
         /* LA COLA QUE LLEVARÁ LOS Sj*/
         Queue<HashSet<Estado>> Q = new ArrayDeque<>();
-        HashSet<Estado> S;
+        HashSet<Estado> S, SAux;
 
-        Vector<Vector<Integer>> Matriz;
+        /* LLEVARÁ EL ORDEN DE LA LISTA */
+        LinkedList<Vector<Integer>> ListaEnlazada = new LinkedList<>();
+
+        /* FILA PARA LA LISTA*/
+        Vector<Integer> Fila = new Stack<>();
         int Indice = 0;
 
         /* CALCULAMOS LA CERRADURA EPSILON AL ESTADO INICIAL */
@@ -83,7 +87,22 @@ public class AFD {
 
         /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
+
+            /* SACAMAOS UN ELEMENTO DE LA COLA */
             S = ((ArrayDeque<HashSet<Estado>>) Q).pop();
+            Indice++;
+
+            /* ITERAMOS SOBRE EL ALFABATEO */
+            for (Character i : f.getAlfabeto()) {
+
+                /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO*/
+                SAux = Ir_A(S, i);
+
+                /* SI SON DISTINTOS LO AÑADIMOS A LA COLA */
+                if (!S.equals(SAux)) {
+                    Q.add(SAux);
+                }
+            }
         }
 
         return this;

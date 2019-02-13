@@ -1,6 +1,5 @@
 import classes.AFD;
 import classes.AFN;
-import draw.Draw;
 
 import java.util.HashSet;
 
