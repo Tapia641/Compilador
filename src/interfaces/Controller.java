@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.HashSet;
 
 import javafx.scene.image.ImageView;
@@ -35,7 +36,8 @@ public class Controller {
                 JFXTextAreaTabla.setText(f.ImprimeAFN());
                 Draw p = new Draw();
                 p.Dibuja(f.DibujarAFN());
-                ImageViewGrafo.setImage(new Image("C:/Users/Default/Desktop/automata.png"));
+                File input = new File(new File("src/draw/automata.png").getAbsolutePath()); // Windows
+                ImageViewGrafo.setImage(Image.impl_fromPlatformImage(input));
             }
         } else
             JOptionPane.showMessageDialog(null, "Ingresaste más de un carácter", "¡Error!", JOptionPane.ERROR_MESSAGE);

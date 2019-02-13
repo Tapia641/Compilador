@@ -1,5 +1,6 @@
 package classes;
 
+import draw.Draw;
 import javafx.util.Pair;
 
 import java.util.*;
@@ -20,6 +21,7 @@ public class AFD {
     /* ALFABETO CONFORMADO DE TIPO CARÁCTER */
     private HashSet<Character> Alfabeto;
 
+    /* CONSTRUCTOR */
     public AFD() {
         Estados = new HashSet<>();
         EstadoInicial = new Estado();
@@ -31,7 +33,7 @@ public class AFD {
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
-        nuevoOrigen.setID(36);
+        nuevoOrigen.setID(36);//Nota: resolver el id
 
         /* SÓLO AÑADIMOS UN ESTADIO DE ORIGEN CON TRANSICIONES EPSILON
          * PARA UNIR TODOS LOS AUTÓMATAS */
@@ -45,13 +47,14 @@ public class AFD {
         this.Estados.add(nuevoOrigen);
         this.EstadoInicial = nuevoOrigen;
 
-
         /* COMENZAMOS A CONVERTIR */
 
         /* APLICAMOS LA CERRADURA EPSILON AL ESTADO INICIAL DEL CONJUNTO */
         HashSet<Estado> conjuntoEpsilon;
         conjuntoEpsilon = this.CerraduraEpsilon(this.EstadoInicial);
 
+        Draw D = new Draw();
+        D.Dibuja(this.DibujarAFD());
 
         return this;
     }
@@ -70,6 +73,9 @@ public class AFD {
         /* LA COLA QUE LLEVARÁ LOS Sj*/
         Queue<HashSet<Estado>> Q = new ArrayDeque<>();
         HashSet<Estado> S;
+
+        Vector<Vector<Integer>> Matriz;
+        int Indice = 0;
 
         /* CALCULAMOS LA CERRADURA EPSILON AL ESTADO INICIAL */
         S = this.CerraduraEpsilon(f.getEstadoInicial());

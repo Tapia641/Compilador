@@ -285,7 +285,7 @@ public class AFN {
     }
 
     public String ImprimeAFN() {
-        /* ALMACENAMOS TODO EN UN STRING */
+        /* ALMACENAMOS EN UN STRING*/
         String cadena = "";
 
         /* IMPRIMIMOS LOS ESTADOS ACCEDIENDO AL HASHSET Y SACANDO CADA ESTADO*/

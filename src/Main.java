@@ -1,3 +1,4 @@
+import classes.AFD;
 import classes.AFN;
 import draw.Draw;
 
@@ -7,7 +8,6 @@ public class Main {
     public static void main(String[] args) {
 
         HashSet<AFN> conjuntoAFN = new HashSet<>();
-        Draw p = new Draw();
 
         AFN f1, f2, f3, f4, f5, f6, f7, f8;
         f1 = new AFN();
@@ -28,8 +28,6 @@ public class Main {
 
         conjuntoAFN.add(f1);
 
-        //System.out.println(f1.ImprimeAFN());
-        //p.Dibuja(f1.DibujarAFN());
 
         f3.CrearBasico('S');
         f3.CerraduraOpcional();
@@ -45,26 +43,21 @@ public class Main {
         conjuntoAFN.add(f3);
 
 
-        //System.out.println(f3.ImprimeAFN());
-
         f5.CrearBasico('L');
         f6.CrearBasico('L');
         f7.CrearBasico('D');
         f6.Unir(f7);
         f6.CerraduraEstrella();
         f5.Concatenar(f6);
+
         conjuntoAFN.add(f5);
-
-
-        //System.out.println(f5.ImprimeAFN());
-        //p.Dibuja(f5.DibujarAFN());
-
 
         f8.CrearBasico('T');
         f8.CerraduraEstrella();
 
         conjuntoAFN.add(f8);
-        //System.out.println(f8.ImprimeAFN());
 
+        AFD adf1 = new AFD();
+        adf1.convertirAFD(conjuntoAFN);
     }
 }

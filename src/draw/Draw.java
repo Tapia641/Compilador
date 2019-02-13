@@ -1,13 +1,13 @@
 package draw;
 
-import classes.GraphViz;
+import classes.Graphviz;
 
 import java.io.File;
 
 public class Draw {
 
     public void Dibuja() {
-        GraphViz gv = new GraphViz();
+        Graphviz gv = new Graphviz();
         gv.addln(gv.start_graph());
 
         /* CÓDIGO EJEMPLO DE COMO FUNCIONA */
@@ -67,7 +67,7 @@ public class Draw {
 
 
     public void Dibuja(String automata) {
-        GraphViz gv = new GraphViz();
+        Graphviz gv = new Graphviz();
 
         gv.addln(gv.start_graph());
         gv.add(automata);
@@ -80,7 +80,8 @@ public class Draw {
 
         String repesentationType = "dot";
 
-        File out = new File("C:/Users/Desktop/Desktop/automata." + type); // Windows
+        //File out = new File("/c:/Users/Tapia/Desktop/automata."+ type);
+        File out = new File(new File("src/draw/automata." + type).getAbsolutePath()); // Windows
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, repesentationType), out);
     }
 

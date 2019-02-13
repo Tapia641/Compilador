@@ -1,5 +1,5 @@
 package classes;
-// classes.GraphViz.java - a simple API to call dot from Java programs
+// classes.Graphviz.java - a simple API to call dot from Java programs
 
 /*$Id$*/
 /*
@@ -34,7 +34,7 @@ import java.io.InputStreamReader;
 
 /**
  * <dl>
- * <dt>Purpose: classes.GraphViz Java API
+ * <dt>Purpose: classes.Graphviz Java API
  * <dd>
  *
  * <dt>Description:
@@ -43,7 +43,7 @@ import java.io.InputStreamReader;
  * <dt>Example usage:
  * <dd>
  * <pre>
- *    classes.GraphViz gv = new classes.GraphViz();
+ *    classes.Graphviz gv = new classes.Graphviz();
  *    gv.addln(gv.start_graph());
  *    gv.addln("A -> B;");
  *    gv.addln("A -> C;");
@@ -62,7 +62,7 @@ import java.io.InputStreamReader;
  * @author Laszlo Szathmary (<a href="jabba.laci@gmail.com">jabba.laci@gmail.com</a>)
  * @version v0.1, 2003/12/04 (December) -- first release
  */
-public class GraphViz {
+public class Graphviz {
     /**
      * Detects the client's operating system.
      */
@@ -114,7 +114,7 @@ public class GraphViz {
 
     /**
      * Convenience Constructor with default OS specific pathes
-     * creates a new classes.GraphViz object that will contain a graph.
+     * creates a new classes.Graphviz object that will contain a graph.
      * Windows:
      * executable = c:/Program Files (x86)/Graphviz 2.28/bin/dot.exe
      * tempDir = c:/temp
@@ -125,17 +125,17 @@ public class GraphViz {
      * executable = /usr/bin/dot
      * tempDir = /tmp
      */
-    public GraphViz() {
-        if (GraphViz.osName.contains("Windows")) {
+    public Graphviz() {
+        if (Graphviz.osName.contains("Windows")) {
             //this.tempDir = "c:/temp";
             //this.executable = "c:/Program Files (x86)/Graphviz 2.28/bin/dot.exe";
             //LAS DIRECCIONES CORRESPONDIENTES A TU MAQUINA
             this.tempDir = "C:/Users/Tapia/AppData/Local/Temp";
             this.executable = "C:/Program Files (x86)/Graphviz2.38/bin/dot.exe";
-        } else if (GraphViz.osName.equals("MacOSX")) {
+        } else if (Graphviz.osName.equals("MacOSX")) {
             this.tempDir = "/tmp";
             this.executable = "/usr/local/bin/dot";
-        } else if (GraphViz.osName.equals("Linux")) {
+        } else if (Graphviz.osName.equals("Linux")) {
             this.tempDir = "/tmp";
             this.executable = "/usr/bin/dot";
         }
@@ -147,7 +147,7 @@ public class GraphViz {
      * @param executable absolute path to dot executable
      * @param tempDir    absolute path to temp directory
      */
-    public GraphViz(String executable, String tempDir) {
+    public Graphviz(String executable, String tempDir) {
         this.executable = executable;
         this.tempDir = tempDir;
     }
@@ -391,4 +391,4 @@ public class GraphViz {
         this.graph = sb;
     }
 
-} // end of class classes.GraphViz
+} // end of class classes.Graphviz
