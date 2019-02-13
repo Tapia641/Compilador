@@ -85,6 +85,8 @@ public class AFD {
         S = this.CerraduraEpsilon(f.getEstadoInicial());
         Q.add(S);
 
+        //xfxdfdxf
+
         /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
 
