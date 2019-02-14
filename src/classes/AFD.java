@@ -96,7 +96,7 @@ public class AFD {
                 /* OMITIMOS A EPSILON */
                 if (!i.equals(Epsilon)) {
 
-                    /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO*/
+                    /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO */
                     SAux = Ir_A(Sn, i);
 
                     /* SI NO ES VACIO */
@@ -108,10 +108,10 @@ public class AFD {
                         }
                         System.out.println();
 
-                        /* SI SAUX ESTÁ CONTENIDO EN EL CONJUNTO C*/
+                        /* SI SAUX ESTÁ CONTENIDO EN EL CONJUNTO C */
                         if (!C.contains(SAux)) {
                             V.add(++IndiceColumna);
-                            C.add(SAux);
+                            C.addElement(SAux);
                             ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
 
                         } else {
