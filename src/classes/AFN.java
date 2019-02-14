@@ -46,7 +46,7 @@ public class AFN {
 
         /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL DESTINO) */
         Estados.add(Destino);
-¿
+
         /* AÑADIMOS LA TRANSICION DEL (Origen) -> S -> (DESTINO) AL ESTADO DE ACEPTACIÓN */
         Origen.Transiciones.pushTransicion(S, Destino);
         EstadosAceptacion.add(Destino);

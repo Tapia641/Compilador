@@ -6,13 +6,13 @@ import draw.Draw;
 import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.HashSet;
 
-import javafx.scene.image.ImageView;
+import javax.swing.*;
 
 public class Controller {
 
@@ -21,7 +21,7 @@ public class Controller {
     private HashSet<AFN> ConjuntoAFN = new HashSet<>();
 
     @FXML
-    private ImageView ImageViewGrafo;
+    private ImageView ImageViewGrafo = new ImageView();
 
     @FXML
     private void onCrearAFNButtonClicked(MouseEvent event) {
@@ -36,8 +36,14 @@ public class Controller {
                 JFXTextAreaTabla.setText(f.ImprimeAFN());
                 Draw p = new Draw();
                 p.Dibuja(f.DibujarAFN());
-                File input = new File(new File("src/draw/automata.png").getAbsolutePath()); // Windows
-                ImageViewGrafo.setImage(Image.impl_fromPlatformImage(input));
+
+                /* SOLUCIÓN A LA RUTA DEL AUTÓMATA */
+                Image image = new Image("file:///" + new File("src/draw/automata.png").getAbsolutePath());
+                ImageViewGrafo.setImage(image);
+                ImageViewGrafo.setFitWidth(200);
+                ImageViewGrafo.setPreserveRatio(true);
+                ImageViewGrafo.setSmooth(true);
+                ImageViewGrafo.setCache(true);
             }
         } else
             JOptionPane.showMessageDialog(null, "Ingresaste más de un carácter", "¡Error!", JOptionPane.ERROR_MESSAGE);
