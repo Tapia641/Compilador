@@ -33,7 +33,7 @@ public class AFD {
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
-        nuevoOrigen.setID(36);//Nota: resolver el id
+        nuevoOrigen.setID(62);//Nota: resolver el id
 
         /* SÓLO AÑADIMOS UN ESTADIO DE ORIGEN CON TRANSICIONES EPSILON
          * PARA UNIR TODOS LOS AUTÓMATAS */
@@ -133,7 +133,10 @@ public class AFD {
             }
         }
         System.out.println();
+        String cadnea = "";
         Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
+
+        //Matriz.forEach((k, v) -> cadena += "S" + k+": " + v);
 
         return this;
     }
