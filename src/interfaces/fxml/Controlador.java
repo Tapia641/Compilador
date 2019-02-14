@@ -1,20 +1,24 @@
-package interfaces;
+package interfaces.fxml;
 
 import classes.AFN;
 import com.jfoenix.controls.JFXTextArea;
 import draw.Draw;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.HashSet;
 
 import javax.swing.*;
 
-public class Controller {
+public class Controlador {
 
     @FXML
     private JFXTextArea JFXTextAreaTabla = null;
@@ -25,8 +29,10 @@ public class Controller {
 
     @FXML
     private void onCrearAFNButtonClicked(MouseEvent event) {
+
         /* PEDIMOS QUE INGRESE UN CARÁCTER */
         String S = JOptionPane.showInputDialog(null, "Ingresa una letra", "Crear AFN", JOptionPane.QUESTION_MESSAGE);
+
         if (S.length() < 2) {
             if (S.equals("")) {
                 JOptionPane.showMessageDialog(null, "Cadena vacia", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
@@ -39,6 +45,8 @@ public class Controller {
 
                 /* SOLUCIÓN A LA RUTA DEL AUTÓMATA */
                 Image image = new Image("file:///" + new File("src/draw/automata.png").getAbsolutePath());
+
+                /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                 ImageViewGrafo.setImage(image);
                 ImageViewGrafo.setFitWidth(200);
                 ImageViewGrafo.setPreserveRatio(true);
@@ -51,6 +59,9 @@ public class Controller {
 
     @FXML
     private void onUnirAFNButtonClicked(MouseEvent event) {
+    }
+
+    public void Unir(Stage unirInterfaz) throws Exception {
     }
 
 }

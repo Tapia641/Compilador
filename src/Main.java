@@ -1,5 +1,6 @@
 import classes.AFD;
 import classes.AFN;
+import draw.Draw;
 
 import java.util.HashSet;
 
@@ -7,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         HashSet<AFN> conjuntoAFN = new HashSet<>();
-
+        Draw D = new Draw();
         AFN f1, f2, f3, f4, f5, f6, f7, f8;
         f1 = new AFN();
         f2 = new AFN();
@@ -17,7 +18,6 @@ public class Main {
         f6 = new AFN();
         f7 = new AFN();
         f8 = new AFN();
-
 
         f1.CrearBasico('S');
         f1.CerraduraOpcional();
@@ -58,5 +58,6 @@ public class Main {
 
         AFD adf1 = new AFD();
         adf1.convertirAFD(conjuntoAFN);
+
     }
 }

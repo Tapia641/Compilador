@@ -56,6 +56,50 @@ public class AFD {
         Draw D = new Draw();
         D.Dibuja(this.DibujarAFD());
 
+
+        /* LA COLA QUE LLEVARÁ LOS Sj*/
+        Queue<HashSet<Estado>> Q = new ArrayDeque<>();
+        HashSet<Estado> Sn, SAux;
+
+        /* cerradura epsilon al estado inicial */
+        Sn = CerraduraEpsilon(this.EstadoInicial);
+        ((ArrayDeque<HashSet<Estado>>) Q).addLast(Sn);
+
+        while (!Q.isEmpty()) {
+
+            /* SACAMAOS UN ELEMENTO DE LA COLA */
+            Sn = ((ArrayDeque<HashSet<Estado>>) Q).getFirst();
+
+            /* ITERAMOS SOBRE EL ALFABATEO */
+            for (Character i : this.Alfabeto) {
+
+                /* OMITIMOS A EPSILON */
+                if (!i.equals(Epsilon)) {
+
+                    /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO*/
+                    SAux = Ir_A(Sn, i);
+
+                    System.out.print(i + " :");
+                    for (Estado j : SAux) {
+                        System.out.print(j.getID() + ", ");
+                    }
+                    System.out.println("\n\n");
+
+                    /* SI NO ES VACIO */
+                    if (!SAux.isEmpty()) {
+
+                        /* SI SON DISTINTOS LO AÑADIMOS A LA COLA */
+                        if (!Q.contains(SAux)) {
+                            ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
+                        }
+
+                    }
+
+                }
+            }
+
+
+        }
         return this;
     }
 
@@ -72,40 +116,50 @@ public class AFD {
 
         /* LA COLA QUE LLEVARÁ LOS Sj*/
         Queue<HashSet<Estado>> Q = new ArrayDeque<>();
-        HashSet<Estado> S, SAux;
+        HashSet<Estado> Sn, SAux;
 
         /* LLEVARÁ EL ORDEN DE LA LISTA */
-        LinkedList<Vector<Integer>> ListaEnlazada = new LinkedList<>();
+        HashMap<HashSet<Estado>, Integer> ListaEnlazada = new HashMap<>();
 
         /* FILA PARA LA LISTA*/
         Vector<Integer> Fila = new Stack<>();
         int Indice = 0;
 
         /* CALCULAMOS LA CERRADURA EPSILON AL ESTADO INICIAL */
-        S = this.CerraduraEpsilon(f.getEstadoInicial());
-        Q.add(S);
+        Sn = this.CerraduraEpsilon(f.getEstadoInicial());
+        Q.add(Sn);
 
-        //xfxdfdxf
+        /* ESTABLECEMOS TOKEN A CADA ESTADO DE ACEPTACIÓN */
+        this.SetTOKENAFD();
 
         /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
 
             /* SACAMAOS UN ELEMENTO DE LA COLA */
-            S = ((ArrayDeque<HashSet<Estado>>) Q).pop();
-            Indice++;
+            Sn = ((ArrayDeque<HashSet<Estado>>) Q).getFirst();
 
             /* ITERAMOS SOBRE EL ALFABATEO */
             for (Character i : f.getAlfabeto()) {
 
                 /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO*/
-                SAux = Ir_A(S, i);
+                SAux = Ir_A(Sn, i);
 
-                /* SI SON DISTINTOS LO AÑADIMOS A LA COLA */
-                if (!S.equals(SAux)) {
-                    Q.add(SAux);
+                /* SI NO ES VACIO */
+                if (!SAux.isEmpty()) {
+
+                    /* SI SON DISTINTOS LO AÑADIMOS A LA COLA */
+                    if (!Q.contains(SAux)) {
+                        ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
+                        ListaEnlazada.put(SAux, Indice++);
+                    } else {
+                        ListaEnlazada.put(Sn, Indice);
+                    }
                 }
             }
         }
+
+        /* IMPRIMIMOS PARA REALIZAR PRUEBAS */
+        ListaEnlazada.forEach((k, v) -> System.out.println("Key: " + k + ": Value: " + v));
 
         return this;
     }
