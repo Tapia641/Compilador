@@ -48,37 +48,47 @@ public class AFD {
 
 
         /* COMENZAMOS A CONVERTIR */
+        this.SetTOKENAFD();
 
         Draw D = new Draw();
         D.Dibuja(this.DibujarAFD());
 
         /* LA COLA QUE LLEVARÁ LOS Sj*/
         Queue<HashSet<Estado>> Q = new ArrayDeque<>();
-        HashSet<HashSet<Estado>> C = new HashSet<>();
 
-        HashSet<Estado> Sn;
-        HashSet<Estado> SAux = new HashSet<>();
+        /* CONJUNTO QUE CONTEMPLA CUALES HAN SIDO ANALIZADOS */
+        //HashSet<HashSet<Estado>> C = new HashSet<>();
+        Vector<HashSet<Estado>> C = new Stack<>();
+        HashSet<Estado> Sn, SAux; // Auxiliares
 
+        /* LA MATRIZ QUE CONTENDRÁ LOS DATOS CALCULADOS */
+        HashMap<Integer, Vector<Integer>> Matriz = new HashMap<>();
 
-        /* cerradura epsilon al estado inicial */
+        /* CALCULAMOS LA CERRADURA EPSILON DEL ESTADO INICIAL */
         Sn = CerraduraEpsilon(this.EstadoInicial);
         ((ArrayDeque<HashSet<Estado>>) Q).addLast(Sn);
         C.add(Sn);
 
-        int x = 0;
+        int X = 0;
         System.out.println("Cerradura epsilon inicial S0");
         for (Estado j : Sn) {
             System.out.print(j.getID() + ", ");
         }
         System.out.println();
 
+        /* íNDICE QUE LLEVA EL CONTROL DE LA COLUMNA */
+        int IndiceColumna = 0;
+
+
+        Vector<Integer> V = new Stack<>();
+
+        /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
 
-            if (x == 12) break;
             /* SACAMAOS UN ELEMENTO DE LA COLA */
             Sn = ((ArrayDeque<HashSet<Estado>>) Q).pop();
 
-            System.out.println("Analizando S" + x++);
+            System.out.println("Analizando S" + X++);
 
             /* ITERAMOS SOBRE EL ALFABATEO */
             for (Character i : this.Alfabeto) {
@@ -98,15 +108,33 @@ public class AFD {
                         }
                         System.out.println();
 
-                        if (C.contains(SAux)) {
-                        } else {
-                            ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
+                        /* SI SAUX ESTÁ CONTENIDO EN EL CONJUNTO C*/
+                        if (!C.contains(SAux)) {
+                            V.add(++IndiceColumna);
                             C.add(SAux);
+                            ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
+
+                        } else {
+                            V.add(C.indexOf(SAux));
                         }
+                    } else {
+                        V.add(-1);
                     }
                 }
             }
+
+            Matriz.put(X - 1, V);
+            V = new Stack<>();
+
         }
+        for (Character i : this.Alfabeto) {
+            if (!i.equals(Epsilon)) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+        Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
+
         return this;
     }
 
