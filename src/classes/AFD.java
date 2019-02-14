@@ -29,7 +29,7 @@ public class AFD {
         Alfabeto = new HashSet<>();
     }
 
-    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) {
+    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) { //Funciona
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
@@ -43,32 +43,42 @@ public class AFD {
             this.EstadosAceptacion.addAll(i.getEstadosAceptacion());
             this.Alfabeto.addAll(i.getAlfabeto());
         }
-
         this.Estados.add(nuevoOrigen);
         this.EstadoInicial = nuevoOrigen;
 
-        /* COMENZAMOS A CONVERTIR */
 
-        /* APLICAMOS LA CERRADURA EPSILON AL ESTADO INICIAL DEL CONJUNTO */
-        HashSet<Estado> conjuntoEpsilon;
-        conjuntoEpsilon = this.CerraduraEpsilon(this.EstadoInicial);
+        /* COMENZAMOS A CONVERTIR */
 
         Draw D = new Draw();
         D.Dibuja(this.DibujarAFD());
 
-
         /* LA COLA QUE LLEVARÁ LOS Sj*/
         Queue<HashSet<Estado>> Q = new ArrayDeque<>();
-        HashSet<Estado> Sn, SAux;
+        HashSet<HashSet<Estado>> C = new HashSet<>();
+
+        HashSet<Estado> Sn;
+        HashSet<Estado> SAux = new HashSet<>();
+
 
         /* cerradura epsilon al estado inicial */
         Sn = CerraduraEpsilon(this.EstadoInicial);
         ((ArrayDeque<HashSet<Estado>>) Q).addLast(Sn);
+        C.add(Sn);
+
+        int x = 0;
+        System.out.println("Cerradura epsilon inicial S0");
+        for (Estado j : Sn) {
+            System.out.print(j.getID() + ", ");
+        }
+        System.out.println();
 
         while (!Q.isEmpty()) {
 
+            if (x == 12) break;
             /* SACAMAOS UN ELEMENTO DE LA COLA */
-            Sn = ((ArrayDeque<HashSet<Estado>>) Q).getFirst();
+            Sn = ((ArrayDeque<HashSet<Estado>>) Q).pop();
+
+            System.out.println("Analizando S" + x++);
 
             /* ITERAMOS SOBRE EL ALFABATEO */
             for (Character i : this.Alfabeto) {
@@ -79,26 +89,23 @@ public class AFD {
                     /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO*/
                     SAux = Ir_A(Sn, i);
 
-                    System.out.print(i + " :");
-                    for (Estado j : SAux) {
-                        System.out.print(j.getID() + ", ");
-                    }
-                    System.out.println("\n\n");
-
                     /* SI NO ES VACIO */
                     if (!SAux.isEmpty()) {
 
-                        /* SI SON DISTINTOS LO AÑADIMOS A LA COLA */
-                        if (!Q.contains(SAux)) {
-                            ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
+                        System.out.print(i + " :");
+                        for (Estado j : SAux) {
+                            System.out.print(j.getID() + ", ");
                         }
+                        System.out.println();
 
+                        if (C.contains(SAux)) {
+                        } else {
+                            ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
+                            C.add(SAux);
+                        }
                     }
-
                 }
             }
-
-
         }
         return this;
     }
