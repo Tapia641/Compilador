@@ -1,7 +1,7 @@
 # Proyecto para la materia de compiladores.
-GitHub:     https://github.com/Tapia641/Compilador
 
-Simple interfaz gráfica que construye AFN.
+* Simple interfaz gráfica que construye AFN
+* Convierte un AFN a AFD
 
 ## Instrucciones
 
@@ -10,7 +10,6 @@ Instrucciones para hacer uso de la aplicación.
 ### Requerimientos
 
 Cosas que necesitas para ejecutar correctamente la aplicación
-
 
 * Graphviz - Graph Visualization Software: - [Version2](https://github.com/Tapia641/Graphviz-with-java.git)
 * JavaFX Material Design Library: [Repositorio](https://github.com/jfoenixadmin/JFoenix)
