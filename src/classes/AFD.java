@@ -11,7 +11,7 @@ public class AFD {
     /* AFD */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
-    private static long TOKEN = 10; // Pensando como ponerlo
+    private int TOKEN = 10; // Pensando como ponerlo
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
@@ -46,7 +46,6 @@ public class AFD {
         this.Estados.add(nuevoOrigen);
         this.EstadoInicial = nuevoOrigen;
 
-
         /* COMENZAMOS A CONVERTIR */
         this.SetTOKENAFD();
 
@@ -57,7 +56,6 @@ public class AFD {
         Queue<HashSet<Estado>> Q = new ArrayDeque<>();
 
         /* CONJUNTO QUE CONTEMPLA CUALES HAN SIDO ANALIZADOS */
-        //HashSet<HashSet<Estado>> C = new HashSet<>();
         Vector<HashSet<Estado>> C = new Stack<>();
         HashSet<Estado> Sn, SAux; // Auxiliares
 
@@ -70,15 +68,14 @@ public class AFD {
         C.add(Sn);
 
         int X = 0;
-        System.out.println("Cerradura epsilon inicial S0");
+        System.out.println("Cerradura epsilon inicial S0" + "\n" + "{");
         for (Estado j : Sn) {
             System.out.print(j.getID() + ", ");
         }
-        System.out.println();
+        System.out.print("}\n");
 
         /* íNDICE QUE LLEVA EL CONTROL DE LA COLUMNA */
         int IndiceColumna = 0;
-
 
         Vector<Integer> V = new Stack<>();
 
@@ -97,12 +94,17 @@ public class AFD {
                 if (!i.equals(Epsilon)) {
 
                     /* CALCULAMOS EL IR_A A CADA ELEMENTO DEL ALFABETO */
+                    Iterator it = Sn.iterator();
+                    Estado E;
+                    E = (Estado) it.next();
+                    System.out.println("Ir_a(" + E.getID() + ", " + i + ")");
+
                     SAux = Ir_A(Sn, i);
 
                     /* SI NO ES VACIO */
                     if (!SAux.isEmpty()) {
 
-                        System.out.print(i + " :");
+                        System.out.print(i + ": ");
                         for (Estado j : SAux) {
                             System.out.print(j.getID() + ", ");
                         }
@@ -123,6 +125,12 @@ public class AFD {
                 }
             }
 
+            for (AFN i : conjuntoAFN) {
+                for (Estado j : i.getEstadosAceptacion()) {
+
+                }
+            }
+
             Matriz.put(X - 1, V);
             V = new Stack<>();
 
@@ -132,11 +140,9 @@ public class AFD {
                 System.out.print(i + " ");
             }
         }
-        System.out.println();
-        String cadnea = "";
-        Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
 
-        //Matriz.forEach((k, v) -> cadena += "S" + k+": " + v);
+        System.out.println();
+        Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
 
         return this;
     }
@@ -214,6 +220,7 @@ public class AFD {
         S.add(E);
 
         Estado EstadoPrueba;
+
         while (!S.empty()) {
 
             /* TOMAMOS EL SIGUIENTE ELEMENTO */
@@ -258,12 +265,15 @@ public class AFD {
         HashSet<Estado> M = new HashSet<>();
 
         /* CALCULAMOS EL MOVER({i},S)*/
+        int j = 0;
         for (Estado i : conjuntoEstados) {
+            System.out.println("Mover(" + i.getID() + ", " + S + ")");
             M.addAll(Mover(i, S));
         }
 
         /* CALCULAMOS LA CERRADURAEPSILON(MOVER({i},S)) */
         for (Estado i : M) {
+            System.out.println("C_E(" + i.getID() + ")");
             C.addAll(CerraduraEpsilon(i));
         }
 
@@ -387,12 +397,8 @@ public class AFD {
         return Epsilon;
     }
 
-    public static long getTOKEN() {
+    public int getTOKEN() {
         return TOKEN;
-    }
-
-    public static void setTOKEN(long TOKEN) {
-        AFD.TOKEN = TOKEN;
     }
 
     public HashSet<Estado> getEstados() {
