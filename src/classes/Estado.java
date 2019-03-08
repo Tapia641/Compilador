@@ -10,7 +10,7 @@ public class Estado {
     /* DATOS INICIALES DE UN ESTADO */
     private int ID = 0;
     private boolean EstadoAceptacion;
-    private long TOKEN = 0;
+    private static int TOKEN = 0;
 
     /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
     public Transicion Transiciones;
@@ -20,11 +20,12 @@ public class Estado {
         this.Transiciones = new Transicion();
     }
 
-    public long getTOKEN() {
+    public int getToken() {
+        //TOKEN += 10;
         return TOKEN;
     }
 
-    public void setTOKEN(long TOKEN) {
+    public void setToken(int TOKEN) {
         this.TOKEN = TOKEN;
     }
 
@@ -56,5 +57,6 @@ public class Estado {
     public HashSet<Pair<Character, Estado>> getTransiciones() {
         return Transiciones.getTransiciones();
     }
+
 
 }

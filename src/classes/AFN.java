@@ -4,7 +4,6 @@ import javafx.util.Pair;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Stack;
 
 /* CREA AUTÓMATAS DE THOMPSON */
 public class AFN {

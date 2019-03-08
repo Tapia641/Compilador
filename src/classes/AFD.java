@@ -47,7 +47,6 @@ public class AFD {
         this.EstadoInicial = nuevoOrigen;
 
         /* COMENZAMOS A CONVERTIR */
-        this.SetTOKENAFD();
 
         Draw D = new Draw();
         D.Dibuja(this.DibujarAFD());
@@ -76,6 +75,16 @@ public class AFD {
 
         /* íNDICE QUE LLEVA EL CONTROL DE LA COLUMNA */
         int IndiceColumna = 0;
+        boolean TieneEdo_Acept = false;
+
+        //Establecemos tokens al afn
+        this.setTokensAFN();
+
+        System.out.println("Imprimimos los estados de aceptacion que tiene al AFN");
+        this.ImprimeHash(this.EstadosAceptacion);
+
+        int Tok = 0;
+
 
         Vector<Integer> V = new Stack<>();
 
@@ -123,18 +132,37 @@ public class AFD {
                         V.add(-1);
                     }
                 }
-            }
 
-            for (AFN i : conjuntoAFN) {
-                for (Estado j : i.getEstadosAceptacion()) {
+                //Preguntamos si tiene un estado de aceptacion
+                //Hacemos la interseccion entres estados de aceptacion y Sn
+                if (Tok == 0) {
+                    for (AFN p : conjuntoAFN) {
+                        for (Estado j : p.getEstadosAceptacion()) {
+                            //ImprimeHash(Sn);
+                            if (Sn.contains(j)) {
+                                Tok = j.getToken();
+                                System.out.println("Edo acept " + j.getID());
+                                TieneEdo_Acept = true;
+                                break;
+                            }
+                        }
+                    }
+                }//terminamos interseccion, procedemos a calcular otro Sn
 
-                }
             }
+            if (!TieneEdo_Acept) Tok = -1;
+            TieneEdo_Acept = false;
+
+
+            ((Stack<Integer>) V).push(Tok);
+            Tok = 0;
 
             Matriz.put(X - 1, V);
             V = new Stack<>();
 
         }
+
+        //Imprimirmos Tabla AFND
         for (Character i : this.Alfabeto) {
             if (!i.equals(Epsilon)) {
                 System.out.print(i + " ");
@@ -145,6 +173,15 @@ public class AFD {
         Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
 
         return this;
+    }
+
+    public void ImprimeHash(HashSet<Estado> E) {
+        Iterator<Estado> it = E.iterator();
+        Estado edo;
+        while (it.hasNext()) {
+            edo = it.next();
+            System.out.println("Estado: " + edo.getID() + " con token " + edo.getToken());
+        }
     }
 
     public AFD convertirAFD(AFN f) {
@@ -174,7 +211,7 @@ public class AFD {
         Q.add(Sn);
 
         /* ESTABLECEMOS TOKEN A CADA ESTADO DE ACEPTACIÓN */
-        this.SetTOKENAFD();
+        this.setTokensAFN();
 
         /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
@@ -341,12 +378,13 @@ public class AFD {
         return C;
     }
 
-    public AFD SetTOKENAFD() {
+    public AFD setTokensAFN() {
 
         /* PONEMOS UN TOKEN DIFERENTE A CADA ESTADO DE ACEPTACIÓN */
         for (Estado i : this.EstadosAceptacion) {
-            TOKEN += 10;
-            i.setTOKEN(TOKEN);
+            i.setToken(TOKEN);
+            System.out.println("Estado:  " + i.getID() + " con token  " + i.getToken());
+            this.TOKEN += 10;
         }
 
         return this;

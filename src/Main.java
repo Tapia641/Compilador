@@ -99,7 +99,6 @@ public class Main {
         D.Dibuja(f1.DibujarAFN());
         conjuntoAFN.add(f1);
 
-        f1.set
         AFD afd = new AFD();
         //  10      20      30          10
         /*abbacdd abbcaaa ccbbdccdccc bbbd*/
