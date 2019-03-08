@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.geometry.Pos;
+
 import java.util.HashMap;
 import java.util.Stack;
 import java.util.Vector;
@@ -10,26 +12,24 @@ public class AnalizadorLexico {
     private Integer Inicio, Fin, PosActual;
     private String Delta;
     private Stack<Integer> P;
-    private Integer Token;
+    private Integer TOKEN;
 
     public void Lexico(String Delta, HashMap<Integer, Vector<Integer>> Matriz) {
 
-        //Guardamos los datos preestablecidos
+        /* GUARDAMOS LOS DATOS RECIBIDOS */
         this.Matriz = Matriz;
         this.Delta = Delta;
 
         P = new Stack<>();
-        Inicio = 0;
-        PosActual = 0;
-        Fin = 0;
-        Token = -1;
+        Inicio = PosActual = Fin = 0;
+        TOKEN = -1;
 
-        //IMPRIMIMOS LA TABLA DEL AFN
+        /* IMPRIMIMOS LA TABLA DEL AFN PARA VER CON LO QUE VAMOS A TRABAJAR */
         Matriz.forEach((k, v) -> System.out.println("\nS: " + k + ": Value: " + v));
     }
 
     public void Analizador() {
-
+        //CODE
     }
 
     public Integer GetToken() {
@@ -38,9 +38,9 @@ public class AnalizadorLexico {
 
         //Sincronizamos las posiciones
         Fin = PosActual = Inicio;
-        Token = -1;
+        TOKEN = -1;
 
-        return -1;
+        return TOKEN;
     }
 
     public void RegresarToken() {
