@@ -11,7 +11,7 @@ public class AFD {
     /* AFD */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
-    private int TOKEN = 10; // Pensando como ponerlo
+    private static int TOKEN = 10; // Pensando como ponerlo
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
@@ -29,13 +29,13 @@ public class AFD {
         Alfabeto = new HashSet<>();
     }
 
-    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) { //Funciona
+    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) {
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
         nuevoOrigen.setID(62);//Nota: resolver el id
 
-        /* SÓLO AÑADIMOS UN ESTADIO DE ORIGEN CON TRANSICIONES EPSILON
+        /* SÓLO AÑADIMOS UN ESTADO DE ORIGEN CON TRANSICIONES EPSILON
          * PARA UNIR TODOS LOS AUTÓMATAS */
         for (AFN i : conjuntoAFN) {
             nuevoOrigen.Transiciones.pushTransicion(Epsilon, i.getEstadoInicial());
@@ -47,7 +47,6 @@ public class AFD {
         this.EstadoInicial = nuevoOrigen;
 
         /* COMENZAMOS A CONVERTIR */
-
         Draw D = new Draw();
         D.Dibuja(this.DibujarAFD());
 
@@ -81,10 +80,10 @@ public class AFD {
         this.setTokensAFN();
 
         System.out.println("Imprimimos los estados de aceptacion que tiene al AFN");
-        this.ImprimeHash(this.EstadosAceptacion);
+        //this.ImprimeHash(this.EstadosAceptacion);
 
+        /* AUXILIAR PARA ESTABLECER UN TOKEN EN LA MATRIZ */
         int Tok = 0;
-
 
         Vector<Integer> V = new Stack<>();
 
@@ -138,7 +137,7 @@ public class AFD {
                 if (Tok == 0) {
                     for (AFN p : conjuntoAFN) {
                         for (Estado j : p.getEstadosAceptacion()) {
-                            //ImprimeHash(Sn);
+                            ImprimeHash(Sn);
                             if (Sn.contains(j)) {
                                 Tok = j.getToken();
                                 System.out.println("Edo acept " + j.getID());
@@ -177,9 +176,8 @@ public class AFD {
 
     public void ImprimeHash(HashSet<Estado> E) {
         Iterator<Estado> it = E.iterator();
-        Estado edo;
         while (it.hasNext()) {
-            edo = it.next();
+            Estado edo = it.next();
             System.out.println("Estado: " + edo.getID() + " con token " + edo.getToken());
         }
     }
@@ -379,14 +377,12 @@ public class AFD {
     }
 
     public AFD setTokensAFN() {
-
         /* PONEMOS UN TOKEN DIFERENTE A CADA ESTADO DE ACEPTACIÓN */
         for (Estado i : this.EstadosAceptacion) {
             i.setToken(TOKEN);
             System.out.println("Estado:  " + i.getID() + " con token  " + i.getToken());
             this.TOKEN += 10;
         }
-
         return this;
     }
 

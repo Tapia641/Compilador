@@ -10,7 +10,8 @@ public class Estado {
     /* DATOS INICIALES DE UN ESTADO */
     private int ID = 0;
     private boolean EstadoAceptacion;
-    private static int TOKEN = 0;
+    private int TOKEN = 0;
+    private static int ERROR = -1;
 
     /* TODAS LAS TRANSICIONES QUE TIENE EL ESTADO */
     public Transicion Transiciones;
@@ -18,6 +19,7 @@ public class Estado {
     public Estado() {
         this.EstadoAceptacion = false;
         this.Transiciones = new Transicion();
+        this.TOKEN = ERROR;
     }
 
     public int getToken() {
