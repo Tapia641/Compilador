@@ -1,6 +1,5 @@
 package Clases;
 
-import javafx.geometry.Pos;
 import javafx.util.Pair;
 
 import java.util.HashMap;
@@ -53,15 +52,11 @@ public class AnalizadorLexico {
 
                 IndiceColumna = Alfabeto.indexOf(Cadena[Fin]);
 
-                System.out.println(Cadena[Fin] + " " + Memo[IndiceFila][IndiceColumna]);
-
                 /* SI HAY TRANSICIÓN CON ESE CARÁCTER */
                 if (Memo[IndiceFila][IndiceColumna] != -1) {
-                    System.out.println("Hay trans " + Cadena[Fin]);
 
                     /* ESTADO AL QUE PASA */
                     IndiceFila = Memo[IndiceFila][IndiceColumna];
-
 
                     /* CONCATENAMOS A NUESTRO LEXEMA */
                     Lexema += Cadena[Fin];
@@ -75,7 +70,6 @@ public class AnalizadorLexico {
                     TOKEN = Memo[IndiceFila][Matriz.get(1).size() - 1];
 
                     if (TOKEN != -1) PrevioToken = TOKEN;
-
 
                 } else {// CUANDO NO HAY TRANSICIÓN
                     //System.out.println("No hay trans");
@@ -112,6 +106,7 @@ public class AnalizadorLexico {
         /* IMPRIMIMOS LOS RESULTADOS */
         Pair<String, Integer> P;
         Iterator it = Resultado.iterator();
+        System.out.println("\n\nResultados del Analizador Lexico:\n");
         while (it.hasNext()) {
             P = (Pair<String, Integer>) it.next();
             System.out.println(P.getKey() + " : " + P.getValue());
@@ -146,6 +141,8 @@ public class AnalizadorLexico {
             Temp = i.toCharArray();
             Alfabeto.add(Temp[0]);
         }
+
+        /* LA CONVERTIMOS A UNA MEMORIA MÁS EFICIENTE DE ACCEDER */
 
         for (int i = 0; i < Matriz.size() - 1; i++) {
             for (int j = 0; j < Matriz.get(i).size(); j++) {
