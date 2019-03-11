@@ -1,10 +1,12 @@
-import classes.AFD;
-import classes.AFN;
-import draw.Draw;
+import Clases.AFD;
+import Clases.AFN;
+import Clases.AnalizadorLexico;
+import Dibujar.Draw;
 
+import java.io.IOException;
 import java.util.HashSet;
 
-public class Main {
+public class Pruebas {
     public static void main(String[] args) {
 
         HashSet<AFN> conjuntoAFN = new HashSet<>();
@@ -19,7 +21,7 @@ public class Main {
         f7 = new AFN();
         f8 = new AFN();
 
-        /*1
+
         f1.CrearBasico('A');
         f2.CrearBasico('B');
         f1.Unir(f2);
@@ -34,7 +36,7 @@ public class Main {
 
         conjuntoAFN.add(f1);
 
-        /*2
+
         f2.CrearBasico('A');
         f3.CrearBasico('B');
         f3.CerraduraEstrella();
@@ -46,9 +48,9 @@ public class Main {
         f4.Concatenar(f5);
         f2.Concatenar(f4);
 
-        conjuntoAFN.add(f2);*/
+        conjuntoAFN.add(f2);
 
-        /*3
+
         f3.CrearBasico('C');
         f3.CerraduraPositiva();
         f4.CrearBasico('B');
@@ -64,7 +66,7 @@ public class Main {
 
         conjuntoAFN.add(f3);
 
-        /*4
+
         f4.CrearBasico('C');
         f5.CrearBasico('C');
 
@@ -84,8 +86,8 @@ public class Main {
         f5.Unir(f6);
 
         f4.Concatenar(f5);
-        conjuntoAFN.add(f4);*/
-
+        conjuntoAFN.add(f4);
+/*
         f1.CrearBasico('A');
         f2.CrearBasico('B');
         f1.Unir(f2);
@@ -95,16 +97,21 @@ public class Main {
 
         f1.CerraduraPositiva();
         f1.Concatenar(f2);
-
+*/
         D.Dibuja(f1.DibujarAFN());
         conjuntoAFN.add(f1);
 
         AFD afd = new AFD();
         //  10      20      30          10
         /*abbacdd abbcaaa ccbbdccdccc bbbd*/
-        afd.convertirAFD(conjuntoAFN);
+        try {
+            afd.convertirAFD(conjuntoAFN);
 
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AnalizadorLexico Analizar = new AnalizadorLexico();
+        Analizar.Lexico("abbacddabbcaaaccbbdccdcccbbbd", afd.getMatriz());
 
     }
 }

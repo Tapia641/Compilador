@@ -1,4 +1,4 @@
-package classes;
+package Clases;
 
 import javafx.util.Pair;
 

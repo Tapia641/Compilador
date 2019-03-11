@@ -1,4 +1,4 @@
-package interfaces;
+package Principal;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Aplicacion extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/principal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Principal/principal.fxml"));
         primaryStage.setTitle("COMPILADOR ESCOM");
         primaryStage.setScene(new Scene(root, 1200, 900));
         //primaryStage.setFullScreen(true);

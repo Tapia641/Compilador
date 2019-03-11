@@ -1,6 +1,6 @@
-package draw;
+package Dibujar;
 
-import classes.Graphviz;
+import Clases.Graphviz;
 
 import java.io.File;
 
@@ -81,7 +81,7 @@ public class Draw {
         String repesentationType = "dot";
 
         //File out = new File("/c:/Users/Tapia/Desktop/automata."+ type);
-        File out = new File(new File("src/draw/automata." + type).getAbsolutePath()); // Windows
+        File out = new File(new File("src/Dibujar/automata." + type).getAbsolutePath()); // Windows
         gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type, repesentationType), out);
     }
 

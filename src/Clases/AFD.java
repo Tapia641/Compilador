@@ -1,8 +1,9 @@
-package classes;
+package Clases;
 
-import draw.Draw;
+import Dibujar.Draw;
 import javafx.util.Pair;
 
+import java.io.*;
 import java.util.*;
 
 /* CREAMOS AUTÓMATAS TIPO AFD */
@@ -20,6 +21,7 @@ public class AFD {
 
     /* ALFABETO CONFORMADO DE TIPO CARÁCTER */
     private HashSet<Character> Alfabeto;
+    private HashMap<Integer, Vector<String>> Matriz;
 
     /* CONSTRUCTOR */
     public AFD() {
@@ -29,7 +31,7 @@ public class AFD {
         Alfabeto = new HashSet<>();
     }
 
-    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) {
+    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) throws IOException {
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
@@ -58,7 +60,7 @@ public class AFD {
         HashSet<Estado> Sn, SAux; // Auxiliares
 
         /* LA MATRIZ QUE CONTENDRÁ LOS DATOS CALCULADOS */
-        HashMap<Integer, Vector<Integer>> Matriz = new HashMap<>();
+        Matriz = new HashMap<>();
 
         /* CALCULAMOS LA CERRADURA EPSILON DEL ESTADO INICIAL */
         Sn = CerraduraEpsilon(this.EstadoInicial);
@@ -85,7 +87,17 @@ public class AFD {
         /* AUXILIAR PARA ESTABLECER UN TOKEN EN LA MATRIZ */
         int Tok = 0;
 
-        Vector<Integer> V = new Stack<>();
+        Vector<String> V = new Stack<>();
+
+        /* INGRESAMOS EL ALFABETO */
+        //((Stack<String>) V).push("Alfabeto: ");
+        for (char i : this.getAlfabeto()) {
+            if (i != Epsilon)
+                ((Stack<String>) V).push(Character.toString(i));
+        }
+        ((Stack<String>) V).push("Tok");
+        Matriz.put(-1, V);
+        V = new Stack<>();
 
         /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
@@ -120,15 +132,15 @@ public class AFD {
 
                         /* SI SAUX ESTÁ CONTENIDO EN EL CONJUNTO C */
                         if (!C.contains(SAux)) {
-                            V.add(++IndiceColumna);
+                            V.add(String.valueOf(++IndiceColumna));
                             C.addElement(SAux);
                             ((ArrayDeque<HashSet<Estado>>) Q).addLast(SAux);
 
                         } else {
-                            V.add(C.indexOf(SAux));
+                            V.add(String.valueOf(C.indexOf(SAux)));
                         }
                     } else {
-                        V.add(-1);
+                        V.add(String.valueOf(-1));
                     }
                 }
 
@@ -153,7 +165,7 @@ public class AFD {
             TieneEdo_Acept = false;
 
 
-            ((Stack<Integer>) V).push(Tok);
+            ((Stack<String>) V).push(String.valueOf(Tok));
             Tok = 0;
 
             Matriz.put(X - 1, V);
@@ -161,15 +173,20 @@ public class AFD {
 
         }
 
-        //Imprimirmos Tabla AFND
+        //Imprimirmos alfabeto
+        /*System.out.print("\t\t\t\t");
         for (Character i : this.Alfabeto) {
             if (!i.equals(Epsilon)) {
                 System.out.print(i + " ");
             }
         }
-
+        System.out.print("Edo_Acept");
         System.out.println();
-        Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
+*/
+
+        //System.out.println();
+        //Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
+        this.ExportarObject("EjemploAutomata");
 
         return this;
     }
@@ -182,7 +199,7 @@ public class AFD {
         }
     }
 
-    public AFD convertirAFD(AFN f) {
+    public AFD convertirAFD(AFN f) throws IOException {
         /* S0 = se calcula la cerradura epsilon del estado inicial
          *  Metemos Q.add(S0) a la cola;
          *  Calculamos el Ir_A(S0,Cada elemento del Alfabeto)
@@ -239,6 +256,7 @@ public class AFD {
 
         /* IMPRIMIMOS PARA REALIZAR PRUEBAS */
         ListaEnlazada.forEach((k, v) -> System.out.println("Key: " + k + ": Value: " + v));
+        //this.LeerObject("Ejemplo1.out");
 
         return this;
     }
@@ -466,5 +484,30 @@ public class AFD {
     public void setAlfabeto(HashSet<Character> alfabeto) {
         Alfabeto = alfabeto;
     }
+
+    public HashMap<Integer, Vector<String>> getMatriz() {
+        return Matriz;
+    }
+
+    public void setMatriz(HashMap<Integer, Vector<String>> matriz) {
+        Matriz = matriz;
+    }
+
+    public void ExportarObject(String nombre) throws IOException {
+        /* DECLARAMOS LOS OBJETOS */
+        ObjectOutputStream GuardarObjeto = new ObjectOutputStream(new FileOutputStream(nombre + ".out"));
+        GuardarObjeto.writeObject(this.Matriz);
+        GuardarObjeto.flush();
+        GuardarObjeto.close();
+    }
+
+    public void LeerObject(String nombre) throws IOException, ClassNotFoundException {
+        /* LEEMOS EL OBJETO DEL .OUT */
+        FileInputStream miarchivo = new FileInputStream(new File(nombre).getAbsolutePath());
+        ObjectInputStream LeerObjeto = new ObjectInputStream(miarchivo);
+        this.Matriz = (HashMap<Integer, Vector<String>>) LeerObjeto.readObject();
+        LeerObjeto.close();
+    }
+
     /////////////////////////////////////////////////////////////////////////////
 }

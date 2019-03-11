@@ -1,8 +1,8 @@
-package interfaces.fxml;
+package Principal;
 
-import classes.AFN;
+import Clases.AFN;
 import com.jfoenix.controls.JFXTextArea;
-import draw.Draw;
+import Dibujar.Draw;
 import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
@@ -41,7 +41,7 @@ public class Controlador {
                 p.Dibuja(f.DibujarAFN());
 
                 /* SOLUCIÓN A LA RUTA DEL AUTÓMATA */
-                Image image = new Image("file:///" + new File("src/draw/automata.png").getAbsolutePath());
+                Image image = new Image("file:///" + new File("src/Dibujar/automata.png").getAbsolutePath());
 
                 /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                 ImageViewGrafo.setImage(image);

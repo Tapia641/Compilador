@@ -1,5 +1,5 @@
-package classes;
-// classes.Graphviz.java - a simple API to call dot from Java programs
+package Clases;
+// Clases.Graphviz.java - a simple API to call dot from Java programs
 
 /*$Id$*/
 /*
@@ -34,7 +34,7 @@ import java.io.InputStreamReader;
 
 /**
  * <dl>
- * <dt>Purpose: classes.Graphviz Java API
+ * <dt>Purpose: Clases.Graphviz Java API
  * <dd>
  *
  * <dt>Description:
@@ -43,7 +43,7 @@ import java.io.InputStreamReader;
  * <dt>Example usage:
  * <dd>
  * <pre>
- *    classes.Graphviz gv = new classes.Graphviz();
+ *    Clases.Graphviz gv = new Clases.Graphviz();
  *    gv.addln(gv.start_graph());
  *    gv.addln("A -> B;");
  *    gv.addln("A -> C;");
@@ -114,7 +114,7 @@ public class Graphviz {
 
     /**
      * Convenience Constructor with default OS specific pathes
-     * creates a new classes.Graphviz object that will contain a graph.
+     * creates a new Clases.Graphviz object that will contain a graph.
      * Windows:
      * executable = c:/Program Files (x86)/Graphviz 2.28/bin/dot.exe
      * tempDir = c:/temp
@@ -201,7 +201,7 @@ public class Graphviz {
      *                           <li>circo</li>
      *                           </ul>
      * @return A byte array containing the image of the graph.
-     * @see http://www.draw.org under the Roadmap title
+     * @see http://www.Dibujar.org under the Roadmap title
      */
     public byte[] getGraph(String dot_source, String type, String representationType) {
         File dot;
@@ -269,7 +269,7 @@ public class Graphviz {
      *                           <li>circo</li>
      *                           </ul>
      * @return The image of the graph in .gif format.
-     * @see http://www.draw.org under the Roadmap title
+     * @see http://www.Dibujar.org under the Roadmap title
      */
     private byte[] get_img_stream(File dot, String type, String representationType) {
         File img;
@@ -391,4 +391,4 @@ public class Graphviz {
         this.graph = sb;
     }
 
-} // end of class classes.Graphviz
+} // end of class Clases.Graphviz
