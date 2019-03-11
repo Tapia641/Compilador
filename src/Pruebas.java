@@ -87,6 +87,40 @@ public class Pruebas {
 
         f4.Concatenar(f5);
         conjuntoAFN.add(f4);
+
+/*
+        f1.CrearBasico('S');
+        f1.CerraduraOpcional();
+        f2.CrearBasico('D');
+        f2.CerraduraPositiva();
+        f1.Concatenar(f2);
+        conjuntoAFN.add(f1);
+
+        f3.CrearBasico('S');
+        f3.CerraduraOpcional();
+        f4.CrearBasico('D');
+        f4.CerraduraPositiva();
+        f3.Concatenar(f4);
+        f4.CrearBasico('.');
+        f3.Concatenar(f4);
+        f4.CrearBasico('D');
+        f4.CerraduraPositiva();
+        f3.Concatenar(f4);
+        conjuntoAFN.add(f3);
+
+        f5.CrearBasico('L');
+        f6.CrearBasico('L');
+        f7.CrearBasico('D');
+        f6.Unir(f7);
+        f6.CerraduraEstrella();
+        f5.Concatenar(f6);
+        conjuntoAFN.add(f5);
+
+        f8.CrearBasico('T');
+        f8.CerraduraEstrella();
+        conjuntoAFN.add(f8);
+
+*/
 /*
         f1.CrearBasico('A');
         f2.CrearBasico('B');
@@ -98,8 +132,8 @@ public class Pruebas {
         f1.CerraduraPositiva();
         f1.Concatenar(f2);
 */
-        D.Dibuja(f1.DibujarAFN());
-        conjuntoAFN.add(f1);
+        //D.Dibuja(f1.DibujarAFN());
+        //conjuntoAFN.add(f1);
 
         AFD afd = new AFD();
         //  10      20      30          10
@@ -111,6 +145,8 @@ public class Pruebas {
             e.printStackTrace();
         }
         AnalizadorLexico Analizar = new AnalizadorLexico();
+        //Analizar.Lexico("sddttdd.dtldlldtddt", afd.getMatriz());
+
         Analizar.Lexico("abbacddabbcaaaccbbdccdcccbbbd", afd.getMatriz());
 
     }
