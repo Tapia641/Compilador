@@ -21,7 +21,7 @@ public class Pruebas {
         f7 = new AFN();
         f8 = new AFN();
 
-
+/*
         f1.CrearBasico('A');
         f2.CrearBasico('B');
         f1.Unir(f2);
@@ -87,8 +87,9 @@ public class Pruebas {
 
         f4.Concatenar(f5);
         conjuntoAFN.add(f4);
+        */
 
-/*
+
         f1.CrearBasico('S');
         f1.CerraduraOpcional();
         f2.CrearBasico('D');
@@ -120,7 +121,7 @@ public class Pruebas {
         f8.CerraduraEstrella();
         conjuntoAFN.add(f8);
 
-*/
+
 /*
         f1.CrearBasico('A');
         f2.CrearBasico('B');

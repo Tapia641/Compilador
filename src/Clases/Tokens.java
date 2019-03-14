@@ -10,6 +10,7 @@ public class Tokens {
     public static int PAR_I = 50;
     public static int PAR_D = 60;
     public static int NUM = 70;
+    public static int OR = 100;
 
     public Tokens() {
     }

@@ -6,12 +6,13 @@ import Clases.Tokens;
 public class Gramatica2 {
 	private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();
-    private Tokens Tok = new Tokens();
+    private Tokens ListaTokens = new Tokens();
 
     public boolean Epsilon(float v){
     	if(E(v)){
-    		Tok = Lexico.GetToken();
-    		if(TOKEN == Tok.FIN)
+            int NumTok;
+            NumTok = Lexico.GetToken();
+            if (NumTok == ListaTokens.FIN)
     			return true;
     	}
     	return false;
@@ -27,10 +28,11 @@ public class Gramatica2 {
 
     public boolean Ep(float v){
     	float v1;
-    	Tok = Lexico.GetToken();
-    	if(TOKEN == Tok.MAS || TOKEN == Tok.MENOS){
+        int NumTok;
+        NumTok = Lexico.GetToken();
+        if (NumTok == ListaTokens.MAS || NumTok == ListaTokens.MENOS) {
     		if(T(v1)){
-    			v = v + (TOKEN == Tok.MAS) ? v1 -= v;
+                v = v + (NumTok == ListaTokens.MAS) ? v1 -= v;
     			if(Ep(v))
     				return true;
     		}
@@ -48,10 +50,11 @@ public class Gramatica2 {
 
     public boolean Tp(float v){
     	float v1;
-    	Tok = Lexico.GetToken();
-    	if(TOKEN == Tok.PROD || TOKEN == Tok.DIV){
+        int NumTok;
+        NumTok = Lexico.GetToken();
+        if (NumTok == ListaTokens.PROD || NumTok == ListaTokens.DIV) {
     		if(T(v1)){
-    			v = v * (TOKEN == Tok.PROD) ? v1 =/ v;
+                v = v * (NumTok == ListaTokens.PROD) ? v1 =/v;
     			if(Tp(v))
     				return true;
     		}
@@ -62,24 +65,24 @@ public class Gramatica2 {
     }
 
     public boolean F(float v){
-    	int token = Tok.GetToken();
-    	switch(token){
-    		case PAR_I:
+        int NumTok = ListaTokens.GetToken();
+        switch (NumTok) {
+            case ListaTokens.PAR_I:
 
-    		case SIN:
-    			token = Lexico.GetToken();
-    			if(TOKEN == Tok.PAR_I){
+            case ListaTokens.SIN:
+                NumTok = Lexico.GetToken();
+                if (NumTok == ListaTokens.PAR_I) {
     				if(E(v)){
-    					token = Lexico.GetToken();
-    					if(TOKEN == Tok.PAR_D){
-    						v = sin(v);
+                        NumTok = Lexico.GetToken();
+                        if (NumTok == ListaTokens.PAR_D) {
+                            v = Math.sin(v);
     						return true;
     					}
     				}
     			}
     			return false;
 
-    		case NUM:
+            case ListaTokens.NUM:
     	}
 
     }

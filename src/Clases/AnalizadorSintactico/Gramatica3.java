@@ -1,12 +1,13 @@
 package Clases.AnalizadorSintactico;
 
+import Clases.AFN;
 import Clases.AnalizadorLexico;
 import Clases.Tokens;
 
 public class Gramatica3 {
     private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();
-    private Tokens Tok = new Tokens();
+	private Tokens ListaTokens = new Tokens();
 
     public boolean E(AFN f){
     	if(T(f))
@@ -17,11 +18,12 @@ public class Gramatica3 {
 
     public boolean Ep(AFN f){
     	AFN f1;
-    	Tok = Lexico.GetToken();
+		int NumTok;
+		NumTok = Lexico.GetToken();
 
-    	if(TOKEN == Tok.OR){
+		if (NumTok == ListaTokens.OR) {
     		if(T(f1)){
-    			f = f.unir(f1);
+				f = f.Unir(f1);
     			if(Ep(f))
     				return true;
     		}
@@ -40,11 +42,12 @@ public class Gramatica3 {
 
     public boolean Tp(AFN f){
     	AFN f1;
-    	Tok = Lexico.GetToken();
+		int NumTok;
+		NumTok = Lexico.GetToken();
 
-    	if(TOKEN == Tok.Concatenar(f1)){
+		if (NumTok == ListaTokens.Concatenar(f1)) {
     		if(C(f1)){
-    			f = f.Concatenar(f1))
+				f = f.Concatenar(f1);
 				if(Tp(f1))
 					return true;
     		}
@@ -62,21 +65,22 @@ public class Gramatica3 {
     }
 
     public boolean Cp(AFN f){
-    	Tok = Lexico.GetToken();
-    	switch(tok){
-    		case CERR_K:
+		int NumTok;
+		NumTok = Lexico.GetToken();
+		switch (NumTok) {
+			case ListaTokens.CERR_K:
     			f.CerraduraKleen();
     			if(Cp(f))
     				return true;
     			return false;
 
-    		case CERR_POS:
+			case ListaTokens.CERR_POS:
     			f.CerraduraPositiva();
     			if(Cp(f))
     				return true;
     			return false;
 
-    		case CERR_OPC:
+			case ListaTokens.CERR_OPC:
     			f.CerraduraOpcional();
     			if(Cp(f))
     				return true;
@@ -87,17 +91,19 @@ public class Gramatica3 {
     }
 
     public boolean F(AFN f){
-    	Tok = Lexico.GetToken();
-    	switch(Tok){
-    		case PAR_I:
+		int NumTok;
+		NumTok = Lexico.GetToken();
+		switch (ListaTokens) {
+			case ListaTokens.PAR_I:
     			if(E(f)){
-    				Tok = Lexico.GetToken();
-    				if(TOKEN == Tok.PAR_D)
+					int NumTok;
+					NumTok = Lexico.GetToken();
+					if (NumTok == ListaTokens.PAR_D)
     					return true;
     			}
     			return false;
 
-    		case SIMB:
+			case ListaTokens.SIMB:
     			//f.CrearBasico(Lexico.GetLexema()[0]);
     			return true;
     	}
