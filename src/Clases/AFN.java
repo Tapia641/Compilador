@@ -57,6 +57,81 @@ public class AFN {
         return this;
     }
 
+
+    /* CREA UN AFN SIMPLE */
+    public AFN CrearBasico(char S, char P) {
+
+        if (S < P) {
+            /* CREAMOS EL ESTADO ORIGEN */
+            Estado Origen = new Estado();
+            Origen.setID(ID++);
+            EstadoInicial = Origen;
+
+            /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL ORIGEN) */
+            Estados.add(Origen);
+
+            /* CREAMOS EL ESTADO DE DESTINO (ACEPTACIÓN) */
+            Estado Destino = new Estado();
+            Destino.setID(ID++);
+            Destino.setEstadoAceptacion(true);
+
+            /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL DESTINO) */
+            Estados.add(Destino);
+
+            /* AÑADIMOS LA TRANSICION DEL (Origen) -> S -> (DESTINO) AL ESTADO DE ACEPTACIÓN */
+            for (int i = S; i <= P; i++) {
+                Origen.Transiciones.pushTransicion((char) i, Destino);
+
+                /* SI EL CARÁCTER NO ESTÁ EN EL ALFABETO, LO AÑADIMOS */
+                if (!Alfabeto.contains((char) i))
+                    Alfabeto.add((char) i);
+            }
+            EstadosAceptacion.add(Destino);
+
+
+        } else {
+            CrearBasico(S);
+        }
+        return this;
+    }
+
+
+    /* CREA UN AFN SIMPLE */
+    public AFN CrearBasico(int a, int b) {
+
+        if (a < b) {
+            /* CREAMOS EL ESTADO ORIGEN */
+            Estado Origen = new Estado();
+            Origen.setID(ID++);
+            EstadoInicial = Origen;
+
+            /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL ORIGEN) */
+            Estados.add(Origen);
+
+            /* CREAMOS EL ESTADO DE DESTINO (ACEPTACIÓN) */
+            Estado Destino = new Estado();
+            Destino.setID(ID++);
+            Destino.setEstadoAceptacion(true);
+
+            /* TENEMOS UN NUEVO ESTADO PARA EL AFN (EL DESTINO) */
+            Estados.add(Destino);
+
+            /* AÑADIMOS LA TRANSICION DEL (Origen) -> S -> (DESTINO) AL ESTADO DE ACEPTACIÓN */
+            for (int i = a; i <= b; i++) {
+                Origen.Transiciones.pushTransicion(Integer.toString(i).charAt(0), Destino);
+
+                /* SI EL CARÁCTER NO ESTÁ EN EL ALFABETO, LO AÑADIMOS */
+                if (!Alfabeto.contains(Integer.toString(i).charAt(0)))
+                    Alfabeto.add(Integer.toString(i).charAt(0));
+
+            }
+            EstadosAceptacion.add(Destino);
+
+        } else {
+        }
+        return this;
+    }
+
     public AFN Unir(AFN B) {
 
         /* CREAMOS UN NUEVO ESTADO ORIGEN */

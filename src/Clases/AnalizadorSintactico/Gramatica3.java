@@ -5,6 +5,7 @@ import Clases.AnalizadorLexico;
 import Clases.Tokens;
 
 public class Gramatica3 {
+	/*
     private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();
 	private Tokens ListaTokens = new Tokens();
@@ -110,4 +111,5 @@ public class Gramatica3 {
 
     	return false;
     }
+    */
 }

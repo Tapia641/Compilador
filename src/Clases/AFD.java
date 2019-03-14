@@ -31,6 +31,7 @@ public class AFD {
         Alfabeto = new HashSet<>();
     }
 
+
     public AFD convertirAFD(HashSet<AFN> conjuntoAFN) throws IOException {
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
