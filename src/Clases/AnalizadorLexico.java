@@ -109,7 +109,7 @@ public class AnalizadorLexico {
         System.out.println("\n\nResultados del Analizador Lexico:\n");
         while (it.hasNext()) {
             P = (Pair<String, Integer>) it.next();
-            System.out.println(P.getKey() + " : " + P.getValue());
+            System.out.println("Lexema: [" + P.getKey() + "] TOKEN: " + P.getValue());
         }
 
     }
