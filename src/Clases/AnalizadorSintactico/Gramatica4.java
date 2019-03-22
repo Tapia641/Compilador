@@ -84,12 +84,12 @@ public class Gramatica4 {
 
     public boolean ListaSimbolos(){
         int TOKEN = Lexico.GetToken();
-        if(TOKEN == Tok.SIMBOLO){
+        if(TOKEN == Tok.SIMBOLO) {
             //Lexico.getEdo(E);
-            if(ListaSimbolos())
+            if (ListaSimbolos())
                 Lexico.RegresarToken();
-                return true;
-            return false:
+            return true;
+            return false;
         }
     }
 }
