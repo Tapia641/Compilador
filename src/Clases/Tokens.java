@@ -11,6 +11,9 @@ public class Tokens {
     public static int PAR_D = 60;
     public static int NUM = 70;
     public static int OR = 100;
+    public static int PUNTO_COMA = 110;
+    public static int FLECHA = 120;
+    public static int SIMBOLO = 130;
 
     public Tokens() {
     }
