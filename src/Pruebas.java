@@ -1,6 +1,7 @@
 import Clases.AFD;
 import Clases.AFN;
 import Clases.AnalizadorLexico;
+import Clases.LenguajeGramaticas;
 import Dibujar.Draw;
 
 import java.io.IOException;
@@ -11,7 +12,7 @@ public class Pruebas {
 
         HashSet<AFN> conjuntoAFN = new HashSet<>();
         Draw D = new Draw();
-        AFN f1, f2, f3, f4, f5, f6, f7, f8;
+        AFN f1, f2, f3, f4, f5, f6, f7, f8, f9;
         f1 = new AFN();
         f2 = new AFN();
         f3 = new AFN();
@@ -20,6 +21,7 @@ public class Pruebas {
         f6 = new AFN();
         f7 = new AFN();
         f8 = new AFN();
+        f9 = new AFN();
 
 /*
         f1.CrearBasico('A');
@@ -88,7 +90,7 @@ public class Pruebas {
         f4.Concatenar(f5);
         conjuntoAFN.add(f4);
         */
-
+/*//////////Aritmetica
         f1.CrearBasico('+');
         f2.CrearBasico('-');
         f1.Unir(f2);
@@ -145,6 +147,7 @@ public class Pruebas {
         f8.CerraduraPositiva();
         //f3.setToken(40);
         conjuntoAFN.add(f8);
+*/////////////Aritmetica
 
 /*
         f1.CrearBasico('A');
@@ -162,7 +165,39 @@ public class Pruebas {
 
         //f1.CrearBasico(0,9);
         //conjuntoAFN.add(f1);
+
+        //Calculadora
+        f1.CrearBasico('+');
+        f2.CrearBasico('-');
+        f3.CrearBasico('*');
+        f4.CrearBasico('/');
+        f5.CrearBasico('(');
+        f6.CrearBasico(')');
+
+        f7.CrearBasico(0, 9);
+        f7.CerraduraPositiva();
+
+        f9.CrearBasico('.');
+        f8.CrearBasico(0, 9);
+        f8.CerraduraPositiva();
+        f9.Concatenar(f8);
+        f9.CerraduraOpcional();
+
+        conjuntoAFN.add(f1);
+        conjuntoAFN.add(f2);
+        conjuntoAFN.add(f3);
+        conjuntoAFN.add(f4);
+        conjuntoAFN.add(f5);
+        conjuntoAFN.add(f6);
+        conjuntoAFN.add(f9);
+
+
+
+
+
         AFD afd = new AFD();
+
+        //Fin Calculadora
         //  10      20      30          10
         /*abbacdd abbcaaa ccbbdccdccc bbbd*/
         try {
@@ -175,7 +210,13 @@ public class Pruebas {
         //Analizar.Lexico("sddttdd.dtldlldtddt", afd.getMatriz());
 
         //Analizar.Lexico("abbacddabbcaaaccbbdccdcccbbbd", afd.getMatriz());
-        Analizar.Lexico("+17.56ART21  -16.4 1435", afd.getMatriz());
+        //Analizar.Lexico("+17.56ART21  -16.4 1435", afd.getMatriz());
+
+        Analizar.Lexico("2.8+76/(19-14.5)", afd.getMatriz());
+
+        //LenguajeGramaticas LG = new LenguajeGramaticas();
+        //LG.Iniciar();
+
 
     }
 }

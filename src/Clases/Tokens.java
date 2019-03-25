@@ -2,7 +2,7 @@ package Clases;
 
 public class Tokens {
 
-    /* TOKENS PARA LA GRAMATICA 1 */
+    /* TOKENS PARA ARITMETICA */
     public static int MAS = 10;
     public static int MENOS = 20;
     public static int PROD = 30;

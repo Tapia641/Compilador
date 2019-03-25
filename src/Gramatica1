@@ -1,0 +1,5 @@
+E -> T EP;
+EP -> +T EP OR -T EP OR EPSILON;
+T -> F TP;
+TP -> *F TP OR /F TP OR EPSILON;
+F -> (E) OR NUM;

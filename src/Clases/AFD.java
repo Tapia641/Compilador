@@ -187,7 +187,7 @@ public class AFD {
 
         //System.out.println();
         //Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
-        this.ExportarObject("EjemploAutomata");
+        this.ExportarObject("Aritmetica");
 
         return this;
     }
