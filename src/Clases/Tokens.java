@@ -1,8 +1,10 @@
 package Clases;
 
+
 public class Tokens {
 
     /* TOKENS PARA ARITMETICA */
+    public static int FIN = 0;
     public static int MAS = 10;
     public static int MENOS = 20;
     public static int PROD = 30;
@@ -15,6 +17,4 @@ public class Tokens {
     public static int FLECHA = 120;
     public static int SIMBOLO = 130;
 
-    public Tokens() {
-    }
 }

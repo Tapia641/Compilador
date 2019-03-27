@@ -5,7 +5,6 @@ import Clases.Tokens;
 
 public class Gramatica1 {
 
-    //
 
     private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();

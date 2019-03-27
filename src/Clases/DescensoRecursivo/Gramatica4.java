@@ -1,11 +1,11 @@
-package Clases.AnalizadorSintactico;
+package Clases.DescensoRecursivo;
 
 import Clases.AnalizadorLexico;
 import Clases.Tokens;
-import com.sun.prism.shader.DrawCircle_LinearGradient_REFLECT_AlphaTest_Loader;
-import sun.nio.ch.SelectorImpl;
 
 public class Gramatica4 {
+
+
     private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();
     private Tokens Tok = new Tokens();
@@ -89,7 +89,7 @@ public class Gramatica4 {
             if (ListaSimbolos())
                 Lexico.RegresarToken();
             return true;
-            return false;
         }
+        return false;
     }
 }

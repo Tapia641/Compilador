@@ -12,12 +12,8 @@ public class TablaLL1 {
     private HashSet<String> Terminales;
 
 
-    //
     public TablaLL1() {
-
         Tabla = new Vector<>();
-
-
         for (int i = 0; i < Columnas; i++) {
             Vector<String> Izquierda = new Vector<>();
             Izquierda.add("T");//Cadena[i]
