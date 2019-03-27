@@ -1,4 +1,4 @@
-package Clases.AnalizadorSintactico;
+package Clases.DescensoRecursivo;
 
 import Clases.AnalizadorLexico;
 import Clases.Tokens;

@@ -72,7 +72,7 @@ public class AnalizadorLexico {
                     if (TOKEN != -1) PrevioToken = TOKEN;
 
                 } else {// CUANDO NO HAY TRANSICIÓN
-                    //System.out.println("No hay trans");
+                    System.out.println("No hay transicion");
                     TOKEN = PrevioToken;
                     System.out.println("Se agregó " + Lexema + " con tok = " + TOKEN);
                     Resultado.add(new Pair<>(Lexema, TOKEN));

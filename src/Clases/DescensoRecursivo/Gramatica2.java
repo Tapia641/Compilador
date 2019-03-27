@@ -1,7 +1,4 @@
-package Clases.AnalizadorSintactico;
-
-import Clases.AnalizadorLexico;
-import Clases.Tokens;
+package Clases.DescensoRecursivo;
 
 public class Gramatica2 {
 
