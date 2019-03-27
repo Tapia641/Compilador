@@ -50,9 +50,27 @@ public class TablaLL1 {
     }
 
 
-    public void Follow() {
+    public void Follow(String SimbNT) {
         HashSet<String> C = new HashSet<>();
 
-        if ()
+        if (SimbNT)
+            C.add("$");
+
+        for (String i:            ) {
+            C.add(First());
+        }
+
+        if(C.contains(EPSILON)) {
+            C.remove(EPSILON);
+            C.add(Follow());
+        }
+
+        for (String j: ) {
+            if(SimbNT == )
+                // return
+
+            C.add(Follow());
+        }
+        return C;
     }
 }
