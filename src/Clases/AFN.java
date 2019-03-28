@@ -60,6 +60,23 @@ public class AFN {
 
 
     /* CREA UN AFN SIMPLE */
+    public AFN CrearBasico(String S) {
+
+        AFN f1;
+        f1 = new AFN();
+        char[] Aux = S.toCharArray();
+        this.CrearBasico(Aux[0]);
+        System.out.println(Aux[0]);
+        for (int i = 1; i < S.length(); i++) {
+            f1.CrearBasico(Aux[i]);
+            System.out.println(Aux[i]);
+            this.Concatenar(f1);
+        }
+        return this;
+    }
+
+
+    /* CREA UN AFN SIMPLE */
     public AFN CrearBasico(char S, char P) {
 
         if (S < P) {

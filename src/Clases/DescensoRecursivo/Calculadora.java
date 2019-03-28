@@ -3,6 +3,9 @@ package Clases.DescensoRecursivo;
 import Clases.AnalizadorLexico;
 import Clases.Tokens;
 
+import java.util.HashMap;
+import java.util.Vector;
+
 /* ANÁLISIS DE ARITMÉTICA BÁSICA PARA UNA CADENA DADA */
 
 public class Calculadora {
@@ -23,20 +26,34 @@ public class Calculadora {
             Num = num;
         }
     }
-/*
-    /* DATOS CON LOS QUE VAMOS A TRABAJAR
+
+    /* DATOS CON LOS QUE VAMOS A TRABAJAR */
     private Numero N = new Numero();
-    private AnalizadorLexico Lexico = new AnalizadorLexico();
+    private AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
     private Tokens ListaTokens = new Tokens();
 
-    public Calculadora() {
-    }
+    public void Pertenece(String cadena, HashMap<Integer, Vector<String>> Matriz) {
 
-    /* INICIAMOS CON EL ANÁLISIS SINTÁCTICO
+        AnalizarLexicamente = new AnalizadorLexico();
+        AnalizarLexicamente.Lexico(cadena, Matriz);
+
+        System.out.println("\nResultado del analizador sintáctico:\n");
+
+        /* COMENZAMOS CON EL ANÁLISIS SINTÁCTICO*/
+        Numero v = new Numero();
+        //Asociada = E(v);
+/*
+        if (Asociada) {
+            System.out.println("La cadena " + cadena + " pertenece al lenguaje");
+        } else System.out.println("La cadena " + cadena + " no pertenece al lenguaje");
+        */
+    }
+/*
+     //INICIAMOS CON EL ANÁLISIS SINTÁCTICO
     public boolean Epsilon(Numero v) {
     	if(E(v)){
             int NumTok;
-            NumTok = Lexico.GetToken();
+            NumTok = AnalizarLexicamente.GetToken();
             if (NumTok == ListaTokens.FIN)
     			return true;
     	}
@@ -54,7 +71,7 @@ public class Calculadora {
     public boolean Ep(Numero v) {
         Numero v1 = new Numero();
         int NumTok;
-        NumTok = Lexico.GetToken();
+        NumTok = AnalizarLexicamente.GetToken();
         if (NumTok == ListaTokens.MAS || NumTok == ListaTokens.MENOS) {
     		if(T(v1)){
 
@@ -69,7 +86,7 @@ public class Calculadora {
     		}
     		return false;
     	}
-    	Lexico.RegresarToken();
+    	AnalizarLexicamente.RegresarToken(NumTok);
     	return true;
     }
     public boolean T(Numero v) {
@@ -80,12 +97,12 @@ public class Calculadora {
 
     public boolean Tp(Numero v) {
         Numero v1 = new Numero();
-        int NumTok;
-        NumTok = Lexico.GetToken();//Remueve un elemento de la pila
-        if (NumTok == ListaTokens.PROD || NumTok == ListaTokens.DIV) {
+        int TOKEN;
+        TOKEN = AnalizarLexicamente.GetToken();//Remueve un elemento de la pila
+        if (TOKEN == ListaTokens.PROD || TOKEN == ListaTokens.DIV) {
     		if(T(v1)){
                 //Resolver si es correcto
-                float aux = v.getNum() * ((NumTok == ListaTokens.PROD) ? v1.getNum() : v1.getNum());
+                float aux = v.getNum() * ((TOKEN == ListaTokens.PROD) ? v1.getNum() : v1.getNum());
                 //
                 v.setNum(aux);
 
@@ -95,20 +112,20 @@ public class Calculadora {
     		}
     		return false;
     	}
-        Lexico.RegresarToken();//Pone el elemento en la pila
+        AnalizarLexicamente.RegresarToken();//Pone el elemento en la pila
     	return true;
     }
 
     public boolean F(Numero v) {
-        int NumTok = Lexico.GetToken();
+        int NumTok = AnalizarLexicamente.GetToken();
         switch (NumTok) {
             case ListaTokens.PAR_I:
 
             case ListaTokens.SIN:
-                NumTok = Lexico.GetToken();
+                NumTok = AnalizarLexicamente.GetToken();
                 if (NumTok == ListaTokens.PAR_I) {
     				if(E(v)){
-                        NumTok = Lexico.GetToken();
+                        NumTok = AnalizarLexicamente.GetToken();
                         if (NumTok == ListaTokens.PAR_D) {
                             v = Math.sin(v);
     						return true;
@@ -121,5 +138,6 @@ public class Calculadora {
     	}
 
     }
-*/
+    */
+
 }

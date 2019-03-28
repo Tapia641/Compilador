@@ -32,7 +32,7 @@ public class AFD {
     }
 
 
-    public AFD convertirAFD(HashSet<AFN> conjuntoAFN) throws IOException {
+    public AFD convertirAFD(HashSet<AFN> conjuntoAFN, String Nombre) throws IOException {
 
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
@@ -187,7 +187,7 @@ public class AFD {
 
         System.out.println();
         Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
-        this.ExportarObject("AritmeticaBasica");
+        this.ExportarObject(Nombre);
 
         return this;
     }

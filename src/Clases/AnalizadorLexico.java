@@ -6,6 +6,68 @@ import java.util.*;
 
 public class AnalizadorLexico {
 
+    public class Edo {
+        private int IniLexema, FinLexema, Token, IndiceActual;
+        private Estado EdoAcept;
+
+
+        public int getIniLexema() {
+            return IniLexema;
+        }
+
+        public void setIniLexema(int iniLexema) {
+            IniLexema = iniLexema;
+        }
+
+        public int getFinLexema() {
+            return FinLexema;
+        }
+
+        public void setFinLexema(int finLexema) {
+            FinLexema = finLexema;
+        }
+
+        public int getToken() {
+            return Token;
+        }
+
+        public void setToken(int token) {
+            Token = token;
+        }
+
+        public int getIndiceActual() {
+            return IndiceActual;
+        }
+
+        public void setIndiceActual(int indiceActual) {
+            IndiceActual = indiceActual;
+        }
+
+        public Estado getEdoAcept() {
+            return EdoAcept;
+        }
+
+        public void setEdoAcept(Estado edoAcept) {
+            EdoAcept = edoAcept;
+        }
+
+
+    }
+
+    public Edo GetEdo() {
+        return Estado;
+
+    }
+
+    public void SetEdo(Edo aux) {
+        Estado.EdoAcept = aux.EdoAcept;
+        Estado.FinLexema = aux.FinLexema;
+        Estado.IndiceActual = aux.IndiceActual;
+        Estado.IniLexema = aux.IniLexema;
+        Estado.Token = aux.Token;
+    }
+
+    private Edo Estado = new Edo();
     private HashMap<Integer, Vector<String>> Matriz;
     private Integer Inicio, Fin, PosActual;
     private char[] Cadena;

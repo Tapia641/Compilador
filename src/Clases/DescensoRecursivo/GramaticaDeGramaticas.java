@@ -3,12 +3,11 @@ package Clases.DescensoRecursivo;
 import Clases.AnalizadorLexico;
 import Clases.Tokens;
 
-public class Gramatica4 {
+public class GramaticaDeGramaticas {
 
-/*
-    private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();
-    private Tokens Tok = new Tokens();
+    private Tokens ListaTokens = new Tokens();
+    private AnalizadorLexico.Edo Estado;
 
     public boolean G(){
         if(ListaReglas())
@@ -20,32 +19,23 @@ public class Gramatica4 {
         int TOKEN;
         if(Regla()){
             TOKEN = Lexico.GetToken();
-            if(TOKEN == Tok.PUNTO_COMA){
-                if(ListaReglasP())
+            if (TOKEN == ListaTokens.PUNTO_COMA) {
+                Estado = Lexico.GetEdo();
+                if (ListaReglas())
                     return true;
+                Lexico.SetEdo(Estado);
+                return true;
             }
         }
         return false;
     }
 
-    public boolean ListaReglasP(){
-        int TOKEN;
-        if(Regla()){
-            TOKEN = Lexico.GetToken();
-            if(TOKEN == Tok.PUNTO_COMA){
-                Lexico.GetEdo(E); // Guardar el estado inicial
-                if(ListaReglas())
-                    return true;
-            }
-        }
-        return false;
-    }
 
     public boolean Regla(){
         int TOKEN;
         if(LadoIzquierdo()){
             TOKEN = Lexico.GetToken();
-            if(TOKEN == Tok.FLECHA){
+            if (TOKEN == ListaTokens.FLECHA) {
                 if(ListaLadosDer())
                     return true;
             }
@@ -55,7 +45,7 @@ public class Gramatica4 {
 
     public boolean LadoIzquierdo(){
         int TOKEN = Lexico.GetToken();
-        if(TOKEN == Tok.SIMBOLO)
+        if (TOKEN == ListaTokens.SIMBOLO)
             return true;
         return false;
     }
@@ -64,12 +54,12 @@ public class Gramatica4 {
         int TOKEN;
         if(LadoDerecho()){
             TOKEN = Lexico.GetToken();
-            if(TOKEN == Tok.OR){
+            if (TOKEN == ListaTokens.OR) {
                 if(ListaLadosDer())
                     return true;
                 return false;
             }
-            Lexico.RegresarToken();
+            Lexico.RegresarToken(TOKEN);
             return true;
         }
         return false;
@@ -84,13 +74,12 @@ public class Gramatica4 {
 
     public boolean ListaSimbolos(){
         int TOKEN = Lexico.GetToken();
-        if(TOKEN == Tok.SIMBOLO) {
+        if (TOKEN == ListaTokens.SIMBOLO) {
             //Lexico.getEdo(E);
             if (ListaSimbolos())
-                Lexico.RegresarToken();
+                Lexico.RegresarToken(TOKEN);
             return true;
         }
         return false;
     }
-    */
 }
