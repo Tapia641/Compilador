@@ -504,6 +504,7 @@ public class AFD {
 
     public void LeerObject(String nombre) throws IOException, ClassNotFoundException {
         /* LEEMOS EL OBJETO DEL .OUT */
+        nombre += ".out";
         FileInputStream miarchivo = new FileInputStream(new File(nombre).getAbsolutePath());
         ObjectInputStream LeerObjeto = new ObjectInputStream(miarchivo);
         this.Matriz = (HashMap<Integer, Vector<String>>) LeerObjeto.readObject();

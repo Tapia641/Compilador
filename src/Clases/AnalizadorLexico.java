@@ -2,10 +2,7 @@ package Clases;
 
 import javafx.util.Pair;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Stack;
-import java.util.Vector;
+import java.util.*;
 
 public class AnalizadorLexico {
 
@@ -13,7 +10,7 @@ public class AnalizadorLexico {
     private Integer Inicio, Fin, PosActual;
     private char[] Cadena;
     private String Delta;
-    private Stack<Integer> P;
+    private Queue<Integer> Cola;
     private int TOKEN;
     private int Memo[][];
     private Vector<Character> Alfabeto;
@@ -29,7 +26,7 @@ public class AnalizadorLexico {
         this.Delta = Delta.toUpperCase();
         this.Cadena = this.Delta.toCharArray();
 
-        P = new Stack<>();
+        Cola = new ArrayDeque<>();
         Inicio = PosActual = Fin = 0;
         TOKEN = -1;
 
@@ -67,7 +64,6 @@ public class AnalizadorLexico {
                     /* AVANZAMOS EN LA CADENA */
                     Fin++;
 
-
                     /* PREGUTAMOS SI TIENE EDO ACEPT */
                     TOKEN = Memo[IndiceFila][Matriz.get(1).size() - 1];
 
@@ -77,6 +73,9 @@ public class AnalizadorLexico {
                     System.out.println("No hay transicion");
                     TOKEN = PrevioToken;
                     System.out.println("Se agregó " + Lexema + " con tok = " + TOKEN);
+
+                    Cola.add(TOKEN);
+
                     if (TOKEN == -1) {
                         System.err.println("La cadena ingresada no pertenece al automata");
                         //break;
@@ -92,13 +91,16 @@ public class AnalizadorLexico {
                 }
             } else {
                 /* SOLO FINALIZAMOS */
-                System.exit(-1);
+                //System.exit(-1);
                 System.err.println("La cadena ingresada no pertenece al automata");
+                break;
             }
 
             /* SI TERMINA DE ANALIZAR LA CADENA Y AGREGAMOS LO QE SE OBTUVO */
             if (Fin == Delta.length()) {
                 Resultado.add(new Pair<>(Lexema, TOKEN));
+
+                Cola.add(TOKEN);
 
                 Lexema = "";
                 Fin = Fin - 1;
@@ -116,27 +118,35 @@ public class AnalizadorLexico {
         while (it.hasNext()) {
             P = (Pair<String, Integer>) it.next();
             System.out.println("Lexema: [" + P.getKey() + "] TOKEN: " + P.getValue());
+
         }
 
     }
 
     public Integer GetToken() {
+        if (Cola.size() != 0) {
+            return Cola.remove();
+
+        }
+        return -1;
         //Metemos a la pila la posicion actual //0
-        P.push(Inicio);
+        //Cola.add(Inicio);
 
         //Sincronizamos las posiciones
-        Fin = PosActual = Inicio;
-        TOKEN = -1;
+        //Fin = PosActual = Inicio;
+        //TOKEN = -1;
 
-        return TOKEN;
+        //return TOKEN;
     }
 
-    public void RegresarToken() {
+    public void RegresarToken(int token) {
         /* SACO UN ELEMENTO DE LA PILA */
-        int pos = 0;
-        if (!P.empty()) {
-            pos = P.pop();
-        }
+        //int pos = 0;
+        //if (Cola.size() == 0) {
+        //pos = Cola.remove();
+        //  Cola.remove();
+        //}
+        Cola.add(token);
     }
 
     public void ConvertirMatriz() {

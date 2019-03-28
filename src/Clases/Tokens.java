@@ -3,8 +3,8 @@ package Clases;
 
 public class Tokens {
 
-    /* TOKENS PARA ARITMETICA */
-    public static int FIN = 0;
+    /* TOKENS PARA ARITMÉTICA BÁSICA */
+    //public static int FIN = 0;
     public static int MAS = 10;
     public static int MENOS = 20;
     public static int PROD = 30;
@@ -12,6 +12,10 @@ public class Tokens {
     public static int PAR_I = 50;
     public static int PAR_D = 60;
     public static int NUM = 70;
+    //FIN TOKENS
+
+
+
     public static int OR = 100;
     public static int PUNTO_COMA = 110;
     public static int FLECHA = 120;

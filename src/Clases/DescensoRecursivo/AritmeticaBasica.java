@@ -3,91 +3,92 @@ package Clases.DescensoRecursivo;
 import Clases.AnalizadorLexico;
 import Clases.Tokens;
 
+import java.util.HashMap;
+import java.util.Vector;
+
 public class AritmeticaBasica {
     //Con esta gramatica podemos hacer aritmética básica +, -, *, /, ()
 
-    /* PARA MANEJAR REFERENCIA EN JAVA */
-    private class Numero {
+    private AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
+    public static Tokens ListaTokens = new Tokens();
+    private boolean Asociada = false;
 
-        public float Num;
+    public void Pertenece(String cadena, HashMap<Integer, Vector<String>> Matriz) {
 
-        public Numero() {
-        }
+        AnalizarLexicamente = new AnalizadorLexico();
+        AnalizarLexicamente.Lexico(cadena, Matriz);
 
-        public float getNum() {
-            return Num;
-        }
+        System.out.println("\nResultado del analizador sintáctico:\n");
 
-        public void setNum(float num) {
-            Num = num;
-        }
+        /* COMENZAMOS CON EL ANÁLISIS SINTÁCTICO*/
+        Asociada = E();
+
+        if (Asociada) {
+            System.out.println("La cadena " + cadena + " pertenece al lenguaje");
+        } else System.out.println("La cadena " + cadena + " no pertenece al lenguaje");
+
     }
 
-
-    private AnalizadorLexico Lexico = new AnalizadorLexico();
-    private Tokens ListaTokens = new Tokens();
-
-    public boolean E(Numero v) {
-        if (T(v))
-            if (Ep(v))
+    public boolean E() {
+        if (T())
+            if (Ep())
                 return true;
         return false;
     }
 
-    public boolean Ep(Numero v) {
+    public boolean Ep() {
 
         /* PEDIMOS UN TOKEN */
-        int TOKEN = Lexico.GetToken();
+        int TOKEN = AnalizarLexicamente.GetToken();
 
         if (TOKEN == ListaTokens.MAS || TOKEN == ListaTokens.MENOS) {
-            if (T(v))
-                if (Ep(v))
+            if (T())
+                if (Ep())
                     return true;
             return false;
         }
-        Lexico.RegresarToken();
+        AnalizarLexicamente.RegresarToken(TOKEN);
         return true;
     }
 
 
-    public boolean T(Numero v) {
-        if (F(v))
-            if (Tp(v))
-                return false;
+    public boolean T() {
+        if (F())
+            if (Tp())
+                return true; //Duda
         return false;
     }
 
-    public boolean Tp(Numero v) {
+    public boolean Tp() {
 
         /* PEDIMOS UN TOKEN */
-        int TOKEN = Lexico.GetToken();
+        int TOKEN = AnalizarLexicamente.GetToken();
 
         if (TOKEN == ListaTokens.PROD || TOKEN == ListaTokens.DIV) {
-            if (F(v))
-                if (Tp(v))
+            if (F())
+                if (Tp())
                     return true;
             return false;
         }
-        Lexico.RegresarToken();
+        AnalizarLexicamente.RegresarToken(TOKEN);
         return true;
     }
 
-    public boolean F(Numero v) {
-/*
-        /* PEDIMOS UN TOKEN
-        int TOKEN = Lexico.GetToken();
-        switch (TOKEN){
-            case ListaTokens.PAR_I:
-                if (E(Numero)){
-                    TOKEN = Lexico.GetToken();
-                    if (TOKEN == ListaTokens.PAR_D)
-                        return true;
-                }
-                return false;
-            case ListaTokens.NUM:
-                return true;
+    public boolean F() {
+        /* PEDIMOS UN TOKEN*/
+        int TOKEN = AnalizarLexicamente.GetToken();
+
+        if (TOKEN == ListaTokens.PAR_I) {
+            if (E()) {
+                TOKEN = AnalizarLexicamente.GetToken();
+                if (TOKEN == ListaTokens.PAR_D)
+                    return true;
+            }
+            return false;
+
+        } else if (TOKEN == ListaTokens.NUM) {
+            return true;
         }
-        */
         return false;
     }
 }

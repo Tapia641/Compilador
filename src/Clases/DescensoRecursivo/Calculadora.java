@@ -5,7 +5,7 @@ import Clases.Tokens;
 
 /* ANÁLISIS DE ARITMÉTICA BÁSICA PARA UNA CADENA DADA */
 
-public class Gramatica2 {
+public class Calculadora {
 
     /* PARA MANEJAR REFERENCIA EN JAVA */
     private class Numero {
@@ -29,7 +29,7 @@ public class Gramatica2 {
     private AnalizadorLexico Lexico = new AnalizadorLexico();
     private Tokens ListaTokens = new Tokens();
 
-    public Gramatica2() {
+    public Calculadora() {
     }
 
     /* INICIAMOS CON EL ANÁLISIS SINTÁCTICO
