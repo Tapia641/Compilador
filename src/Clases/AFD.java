@@ -12,7 +12,7 @@ public class AFD {
     /* AFD */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
-    private static int TOKEN = 10; // Pensando como ponerlo
+    private static int TOKEN; // Pensando como ponerlo
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
@@ -80,7 +80,7 @@ public class AFD {
         boolean TieneEdo_Acept = false;
 
         //Establecemos tokens al afn
-        this.setTokensAFN();
+        //this.setTokensAFN();
 
         System.out.println("Imprimimos los estados de aceptacion que tiene al AFN");
         //this.ImprimeHash(this.EstadosAceptacion);
@@ -185,9 +185,9 @@ public class AFD {
         System.out.println();
 */
 
-        //System.out.println();
-        //Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
-        this.ExportarObject("Aritmetica");
+        System.out.println();
+        Matriz.forEach((k, v) -> System.out.println("S: " + k + ": Value: " + v));
+        this.ExportarObject("AritmeticaBasica");
 
         return this;
     }
@@ -227,7 +227,7 @@ public class AFD {
         Q.add(Sn);
 
         /* ESTABLECEMOS TOKEN A CADA ESTADO DE ACEPTACIÓN */
-        this.setTokensAFN();
+        //this.setTokensAFN();
 
         /* MIENTRAS NO TERMINEMOS DE ANALIZAR CADA S */
         while (!Q.isEmpty()) {
@@ -256,7 +256,7 @@ public class AFD {
         }
 
         /* IMPRIMIMOS PARA REALIZAR PRUEBAS */
-        ListaEnlazada.forEach((k, v) -> System.out.println("Key: " + k + ": Value: " + v));
+        //ListaEnlazada.forEach((k, v) -> System.out.println("Key: " + k + ": Value: " + v));
         //this.LeerObject("Ejemplo1.out");
 
         return this;
@@ -395,7 +395,7 @@ public class AFD {
         return C;
     }
 
-    public AFD setTokensAFN() {
+    public AFD setToken(Integer N) {
         /* PONEMOS UN TOKEN DIFERENTE A CADA ESTADO DE ACEPTACIÓN */
         for (Estado i : this.EstadosAceptacion) {
             i.setToken(TOKEN);

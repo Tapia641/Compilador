@@ -7,7 +7,7 @@ import Clases.Tokens;
 
 public class Gramatica2 {
 
-    /* PARA MANEJAR REFERENCIA EN JAVA NECESITAMOS UNA CLASE PARA ALTERAR EL RESULTADO */
+    /* PARA MANEJAR REFERENCIA EN JAVA */
     private class Numero {
 
         public float Num;
@@ -23,8 +23,8 @@ public class Gramatica2 {
             Num = num;
         }
     }
-
-    /* DATOS CON LOS QUE VAMOS A TRABAJAR*/
+/*
+    /* DATOS CON LOS QUE VAMOS A TRABAJAR
     private Numero N = new Numero();
     private AnalizadorLexico Lexico = new AnalizadorLexico();
     private Tokens ListaTokens = new Tokens();
@@ -32,7 +32,7 @@ public class Gramatica2 {
     public Gramatica2() {
     }
 
-    /* INICIAMOS CON EL ANÁLISIS SINTÁCTICO */
+    /* INICIAMOS CON EL ANÁLISIS SINTÁCTICO
     public boolean Epsilon(Numero v) {
     	if(E(v)){
             int NumTok;
@@ -72,7 +72,6 @@ public class Gramatica2 {
     	Lexico.RegresarToken();
     	return true;
     }
-
     public boolean T(Numero v) {
     	if(P(v))
     		if(Tp(v))
@@ -122,5 +121,5 @@ public class Gramatica2 {
     	}
 
     }
-
+*/
 }

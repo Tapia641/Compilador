@@ -11,6 +11,7 @@ public class AFN {
     /* AFN */
     private static int ID = 0; //static int para que no se repitan
     private static final char Epsilon = '&'; // Mi epsi ;)
+    private static int TOKEN;
 
     /* ESTADOS */
     private HashSet<Estado> Estados;
@@ -308,11 +309,6 @@ public class AFN {
         return this;
     }
 
-
-    public AFN CerraduraKleen() {
-        return this;
-    }
-
     /* GETTERS AND SETTERS *///////////////////////////////////////////////////////
     public static int getID() {
         return ID;
@@ -421,4 +417,15 @@ public class AFN {
         return cadena;
     }
     //////////////////////////////////////////////////////////////////////////////
+
+
+    public int getToken() {
+        return TOKEN;
+    }
+
+    public void setToken(int TOKEN) {
+        for (Estado i : this.EstadosAceptacion) {
+            i.setToken(TOKEN);
+        }
+    }
 }

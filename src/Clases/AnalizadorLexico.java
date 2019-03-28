@@ -24,9 +24,11 @@ public class AnalizadorLexico {
         Alfabeto = new Stack<>();
         this.Matriz = Matriz;
         Memo = new int[Matriz.size()][Matriz.get(1).size()];
+
         /* CONVERTIMOS LA CADENA EN UN ARRAY, PARA ITERAR SOBRE ELLA */
         this.Delta = Delta.toUpperCase();
         this.Cadena = this.Delta.toCharArray();
+
         P = new Stack<>();
         Inicio = PosActual = Fin = 0;
         TOKEN = -1;
@@ -75,6 +77,10 @@ public class AnalizadorLexico {
                     System.out.println("No hay transicion");
                     TOKEN = PrevioToken;
                     System.out.println("Se agregó " + Lexema + " con tok = " + TOKEN);
+                    if (TOKEN == -1) {
+                        System.err.println("La cadena ingresada no pertenece al automata");
+                        //break;
+                    }
                     Resultado.add(new Pair<>(Lexema, TOKEN));
 
                     Lexema = "";

@@ -10,7 +10,7 @@ public class TablaLL1 {
     private Integer Filas, Columnas;
     private HashSet<String> NoTerminales;
     private HashSet<String> Terminales;
-
+/*
 
     public TablaLL1() {
         Tabla = new Vector<>();
@@ -69,4 +69,5 @@ public class TablaLL1 {
         }
         return C;
     }
+    */
 }

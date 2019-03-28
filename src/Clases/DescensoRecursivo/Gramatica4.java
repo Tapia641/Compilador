@@ -5,7 +5,7 @@ import Clases.Tokens;
 
 public class Gramatica4 {
 
-
+/*
     private Integer Numero;
     private AnalizadorLexico Lexico = new AnalizadorLexico();
     private Tokens Tok = new Tokens();
@@ -92,4 +92,5 @@ public class Gramatica4 {
         }
         return false;
     }
+    */
 }

@@ -166,22 +166,32 @@ public class Pruebas {
         //f1.CrearBasico(0,9);
         //conjuntoAFN.add(f1);
 
-        //Calculadora
+        //Automata para la Aritmética Básica
         f1.CrearBasico('+');
+        f1.setToken(10);
         f2.CrearBasico('-');
+        f2.setToken(20);
         f3.CrearBasico('*');
+        f3.setToken(30);
         f4.CrearBasico('/');
+        f4.setToken(40);
         f5.CrearBasico('(');
+        f5.setToken(50);
         f6.CrearBasico(')');
+        f6.setToken(60);
+
 
         f7.CrearBasico(0, 9);
         f7.CerraduraPositiva();
-
-        f9.CrearBasico('.');
+        f8.CrearBasico('.');
+        f9.CrearBasico(0, 9);
+        f9.CerraduraPositiva();
+        f8.Concatenar(f9);
+        f7.Concatenar(f8);
         f8.CrearBasico(0, 9);
-        f8.CerraduraPositiva();
-        f9.Concatenar(f8);
-        f9.CerraduraOpcional();
+        f7.Unir(f8);
+        f7.setToken(70);
+
 
         conjuntoAFN.add(f1);
         conjuntoAFN.add(f2);
@@ -189,15 +199,14 @@ public class Pruebas {
         conjuntoAFN.add(f4);
         conjuntoAFN.add(f5);
         conjuntoAFN.add(f6);
-        conjuntoAFN.add(f9);
+        conjuntoAFN.add(f7);
+
+        //Fin
 
 
-
-
-
+        //Procedemos a realizar el análisis
         AFD afd = new AFD();
 
-        //Fin Calculadora
         //  10      20      30          10
         /*abbacdd abbcaaa ccbbdccdccc bbbd*/
         try {
