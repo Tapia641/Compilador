@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class AritmeticaBasica {
-    //Con esta gramatica podemos hacer aritmética básica +, -, *, /, ()
+    /*Con esta gramatica podemos hacer aritmética básica +, -, *, /, ()*/
 
     private AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
     public static Tokens ListaTokens = new Tokens();

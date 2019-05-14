@@ -1,0 +1,5 @@
+E -> T EP ;
+EP -> + T EP | - T EP | EPSILON ;
+T -> F TP ;
+TP -> * F TP | / F TP | EPSILON ;
+F -> ( E ) | NUM ;

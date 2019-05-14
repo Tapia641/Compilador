@@ -2,6 +2,7 @@ import Clases.AFD;
 import Clases.AFN;
 import Clases.DescensoRecursivo.AritmeticaBasica;
 import Clases.DescensoRecursivo.Calculadora;
+import Clases.TablaLL1;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -29,6 +30,16 @@ public class Pruebas {
         f16 = new AFN();
 
 /*
+        try {
+            TablaLL1 TLL1 = new TablaLL1("Gramatica1.txt");
+            System.out.println(TLL1.First("E"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
+
+/*
+    //Para convertir una AFD a un .out
         AFD afd = new AFD();
         try {
             afd.convertirAFD(conjuntoAFN,"AritmeticaBasica");
@@ -37,7 +48,7 @@ public class Pruebas {
         }
 */
 
-
+/*
         AFD afd = new AFD();
         Calculadora C = new Calculadora();
         try {
@@ -49,19 +60,23 @@ public class Pruebas {
             e.printStackTrace();
         }
         C.Pertenece("4.5*9+SIN(17-14/8)*6", afd.getMatriz());
+*/
 
-/*
-        AFD afd = new AFD();
+        AFD afd1 = new AFD();
+        //INSTANCIAMOS
         AritmeticaBasica AB = new AritmeticaBasica();
         try {
             //afd.convertirAFD(conjuntoAFN);
-            afd.LeerObject("AritmeticaBasica");
+            //IMPORTAMOS LA GRAMATICA ARITMETICA BASICA PREVIAMENTE REALIZADA
+            afd1.LeerObject("AritmeticaBasica");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
-        AB.Pertenece("2.8+76/(19-14.5)", afd.getMatriz());
-*/
+
+        //EL ANALIZADOR LEXICO GENERA LOS TOKENS Y EL LEXEMA ASOCIADO
+        AB.Pertenece("2.8+76/(19-14.5)", afd1.getMatriz());
+
     }
 }

@@ -1,7 +1,13 @@
 package Clases;
 
+import com.sun.java.accessibility.util.AWTEventMonitor;
 import javafx.util.Pair;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.*;
 
 public class AnalizadorLexico {
@@ -74,7 +80,7 @@ public class AnalizadorLexico {
     private String Delta;
     private Queue<Integer> Cola;
     private int TOKEN;
-    private int Memo[][];
+    private int[][] Memo;
     private Vector<Character> Alfabeto;
 
 
@@ -212,6 +218,9 @@ public class AnalizadorLexico {
     }
 
     public void ConvertirMatriz() {
+        /*PARA EL JTABLE*/
+        DefaultTableModel datos = new DefaultTableModel();
+
 
         /* OBTENEMOS LAS POSICIONES DE LAS COLUMNAS DEL ALFABETO */
         char[] Temp;
@@ -221,15 +230,31 @@ public class AnalizadorLexico {
         }
 
         /* LA CONVERTIMOS A UNA MEMORIA MÁS EFICIENTE DE ACCEDER */
+        //datos.addColumn("Estado");
+        for (char i : this.Alfabeto)
+            datos.addColumn(i);
 
         for (int i = 0; i < Matriz.size() - 1; i++) {
+            //System.out.print("S" + i);
             for (int j = 0; j < Matriz.get(i).size(); j++) {
                 Memo[i][j] = Integer.parseInt(Matriz.get(i).get(j));
-                System.out.print("[" + Memo[i][j] + "]");
+                //System.out.println(Matriz.get(i));
+                //datos.setDataVector(Matriz.get(i),Alfabeto);
+                //System.out.print("[" + Memo[i][j] + "]");
             }
+            datos.addRow(Matriz.get(i));
             System.out.println();
         }
-    }
 
+        JTable tabla = new JTable(datos);
+
+        tabla.setPreferredScrollableViewportSize(new Dimension(450, 200));
+        JScrollPane scrollPane = new JScrollPane(tabla);
+        JFrame jf = new JFrame();
+        jf.add(scrollPane);
+        jf.setTitle("Tabla de transiciones");
+        jf.setSize(Matriz.get(0).size()*50,Matriz.size()*19);
+        jf.setVisible(true);
+    }
 
 }

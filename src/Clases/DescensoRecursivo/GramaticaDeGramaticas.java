@@ -30,7 +30,6 @@ public class GramaticaDeGramaticas {
         return false;
     }
 
-
     public boolean Regla(){
         int TOKEN;
         if(LadoIzquierdo()){
