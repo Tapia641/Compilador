@@ -2,6 +2,7 @@ import Clases.AFD;
 import Clases.AFN;
 import Clases.AnalizadorLexico;
 import Clases.AnalizadorSintactico.AritmeticaBasica;
+import Clases.AnalizadorSintactico.Calculadora;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -47,20 +48,23 @@ public class Pruebas {
         }
 */
 
-/*
         AFD afd = new AFD();
         Calculadora C = new Calculadora();
+        AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
         try {
+            //EXPORTAMOS EL AFN CONVERTIDO A AFD EN UN HASHTABLE
             //afd.convertirAFD(conjuntoAFN);
+            //IMPORTAMOS HASMAP DE GRAMATICA CALCULADORA PREVIAMENTE REALIZADA
             afd.LeerObject("Calculadora");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        C.Pertenece("4.5*9+SIN(17-14/8)*6", afd.getMatriz());
-*/
-
+        String cadena = "4.5*9+SIN(17-14/8)*6";
+        AnalizarLexicamente.Lexico(cadena, afd.getMatriz());
+        C.AnalizarSintacticamente(AnalizarLexicamente.getPila());
+/*
         AFD afd1 = new AFD();
         AritmeticaBasica AB = new AritmeticaBasica();
         AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
@@ -81,6 +85,6 @@ public class Pruebas {
         //String cadena = "2+7*(5-2)";
         AnalizarLexicamente.Lexico(cadena, afd1.getMatriz());
         AB.AnalizarSintacticamente(AnalizarLexicamente.getPila());
-
+        */
     }
 }
