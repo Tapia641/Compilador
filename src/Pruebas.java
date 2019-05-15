@@ -1,8 +1,7 @@
 import Clases.AFD;
 import Clases.AFN;
-import Clases.DescensoRecursivo.AritmeticaBasica;
-import Clases.DescensoRecursivo.Calculadora;
-import Clases.TablaLL1;
+import Clases.AnalizadorLexico;
+import Clases.AnalizadorSintactico.AritmeticaBasica;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -63,11 +62,13 @@ public class Pruebas {
 */
 
         AFD afd1 = new AFD();
-        //INSTANCIAMOS
         AritmeticaBasica AB = new AritmeticaBasica();
+        AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
+
         try {
+            //EXPORTAMOS EL AFN CONVERTIDO A AFD EN UN HASHTABLE
             //afd.convertirAFD(conjuntoAFN);
-            //IMPORTAMOS LA GRAMATICA ARITMETICA BASICA PREVIAMENTE REALIZADA
+            //IMPORTAMOS HASMAP DE GRAMATICA ARITMETICA BASICA PREVIAMENTE REALIZADA
             afd1.LeerObject("AritmeticaBasica");
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,7 +77,10 @@ public class Pruebas {
         }
 
         //EL ANALIZADOR LEXICO GENERA LOS TOKENS Y EL LEXEMA ASOCIADO
-        AB.Pertenece("2.8+76/(19-14.5)", afd1.getMatriz());
+        String cadena = "2.8+76/(19-14.5)";
+        //String cadena = "2+7*(5-2)";
+        AnalizarLexicamente.Lexico(cadena, afd1.getMatriz());
+        AB.AnalizarSintacticamente(AnalizarLexicamente.getPila());
 
     }
 }
