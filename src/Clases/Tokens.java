@@ -11,6 +11,8 @@ public class Tokens {
     public static int PAR_I = 50;
     public static int PAR_D = 60;
     public static int NUM = 70;
+    public static int FIN = 0;
+    public static int ERROR = -1;
     //FIN TOKENS
 
     /* TOKEN PARA CALCULADORA */
@@ -21,19 +23,30 @@ public class Tokens {
     public static int CPOT = 50;
     public static int CPAR_I = 60;
     public static int CPAR_D = 70;
-    public static int SIN = 80;
-    public static int COS = 90;
-    public static int TAN = 100;
-    public static int EXP = 110;
-    public static int LOG = 120;
-    public static int LN = 130;
+    public static int CSIN = 80;
+    public static int CCOS = 90;
+    public static int CTAN = 100;
+    public static int CEXP = 110;
+    public static int CLOG = 120;
+    public static int CLN = 130;
     public static int CNUM = 140;
     //FIN TOKENS
 
+    /* TOKENS PARA EXPRESIONES REGULARES*/
+    public static int ER_CERRADURA_POSTIVIA = 200;
+    public static int ER_CERRADURA_ESTRELLA = 210;
+    public static int ER_THOMPSON = 220;
+    public static int ER_OR = 230;
+    public static int ER_SIMBOLO = 250;
+    public static int ER_PAR_I = 260;
+    public static int ER_PAR_D = 270;
+    public static int ER_CONCA = 280;
+    //FIN TOKENS
+
     /* TOKENS  DE GRAMATICA DE GRAMATICAS*/
-    public static int OR = 10;
-    public static int PUNTO_COMA = 20;
-    public static int FLECHA = 30;
-    public static int SIMBOLO = 40;
+    //public static int OR = 10;
+    //public static int PUNTO_COMA = 20;
+    //public static int FLECHA = 30;
+    //public static int SIMBOLO = 40;
 
 }

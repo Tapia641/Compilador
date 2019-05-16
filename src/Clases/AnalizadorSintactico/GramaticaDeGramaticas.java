@@ -1,10 +1,10 @@
-package Clases.DescensoRecursivo;
+package Clases.AnalizadorSintactico;
 
 import Clases.AnalizadorLexico;
 import Clases.Tokens;
 
 public class GramaticaDeGramaticas {
-
+/*
     private AnalizadorLexico Lexico = new AnalizadorLexico();
     private Tokens ListaTokens = new Tokens();
     private AnalizadorLexico.Edo Estado;
@@ -19,7 +19,7 @@ public class GramaticaDeGramaticas {
         int TOKEN;
         if(Regla()){
             TOKEN = Lexico.GetToken();
-            if (TOKEN == ListaTokens.PUNTO_COMA) {
+            if (TOKEN == ListaTokens.getPuntoComa()) {
                 Estado = Lexico.GetEdo();
                 if (ListaReglas())
                     return true;
@@ -34,7 +34,7 @@ public class GramaticaDeGramaticas {
         int TOKEN;
         if(LadoIzquierdo()){
             TOKEN = Lexico.GetToken();
-            if (TOKEN == ListaTokens.FLECHA) {
+            if (TOKEN == ListaTokens.getFLECHA()) {
                 if(ListaLadosDer())
                     return true;
             }
@@ -44,7 +44,7 @@ public class GramaticaDeGramaticas {
 
     public boolean LadoIzquierdo(){
         int TOKEN = Lexico.GetToken();
-        if (TOKEN == ListaTokens.SIMBOLO)
+        if (TOKEN == ListaTokens.getSIMBOLO())
             return true;
         return false;
     }
@@ -53,7 +53,7 @@ public class GramaticaDeGramaticas {
         int TOKEN;
         if(LadoDerecho()){
             TOKEN = Lexico.GetToken();
-            if (TOKEN == ListaTokens.OR) {
+            if (TOKEN == ListaTokens.getOR()) {
                 if(ListaLadosDer())
                     return true;
                 return false;
@@ -73,7 +73,7 @@ public class GramaticaDeGramaticas {
 
     public boolean ListaSimbolos(){
         int TOKEN = Lexico.GetToken();
-        if (TOKEN == ListaTokens.SIMBOLO) {
+        if (TOKEN == ListaTokens.getSIMBOLO()) {
             //Lexico.getEdo(E);
             if (ListaSimbolos())
                 Lexico.RegresarToken(TOKEN);
@@ -81,4 +81,5 @@ public class GramaticaDeGramaticas {
         }
         return false;
     }
+    */
 }

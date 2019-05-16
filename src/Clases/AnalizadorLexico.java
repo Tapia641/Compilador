@@ -79,9 +79,11 @@ public class AnalizadorLexico {
     private char[] Cadena;
     private String Delta;
     private Queue<Integer> Cola;
+    private Stack<Integer> Pila;
     private int TOKEN;
     private int[][] Memo;
     private Vector<Character> Alfabeto;
+    private Vector<Pair<String, Integer>> Resultado;
 
 
     public void Lexico(String Delta, HashMap<Integer, Vector<String>> Matriz) {
@@ -95,6 +97,9 @@ public class AnalizadorLexico {
         this.Cadena = this.Delta.toCharArray();
 
         Cola = new ArrayDeque<>();
+        Pila = new Stack<>();
+        Resultado = new Stack<>();
+
         Inicio = PosActual = Fin = 0;
         TOKEN = -1;
 
@@ -105,19 +110,28 @@ public class AnalizadorLexico {
     }
 
     public void Analizar() {
-        Vector<Pair<String, Integer>> Resultado = new Stack<>();
         int IndiceColumna = 0, IndiceFila = 0, PrevioToken = 0;
-        String Lexema = "";
+        String Lexema = "", LexemaError = "";
 
         /* COMENZAMOS EL ANÁLISIS */
         while (Fin != Delta.length()) {
 
             System.out.println("Analizando " + Cadena[Fin]);
 
+
             /* SI EL CARÁCTER ESTA EN EL ALFABETO */
             if (Alfabeto.contains(Cadena[Fin])) {
 
                 IndiceColumna = Alfabeto.indexOf(Cadena[Fin]);
+
+                if (!LexemaError.equals("")) {
+                    System.out.println("Se agrega Lexema Error a los datos");
+                    Resultado.add(new Pair<>(LexemaError, -1));
+                    LexemaError = "";
+                    Cola.add(-1);
+                    Pila.push(-1);
+                }
+
 
                 /* SI HAY TRANSICIÓN CON ESE CARÁCTER */
                 if (Memo[IndiceFila][IndiceColumna] != -1) {
@@ -140,35 +154,40 @@ public class AnalizadorLexico {
                 } else {// CUANDO NO HAY TRANSICIÓN
                     System.out.println("No hay transicion");
                     TOKEN = PrevioToken;
-                    System.out.println("Se agregó " + Lexema + " con tok = " + TOKEN);
-
-                    Cola.add(TOKEN);
 
                     if (TOKEN == -1) {
-                        System.err.println("La cadena ingresada no pertenece al automata");
-                        //break;
+                        LexemaError += Cadena[Fin];
+                        //System.out.println("Se agregó LexemaError " + LexemaError + " con tok = " + TOKEN);
+                        //Resultado.add(new Pair<>(Lexema, TOKEN));
+                        Fin++;
+                    } else {
+                        System.out.println("Se agregó " + Lexema + " con tok = " + TOKEN);
+                        Cola.add(TOKEN);
+                        Pila.push(TOKEN);
+                        Resultado.add(new Pair<>(Lexema, TOKEN));
+                        Lexema = "";
+                        Fin = Fin - 1;
+                        IndiceFila = 0;
+                        PrevioToken = -1;
+                        Inicio = Fin;
+                        Fin++;
                     }
-                    Resultado.add(new Pair<>(Lexema, TOKEN));
 
-                    Lexema = "";
-                    Fin = Fin - 1;
-                    IndiceFila = 0;
-                    PrevioToken = -1;
-                    Inicio = Fin;
-                    Fin++;
+
                 }
             } else {
-                /* SOLO FINALIZAMOS */
-                //System.exit(-1);
-                System.err.println("La cadena ingresada no pertenece al automata");
-                break;
+                LexemaError += Cadena[Fin];
+                System.out.println("Lexema error " + LexemaError);
+                Fin++;
             }
 
             /* SI TERMINA DE ANALIZAR LA CADENA Y AGREGAMOS LO QE SE OBTUVO */
             if (Fin == Delta.length()) {
+
                 Resultado.add(new Pair<>(Lexema, TOKEN));
 
                 Cola.add(TOKEN);
+                Pila.push(TOKEN);
 
                 Lexema = "";
                 Fin = Fin - 1;
@@ -176,9 +195,20 @@ public class AnalizadorLexico {
                 PrevioToken = -1;
                 Inicio = Fin;
                 Fin++;
+
+                if (!LexemaError.equals("")) {
+                    System.out.println("Se agrega Lexema Error a los datos");
+                    Resultado.add(new Pair<>(LexemaError, -1));
+                    Cola.add(-1);
+                    Pila.push(-1);
+                    LexemaError = "";
+                }
+
             }
         }
 
+        //Agregamos el token de fin
+        Pila.push(0);
         /* IMPRIMIMOS LOS RESULTADOS */
         Pair<String, Integer> P;
         Iterator it = Resultado.iterator();
@@ -205,6 +235,18 @@ public class AnalizadorLexico {
         //TOKEN = -1;
 
         //return TOKEN;
+    }
+
+    public Queue<Integer> getCola() {
+        return Cola;
+    }
+
+    public Stack<Integer> getPila() {
+        return Pila;
+    }
+
+    public Vector<Pair<String, Integer>> getTablaLexema() {
+        return Resultado;
     }
 
     public void RegresarToken(int token) {
@@ -254,7 +296,7 @@ public class AnalizadorLexico {
         jf.add(scrollPane);
         jf.setTitle("Tabla de transiciones");
         jf.setSize(Matriz.get(0).size()*50,Matriz.size()*19);
-        jf.setVisible(true);
+        jf.setVisible(false);
     }
 
 }

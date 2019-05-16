@@ -16,6 +16,7 @@ public class AritmeticaBasica {
     public void AnalizarSintacticamente(Stack<Integer> Pila) {
         this.Pila = new Stack<>();
 
+        /* INVERTIMOS LA PILA PARA TRABAJAR CON COMODIDAD */
         for (int i = Pila.size() - 1; i > -1; i--) {
             this.Pila.push(Pila.get(i));
         }

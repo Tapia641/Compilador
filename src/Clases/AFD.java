@@ -34,9 +34,16 @@ public class AFD {
 
     public AFD convertirAFD(HashSet<AFN> conjuntoAFN, String Nombre) throws IOException {
 
+        int x = 0;
+        for (AFN i : conjuntoAFN) {
+            for (Estado j : i.getEstados()) {
+                x = Math.max(x, j.getID());
+            }
+        }
+
         /* CREAMOS UN NUEVO ORIGEN PARA UNIR TODOS LOS AFN */
         Estado nuevoOrigen = new Estado();
-        nuevoOrigen.setID(62);//Nota: resolver el id
+        nuevoOrigen.setID(x);//Nota: resolver el id: resuelto ;)
 
         /* SÓLO AÑADIMOS UN ESTADO DE ORIGEN CON TRANSICIONES EPSILON
          * PARA UNIR TODOS LOS AUTÓMATAS */

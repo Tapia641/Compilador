@@ -1,11 +1,11 @@
 package Clases.AnalizadorSintactico;
 
-import Clases.AnalizadorLexico;
 /* IMPORTAMOS LOS TOKEN PREVIAMENTE REALIZADOS */
 import Clases.Tokens;
-import jdk.nashorn.internal.parser.Token;
 
-import java.util.HashMap;
+import javafx.util.Pair;
+
+import java.util.HashSet;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -19,7 +19,7 @@ public class Calculadora {
         private double value;
 
         public Numero() {
-            this.value = Double.parseDouble(0 + "");
+            this.value = Double.parseDouble("0");
         }
 
         private void setValue(double f) {
@@ -34,58 +34,55 @@ public class Calculadora {
     /* DATOS CON LOS QUE VAMOS A TRABAJAR */
     private Numero N = new Numero();
     private Stack<Integer> Pila;
+    private Vector<Pair<String, Integer>> V;
+    private HashSet<String> C;
 
-    public void AnalizarSintacticamente(Stack<Integer> Pila) {
-
+    public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
+        this.V = V;
+        C = new HashSet<>();
+        Stack<Integer> PilaAux = new Stack<>();
         this.Pila = new Stack<>();
 
+        for (Pair<String, Integer> P : V) {
+            System.out.println(P.getValue());
+            PilaAux.push(P.getValue());
+        }
+        PilaAux.push(0);
+
         /* INVERTIMOS LA PILA PARA TRABAJAR CON COMODIDAD */
-        for (int i = Pila.size() - 1; i > -1; i--) {
-            this.Pila.push(Pila.get(i));
+        for (int i = PilaAux.size() - 1; i > -1; i--) {
+            this.Pila.push(PilaAux.get(i));
         }
 
-        System.out.println("Elementos de la pila: " + this.Pila.size());
-        for (int i : Pila) System.out.println(i);
-
         //COMIENZA A EVALUAR
-        boolean correcta;
         System.out.print("G->");
         if (G(N)) {
             System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
-            //Evaluar
+            System.out.println("EL RESULTADO DE LA OPERACION ES: " + N.getValue());
         } else System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
 
     }
 
      //INICIAMOS CON EL ANÁLISIS SINTÁCTICO
-
     public boolean G(Numero v) {
-        System.out.print("E->");
         if (E(v)) {
             /* PEDIMOS UN TOKEN A LA PILA QUE OBTUVO EL ANALIZADOR LEXICO */
             int TokenPedido = Pila.pop();
             if (TokenPedido == Tokens.ERROR) return false;
 
-            System.out.print(TokenPedido);
             if (TokenPedido == Tokens.FIN) {
-                System.out.print("true");
                 return true;
             }
         }
-        System.out.print("false");
         return false;
     }
 
     public boolean E(Numero v) {
-        System.out.print("T");
         if (T(v)) {
-            System.out.print("Ep");
             if (Ep(v)) {
-                System.out.print("true");
                 return true;
             }
         }
-        System.out.print("false");
         return false;
     }
 
@@ -94,22 +91,17 @@ public class Calculadora {
 
         /* PEDIMOS UN TOKEN A LA PILA QUE OBTUVO EL ANALIZADOR LEXICO */
         int TokenPedido = Pila.pop();
-        System.out.print(TokenPedido);
         if (TokenPedido == Tokens.ERROR) return false;
 
 
         if (TokenPedido == Tokens.CMAS || TokenPedido == Tokens.CMENOS) {
-            System.out.print("T");
             if (T(v1)) {
-                //Resolver si es correcto
                 if (TokenPedido == Tokens.CMAS)
                     v.setValue(v.getValue() + v1.getValue());
                 else {
                     v.setValue(v.getValue() - v1.getValue());
                 }
-                System.out.print("Ep");
                 if (Ep(v)) {
-                    System.out.print("true");
                     return true;
                 }
     		}
@@ -117,11 +109,8 @@ public class Calculadora {
             return false;
     	}
 
-        //if (P(v)) return true;
-
         /* REGRESAMOS EL TOKEN A LA PILA */
         Pila.push(TokenPedido);
-        System.out.print("true");
     	return true;
     }
 
@@ -139,43 +128,37 @@ public class Calculadora {
 
         /* PEDIMOS UN TOKEN A LA PILA QUE OBTUVO EL ANALIZADOR LEXICO */
         int TokenPedido = Pila.pop();
-        System.out.print(TokenPedido);
         if (TokenPedido == Tokens.ERROR) return false;
 
 
         if (TokenPedido == Tokens.CPROD || TokenPedido == Tokens.CDIV) {
-            System.out.print("P");
-            if (P(v)) {
-                if (TokenPedido == Tokens.CPROD)
+            if (P(v1)) {
+                if (TokenPedido == Tokens.CPROD) {
                     v.setValue(v.getValue() * v1.getValue());
-                else
+
+                } else {
                     v.setValue(v.getValue() / v1.getValue());
+                }
 
                 return true;
 
             }
-            System.out.print("false");
             return false;
         }
 
 
         /* REGRESAMOS EL TOKEN A LA PILA */
-        System.out.print("Regresa a la cola: " + TokenPedido);
         Pila.push(TokenPedido);
 
         return true;
     }
 
     public boolean P(Numero v) {
-        System.out.print("F");
         if (F(v)) {
-            System.out.print("Pp");
             if (Pp(v)) {
-                System.out.print("true");
                 return true;
             }
         }
-        System.out.print("false");
         return false;
     }
 
@@ -185,39 +168,59 @@ public class Calculadora {
 
         /* PEDIMOS UN TOKEN A LA PILA QUE OBTUVO EL ANALIZADOR LEXICO */
         int TokenPedido = Pila.pop();
-        System.out.print(TokenPedido);
         if (TokenPedido == Tokens.ERROR) return false;
 
         if (TokenPedido == Tokens.CPOT) {
-            System.out.print("F");
             if (F(v)) {
-                System.out.print("Pp");
-                if (Pp(v)) {
-                    System.out.print("true");
+                if (Pp(v1)) {
+                    v.setValue(Math.pow(v.getValue(), v1.getValue()));
                     return true;
                 }
             }
-            System.out.print("false");
             return false;
         }
+
         /* REGRESAMOS EL TOKEN A LA PILA */
         Pila.push(TokenPedido);
 
-        System.out.print("true");
         return true;
     }
 
 
     public boolean F(Numero v) {
-        Numero v1 = new Numero();
 
         /* PEDIMOS UN TOKEN A LA PILA QUE OBTUVO EL ANALIZADOR LEXICO */
         int TokenPedido = Pila.pop();
-        System.out.print("Estamos en F con " + TokenPedido);
+
         if (TokenPedido == Tokens.ERROR) return false;
 
-        if (TokenPedido == Tokens.CNUM)
+        if (TokenPedido == Tokens.CNUM) {
+
+            boolean creado = false;
+
+            /*OBTENEMOS EL NUMERO EN NUESTRO VECTOR DE LEXEMA Y TOKENS*/
+            for (Pair<String, Integer> P : V) {
+                if (P.getValue() == Tokens.CNUM && !C.contains(P.getKey())) {
+                    C.add(P.getKey());
+                    v.setValue(Double.parseDouble(P.getKey()));
+                    creado = true;
+                    break;
+                }
+            }
+
+            if (!creado) {
+                for (Pair<String, Integer> P : V) {
+                    //CORROBORAR REPETIDOS 5+5
+                    if (P.getValue() == Tokens.CNUM) {
+                        C.add(P.getKey());
+                        v.setValue(Double.parseDouble(P.getKey()));
+                        break;
+                    }
+                }
+            }
+
             return true;
+        }
 
         if (TokenPedido == Tokens.CPAR_I) {
             if (E(v)) {
@@ -328,6 +331,7 @@ public class Calculadora {
             }
             return false;
         }
+
         /* REGRESAMOS EL TOKEN A LA PILA */
         Pila.push(TokenPedido);
 

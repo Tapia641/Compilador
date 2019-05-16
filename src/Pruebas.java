@@ -31,35 +31,6 @@ public class Pruebas {
         f15 = new AFN();
         f16 = new AFN();
 
-        //GRAMATICA DE EXPRESIONES REGULARES
-/*
-        AFD afd1 = new AFD();
-
-        f1.CrearBasico('&');  f1.setToken(Tokens.ER_CONCA);
-        f2.CrearBasico("|"); f2.setToken(Tokens.ER_OR);
-        f3.CrearBasico('+');  f3.setToken(Tokens.ER_CERRADURA_POSTIVIA);
-        f4.CrearBasico('*');  f4.setToken(Tokens.ER_CERRADURA_ESTRELLA);
-        f5.CrearBasico('A','Z'); f5.setToken(Tokens.ER_SIMBOLO);
-        f6.CrearBasico('?'); f6.setToken(Tokens.ER_THOMPSON);
-        f7.CrearBasico('('); f7.setToken(Tokens.ER_PAR_I);
-        f8.CrearBasico(')'); f8.setToken(Tokens.ER_PAR_D);
-
-        conjuntoAFN.add(f1);
-        conjuntoAFN.add(f2);
-        conjuntoAFN.add(f3);
-        conjuntoAFN.add(f4);
-        conjuntoAFN.add(f5);
-        conjuntoAFN.add(f6);
-        conjuntoAFN.add(f7);
-        conjuntoAFN.add(f8);
-
-
-        try {
-            afd1.convertirAFD(conjuntoAFN,"ExpresionesRegulares");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
 
 /*
         AFD afd = new AFD();
@@ -73,20 +44,13 @@ public class Pruebas {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        String cadena = "(A|B)*&C+";
+        //String cadena = "S?°D+";
+        String cadena = "s?°D+°.°D+";
         AnalizarLexicamente.Lexico(cadena, afd.getMatriz());
-        ER.AnalizarSintacticamente(AnalizarLexicamente.getPila(),AnalizarLexicamente.getTablaLexema());
-*/
-/*
-    //Para convertir una AFD a un .out
-        AFD afd = new AFD();
-        try {
-            afd.convertirAFD(conjuntoAFN,"AritmeticaBasica");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ER.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
 */
 
+        //Terminado
         AFD afd = new AFD();
         Calculadora C = new Calculadora();
         AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
@@ -105,13 +69,12 @@ public class Pruebas {
         C.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
 
         /*
+        //Terminado
         AFD afd1 = new AFD();
         AritmeticaBasica AB = new AritmeticaBasica();
         AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
 
         try {
-            //EXPORTAMOS EL AFN CONVERTIDO A AFD EN UN HASHTABLE
-            //afd.convertirAFD(conjuntoAFN);
             //IMPORTAMOS HASMAP DE GRAMATICA ARITMETICA BASICA PREVIAMENTE REALIZADA
             afd1.LeerObject("AritmeticaBasica");
         } catch (IOException e) {
