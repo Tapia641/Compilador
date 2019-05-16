@@ -50,6 +50,7 @@ public class Pruebas {
         ER.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
 */
 
+/*
         //Terminado
         AFD afd = new AFD();
         Calculadora C = new Calculadora();
@@ -67,7 +68,7 @@ public class Pruebas {
         String cadena = "4.5*9+SIN(17-14/8)*6";
         AnalizarLexicamente.Lexico(cadena, afd.getMatriz());
         C.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
-
+*/
         /*
         //Terminado
         AFD afd1 = new AFD();
