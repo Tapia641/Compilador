@@ -1,5 +1,6 @@
 package Clases.AnalizadorSintactico;
 
+import Clases.TablaLL1;
 import Clases.Tokens;
 import javafx.util.Pair;
 
@@ -12,15 +13,20 @@ public class GramaticaDeGramaticas {
     private Stack<Integer> Pila;
     private Vector<Pair<String, Integer>> V;
     private HashSet<String> C;
+    private HashSet<String> Terminales, NoTerminales;
+    private Vector<Vector<String>> Tabla;
+    private boolean Correcto = false;
 
     public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
+        Terminales = new HashSet<>();
+        NoTerminales = new HashSet<>();
+        Tabla = new Stack<>();
         this.V = V;
         C = new HashSet<>();
         Stack<Integer> PilaAux = new Stack<>();
         this.Pila = new Stack<>();
 
         for (Pair<String, Integer> P : V) {
-            System.out.println(P.getValue());
             PilaAux.push(P.getValue());
         }
         PilaAux.push(Tokens.FIN);
@@ -32,10 +38,15 @@ public class GramaticaDeGramaticas {
 
         //COMIENZA A EVALUAR
         if (G()) {
+            Correcto = true;
             System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
-        } else System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
+        } else {
+            System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
+            Correcto = false;
+        }
 
     }
+
     public boolean G(){
         if (ListaReglas()) {
             return true;
@@ -103,7 +114,10 @@ public class GramaticaDeGramaticas {
         int TokenPedido = Pila.pop();
 
         if (TokenPedido == Tokens.GG_SIMBOLO) {
+            boolean creado = false;
+
             return true;
+
         }
         return false;
     }
@@ -165,16 +179,14 @@ public class GramaticaDeGramaticas {
         return true;
     }
 
-    public boolean LadoDerechoP() {
-        int TokenPedido = Pila.pop();
 
-        if (TokenPedido == Tokens.GG_SIMBOLO) {
-            if (LadoDerechoP())
-                return true;
-            return false;
-        }
-
-        Pila.push(TokenPedido);
-        return true;
+    public boolean Exito() {
+        return Correcto;
     }
+
+    public Vector<Vector<String>> getTaba() {
+        return Tabla;
+    }
+
+
 }
