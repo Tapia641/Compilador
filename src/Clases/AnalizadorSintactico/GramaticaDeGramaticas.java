@@ -1,41 +1,98 @@
 package Clases.AnalizadorSintactico;
 
-import Clases.AnalizadorLexico;
 import Clases.Tokens;
+import javafx.util.Pair;
+
+import java.util.HashSet;
+import java.util.Stack;
+import java.util.Vector;
 
 public class GramaticaDeGramaticas {
-/*
-    private AnalizadorLexico Lexico = new AnalizadorLexico();
-    private Tokens ListaTokens = new Tokens();
-    private AnalizadorLexico.Edo Estado;
 
-    public boolean G(){
-        if(ListaReglas())
-            return true;
-        return false;
+    private Stack<Integer> Pila;
+    private Vector<Pair<String, Integer>> V;
+    private HashSet<String> C;
+
+    public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
+        this.V = V;
+        C = new HashSet<>();
+        Stack<Integer> PilaAux = new Stack<>();
+        this.Pila = new Stack<>();
+
+        for (Pair<String, Integer> P : V) {
+            System.out.println(P.getValue());
+            PilaAux.push(P.getValue());
+        }
+        PilaAux.push(Tokens.FIN);
+
+        /* INVERTIMOS LA PILA PARA TRABAJAR CON COMODIDAD */
+        for (int i = PilaAux.size() - 1; i > -1; i--) {
+            this.Pila.push(PilaAux.get(i));
+        }
+
+        //COMIENZA A EVALUAR
+        if (G()) {
+            System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
+        } else System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
+
     }
-
-    public boolean ListaReglas(){
-        int TOKEN;
-        if(Regla()){
-            TOKEN = Lexico.GetToken();
-            if (TOKEN == ListaTokens.getPuntoComa()) {
-                Estado = Lexico.GetEdo();
-                if (ListaReglas())
-                    return true;
-                Lexico.SetEdo(Estado);
-                return true;
-            }
+    public boolean G(){
+        if (ListaReglas()) {
+            return true;
         }
         return false;
     }
 
+    public boolean ListaReglas(){
+        int TokenPedido;
+
+        if(Regla()){
+            TokenPedido = Pila.pop();
+
+            if (TokenPedido == Tokens.ERROR) {
+                return false;
+            }
+
+            if (TokenPedido == Tokens.FIN) {
+                return true;
+            }
+
+            if (TokenPedido == Tokens.GG_PUNTO_COMA) {
+                if (ListaReglasP())
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean ListaReglasP() {
+        int TokenPedido;
+        Stack<Integer> Aux = Pila;
+
+        if (Regla()) {
+            TokenPedido = Pila.pop();
+            if (TokenPedido == Tokens.GG_PUNTO_COMA) {
+                if (ListaReglasP())
+                    return true;
+            }
+            return false;
+        }
+
+        /*POSIBLE SOLUCIÓN*/
+        if (Pila.size() == 0) return true;
+
+        Pila = Aux;
+        return false;
+    }
+
     public boolean Regla(){
-        int TOKEN;
+        int TokenPedido;
+
         if(LadoIzquierdo()){
-            TOKEN = Lexico.GetToken();
-            if (TOKEN == ListaTokens.getFLECHA()) {
-                if(ListaLadosDer())
+            TokenPedido = Pila.pop();
+            if (TokenPedido == Tokens.GG_FLECHA) {
+                if (ListaLadosDerechos())
                     return true;
             }
         }
@@ -43,43 +100,81 @@ public class GramaticaDeGramaticas {
     }
 
     public boolean LadoIzquierdo(){
-        int TOKEN = Lexico.GetToken();
-        if (TOKEN == ListaTokens.getSIMBOLO())
-            return true;
-        return false;
-    }
+        int TokenPedido = Pila.pop();
 
-    public boolean ListaLadosDer(){
-        int TOKEN;
-        if(LadoDerecho()){
-            TOKEN = Lexico.GetToken();
-            if (TOKEN == ListaTokens.getOR()) {
-                if(ListaLadosDer())
-                    return true;
-                return false;
-            }
-            Lexico.RegresarToken(TOKEN);
+        if (TokenPedido == Tokens.GG_SIMBOLO) {
             return true;
         }
         return false;
     }
 
+    public boolean ListaLadosDerechos() {
+        if(LadoDerecho()){
+            if (ListaLadosDerechosP()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean ListaLadosDerechosP() {
+        int TokenPedido;
+        TokenPedido = Pila.pop();
+
+        if (TokenPedido == Tokens.GG_OR) {
+            if (LadoDerecho()) {
+                if (ListaLadosDerechosP()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        Pila.push(TokenPedido);
+        return true;
+    }
+
     public boolean LadoDerecho(){
-        int TOKEN;
-        if(ListaSimbolos())
+        if (ListaSimbolos())
             return true;
         return false;
     }
 
     public boolean ListaSimbolos(){
-        int TOKEN = Lexico.GetToken();
-        if (TOKEN == ListaTokens.getSIMBOLO()) {
-            //Lexico.getEdo(E);
-            if (ListaSimbolos())
-                Lexico.RegresarToken(TOKEN);
-            return true;
+        int TokenPedido = Pila.pop();
+
+        if (TokenPedido == Tokens.GG_SIMBOLO) {
+            if (ListaSimbolosP()) {
+                return true;
+            }
         }
         return false;
     }
-    */
+
+    public boolean ListaSimbolosP() {
+        int TokenPedido = Pila.pop();
+
+        if (TokenPedido == Tokens.GG_SIMBOLO) {
+            if (ListaSimbolosP()) {
+                return true;
+            }
+            return false;
+        }
+
+        Pila.push(TokenPedido);
+        return true;
+    }
+
+    public boolean LadoDerechoP() {
+        int TokenPedido = Pila.pop();
+
+        if (TokenPedido == Tokens.GG_SIMBOLO) {
+            if (LadoDerechoP())
+                return true;
+            return false;
+        }
+
+        Pila.push(TokenPedido);
+        return true;
+    }
 }

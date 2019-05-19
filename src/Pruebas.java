@@ -4,6 +4,7 @@ import Clases.AnalizadorLexico;
 import Clases.AnalizadorSintactico.AritmeticaBasica;
 import Clases.AnalizadorSintactico.Calculadora;
 import Clases.AnalizadorSintactico.ExpresionesRegulares;
+import Clases.AnalizadorSintactico.GramaticaDeGramaticas;
 import Clases.Tokens;
 
 import java.io.IOException;
@@ -31,6 +32,63 @@ public class Pruebas {
         f15 = new AFN();
         f16 = new AFN();
 
+        //GRAMATICA DE GRAMATICAS
+        AFD afd1 = new AFD();
+
+        //f1.CrearBasico('A','Z'); f1.setToken(Tokens.GG_SIMBOLO);
+        f2.CrearBasico('-');
+        f3.CrearBasico('>');
+        f2.Concatenar(f3);
+        f2.setToken(Tokens.GG_FLECHA);
+        f3.CrearBasico(';');
+        f3.setToken(Tokens.GG_PUNTO_COMA);
+        f4.CrearBasico('|');
+        f4.setToken(Tokens.GG_OR);
+        f5.CrearBasico('A', 'Z');
+        f6.CrearBasico("'");
+        f5.Concatenar(f6);
+        f5.setToken(Tokens.GG_SIMBOLO);
+
+        f6.CrearBasico(' ', ':');
+        f7.CrearBasico('<', '{');
+        f6.Unir(f7);
+        f7.CrearBasico('}', '~');
+        f6.Unir(f7);
+        f6.setToken(Tokens.GG_SIMBOLO);
+
+        //conjuntoAFN.add(f1);
+        conjuntoAFN.add(f2);
+        conjuntoAFN.add(f3);
+        conjuntoAFN.add(f4);
+        conjuntoAFN.add(f5);
+        conjuntoAFN.add(f6);
+
+        try {
+            afd1.convertirAFD(conjuntoAFN, "GramaticaDeGramaticas");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Gramatica de Gramaticas
+        AFD afd = new AFD();
+        GramaticaDeGramaticas GG = new GramaticaDeGramaticas();
+        AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
+        try {
+            //IMPORTAMOS HASMAP DE GRAMATICA CALCULADORA PREVIAMENTE REALIZADA
+            afd.LeerObject("GramaticaDeGramaticas");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        //String cadena = "S?°D+";
+        String cadena = "E->TE';" +
+                "E'->+TE|-TE'| ;" +
+                "T->FT';" +
+                "T'->*FT'|/FT'| ;" +
+                "F->(E)|NUM;";
+        AnalizarLexicamente.Lexico(cadena, afd.getMatriz());
+        GG.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
 
 /*
         AFD afd = new AFD();

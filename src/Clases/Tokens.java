@@ -43,10 +43,10 @@ public class Tokens {
     public static int ER_CONCA = 280;
     //FIN TOKENS
 
-    /* TOKENS  DE GRAMATICA DE GRAMATICAS*/
-    //public static int OR = 10;
-    //public static int PUNTO_COMA = 20;
-    //public static int FLECHA = 30;
-    //public static int SIMBOLO = 40;
+    /* TOKENS  DE GRAMATICA DE GRAMATICAS */
+    public static int GG_OR = 300;
+    public static int GG_PUNTO_COMA = 310;
+    public static int GG_FLECHA = 320;
+    public static int GG_SIMBOLO = 330;
 
 }

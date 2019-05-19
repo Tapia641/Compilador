@@ -6,7 +6,6 @@ import Clases.Tokens;
 import Dibujar.Draw;
 import javafx.util.Pair;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Stack;
 import java.util.Vector;
