@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf0a003-fb8d-4e0b-85b9-08cbd4ac6a6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gramatica2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clases/Nodo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clases/RulesMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorLexico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/ExpresionesRegulares.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/ExpresionesRegulares.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gramatica1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Gramatica1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/GramaticaDeGramaticas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/GramaticaDeGramaticas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/Tokens.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/Tokens.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/TablaLL1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/TablaLL1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Pruebas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Pruebas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Tokens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Tokens.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/TablaLL1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/TablaLL1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujar/automata.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pruebas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pruebas.java" afterDir="false" />
     </list>
@@ -34,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pruebas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
+            <state relative-caret-position="306">
+              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,22 +48,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Tokens.java">
+        <entry file="file://$PROJECT_DIR$/src/Clases/TablaLL1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="47" column="41" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="41" />
+            <state relative-caret-position="89">
+              <caret line="298" column="20" lean-forward="true" selection-start-line="298" selection-start-column="20" selection-end-line="298" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gramatica1.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Clases/RulesMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="20" column="68" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -97,14 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/interfaces/InterfazPrimaria.form" />
-        <option value="$PROJECT_DIR$/src/graphviz/Graphviz.java" />
-        <option value="$PROJECT_DIR$/src/graphviz/Ejemplo.java" />
-        <option value="$PROJECT_DIR$/src/draw/GraphViz.java" />
-        <option value="$PROJECT_DIR$/src/classes/GraphViz.java" />
-        <option value="$PROJECT_DIR$/src/draw/Ejemplo.java" />
-        <option value="$PROJECT_DIR$/src/interfaces/Principal.fxml" />
-        <option value="$PROJECT_DIR$/src/interfaces/sample.fxml" />
         <option value="$PROJECT_DIR$/src/interfaces/Unir.fxml" />
         <option value="$PROJECT_DIR$/src/draw/Draw.java" />
         <option value="$PROJECT_DIR$/src/interfaces/Main.java" />
@@ -132,8 +134,6 @@
         <option value="$PROJECT_DIR$/src/Gramatica1" />
         <option value="$PROJECT_DIR$/src/Clases/DescensoRecursivo/GramaticaDeGramaticas.java" />
         <option value="$PROJECT_DIR$/src/Clases/LenguajeGramaticas.java" />
-        <option value="$PROJECT_DIR$/Gramatica1.txt" />
-        <option value="$PROJECT_DIR$/src/Clases/TablaLL1.java" />
         <option value="$PROJECT_DIR$/src/Clases/DescensoRecursivo/AritmeticaBasica.java" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico.java" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/AritmeticaBasica.java" />
@@ -144,10 +144,20 @@
         <option value="$PROJECT_DIR$/src/Automatas/ExpresionesRegulares.txt" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/Calculadora.java" />
         <option value="$PROJECT_DIR$/src/Clases/Tokens.java" />
-        <option value="$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java" />
-        <option value="$PROJECT_DIR$/src/Pruebas.java" />
+        <option value="$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt" />
+        <option value="$PROJECT_DIR$/Gramatica1.txt" />
+        <option value="$PROJECT_DIR$/Gramatica2.txt" />
+        <option value="$PROJECT_DIR$/src/Clases/ListaReglas.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Nodo.java" />
+        <option value="$PROJECT_DIR$/src/Clases/RulesMap.java" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java" />
+        <option value="$PROJECT_DIR$/src/Clases/LR0/LRTools.java" />
+        <option value="$PROJECT_DIR$/src/Clases/LR0/LR0.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Grammar.java" />
+        <option value="$PROJECT_DIR$/src/Clases/LR0/Lexico.java" />
+        <option value="$PROJECT_DIR$/src/Clases/TablaLL1.java" />
+        <option value="$PROJECT_DIR$/src/Pruebas.java" />
       </list>
     </option>
   </component>
@@ -158,9 +168,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1915" />
-    <option name="width" value="1858" />
-    <option name="height" value="1044" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -207,7 +218,7 @@
               <item name="Compilador" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compilador" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Dibujar" type="462c0819:PsiDirectoryNode" />
+              <item name="Principal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compilador" type="b2602c69:ProjectViewProjectNode" />
@@ -328,20 +339,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548821665112</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Actualizndo clase AFN">
-      <created>1549324786804</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1549324786804</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Eliminando líneas inecesarias">
-      <created>1549389118838</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1549389118838</updated>
     </task>
     <task id="LOCAL-00014" summary="Creando concatenacion">
       <created>1549426561393</created>
@@ -672,7 +669,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558043615299</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="AS: GG FUNCIONA CORRECTAMENTE">
+      <created>1558231176474</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1558231176484</updated>
+    </task>
+    <task id="LOCAL-00062" summary="AS: GG se empieza a crear la tabla LL1">
+      <created>1558276487841</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1558276487841</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView">
@@ -702,7 +713,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32152975" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3206934" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
@@ -712,21 +723,21 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21610738" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22121535" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Favorites" order="4" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35977337" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32821077" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40953413" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.562323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32152975" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3206934" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
@@ -737,8 +748,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bucle en while ConvertirAFD" />
-    <MESSAGE value="Calcula cada Sj" />
     <MESSAGE value="Corrigiendo AFD" />
     <MESSAGE value="Prueba del director" />
     <MESSAGE value="Creando analizador" />
@@ -762,7 +771,9 @@
     <MESSAGE value="Analizado Sintactico Calculadora funciona correctamente" />
     <MESSAGE value="AS: Calculadora evalua los numeros" />
     <MESSAGE value="AS: Calculadora y Expresiones regulares considera repetidos" />
-    <option name="LAST_COMMIT_MESSAGE" value="AS: Calculadora y Expresiones regulares considera repetidos" />
+    <MESSAGE value="AS: GG FUNCIONA CORRECTAMENTE" />
+    <MESSAGE value="AS: GG se empieza a crear la tabla LL1" />
+    <option name="LAST_COMMIT_MESSAGE" value="AS: GG se empieza a crear la tabla LL1" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -770,26 +781,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/guru/nidi/graphviz/attribute/Label.java" />
-    <entry file="file://$PROJECT_DIR$/src/guru/nidi/graphviz/model/PortNode.java" />
-    <entry file="file://$PROJECT_DIR$/src/guru/nidi/graphviz/attribute/EndLabel.java" />
-    <entry file="file://$PROJECT_DIR$/src/guru/nidi/graphviz/engine/GraphvizServer.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/ProcessImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/ProcessBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1476">
-          <caret line="1047" selection-start-line="1047" selection-end-line="1047" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphviz/automata.dot" />
-    <entry file="file://$PROJECT_DIR$/src/interfaces/InterfazPrimaria.java" />
     <entry file="file://$PROJECT_DIR$/src/interfaces/InterfazPrimaria.form" />
     <entry file="file://$PROJECT_DIR$/out/production/Compilador/graphviz/automata.dot" />
     <entry file="file://$PROJECT_DIR$/out/production/Compilador/graphviz/Graphviz.class" />
@@ -929,43 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gramatica1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Automatas/AritmeticaBasica.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Automatas/Calculadora.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/AFD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="60" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Ir_A#1;class#AFD#0" />
-            <element signature="method#Mover#0;class#AFD#0" />
-            <element signature="method#Mover#1;class#AFD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dibujar/automata.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/AritmeticaBasica.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2210">
@@ -983,37 +937,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/TablaLL1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/AFN.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5608">
-          <caret line="426" selection-start-line="426" selection-end-line="426" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="24" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1029,15 +956,201 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Tokens.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="47" column="41" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="41" />
+        <state relative-caret-position="745">
+          <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dibujar/automata.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AFD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="41" lean-forward="true" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Ir_A#1;class#AFD#0" />
+            <element signature="method#Mover#0;class#AFD#0" />
+            <element signature="method#Mover#1;class#AFD#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AFN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3489">
+          <caret line="426" selection-start-line="426" selection-end-line="426" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Automatas/AritmeticaBasica.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Automatas/Calculadora.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/ListaReglas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+          <folding>
+            <element signature="e#196#197#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#878#879#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+            <element signature="e#953#954#0" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/Calculadora.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="70" selection-start-line="70" selection-end-line="74" selection-end-column="13" />
+        <state relative-caret-position="55">
+          <caret line="198" selection-start-line="198" selection-end-line="219" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Nodo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+          <folding>
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2270">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3990#3991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/LR0/Lexico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="73" lean-forward="true" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
+          <folding>
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/LR0/LR0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="65" lean-forward="true" selection-start-line="44" selection-start-column="65" selection-end-line="44" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5792#5793#0" expanded="true" />
+            <element signature="e#5826#5827#0" expanded="true" />
+            <element signature="e#6808#6809#0" expanded="true" />
+            <element signature="e#6845#6846#0" expanded="true" />
+            <element signature="e#6877#6878#0" expanded="true" />
+            <element signature="e#6908#6909#0" expanded="true" />
+            <element signature="e#6943#6944#0" expanded="true" />
+            <element signature="e#6973#6974#0" expanded="true" />
+            <element signature="e#7010#7011#0" expanded="true" />
+            <element signature="e#7048#7049#0" expanded="true" />
+            <element signature="e#7085#7086#0" expanded="true" />
+            <element signature="e#7123#7124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Grammar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#725#726#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/LR0/LRTools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Automatas/GramaticaDeGramaticas.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gramatica1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/RulesMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="20" column="68" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gramatica2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/TablaLL1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="298" column="20" lean-forward="true" selection-start-line="298" selection-start-column="20" selection-end-line="298" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1046,18 +1159,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pruebas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
+        <state relative-caret-position="306">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

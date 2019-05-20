@@ -1,6 +1,5 @@
 package Clases.AnalizadorSintactico;
 
-import Clases.TablaLL1;
 import Clases.Tokens;
 import javafx.util.Pair;
 
@@ -13,14 +12,9 @@ public class GramaticaDeGramaticas {
     private Stack<Integer> Pila;
     private Vector<Pair<String, Integer>> V;
     private HashSet<String> C;
-    private HashSet<String> Terminales, NoTerminales;
-    private Vector<Vector<String>> Tabla;
     private boolean Correcto = false;
 
     public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
-        Terminales = new HashSet<>();
-        NoTerminales = new HashSet<>();
-        Tabla = new Stack<>();
         this.V = V;
         C = new HashSet<>();
         Stack<Integer> PilaAux = new Stack<>();
@@ -103,8 +97,9 @@ public class GramaticaDeGramaticas {
         if(LadoIzquierdo()){
             TokenPedido = Pila.pop();
             if (TokenPedido == Tokens.GG_FLECHA) {
-                if (ListaLadosDerechos())
+                if (ListaLadosDerechos()) {
                     return true;
+                }
             }
         }
         return false;
@@ -114,7 +109,6 @@ public class GramaticaDeGramaticas {
         int TokenPedido = Pila.pop();
 
         if (TokenPedido == Tokens.GG_SIMBOLO) {
-            boolean creado = false;
 
             return true;
 
@@ -183,10 +177,5 @@ public class GramaticaDeGramaticas {
     public boolean Exito() {
         return Correcto;
     }
-
-    public Vector<Vector<String>> getTaba() {
-        return Tabla;
-    }
-
 
 }
