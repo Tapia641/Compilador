@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Vector;
 
-public class TablaLL1 {
+public class LL1 {
 
     private char EPSILON = '&';
     private Vector<Vector<String>> Tabla;
@@ -21,8 +21,9 @@ public class TablaLL1 {
     private static Vector<String> M;
     private static String[][] Memo;
     private HashSet<Vector<String>> Analizado;
+    private String Gramatica;
 
-    public TablaLL1(String archivo) throws IOException {
+    public LL1(String archivo) throws IOException {
 
         /*INICIALIZAMOS LO QUE VAMOS A UTILIZAR*/
         Terminales = new HashSet<>();
@@ -99,6 +100,7 @@ public class TablaLL1 {
             System.out.println("No terminales " + NoTerminales);
             System.out.println("Terminales " + Terminales);
             System.out.println(Tabla);
+            this.Gramatica = total;
 
 
         } else {
@@ -312,5 +314,18 @@ public class TablaLL1 {
             System.out.println(c);
         }
 
+    }
+
+    public HashSet<String> getTerminales() {
+        return Terminales;
+    }
+
+
+    public HashSet<String> getNoTerminales() {
+        return NoTerminales;
+    }
+
+    public String getGramatica() {
+        return Gramatica;
     }
 }

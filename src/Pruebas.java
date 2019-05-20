@@ -1,10 +1,9 @@
 import Clases.*;
-import Clases.AnalizadorSintactico.AritmeticaBasica;
-import Clases.AnalizadorSintactico.Calculadora;
-import Clases.AnalizadorSintactico.ExpresionesRegulares;
-import Clases.AnalizadorSintactico.GramaticaDeGramaticas;
+import LR.Grammar;
+import LR.LR1;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Pruebas {
@@ -29,13 +28,94 @@ public class Pruebas {
         f15 = new AFN();
         f16 = new AFN();
 
+        /*
+
+        //PROBANDO LR0
+        /*----------ANÁLISIS PARA UNA GRAMÁTICA----------------------
+        //AUTÓMATA PARA IDENTIFICACION DE UNA AGRAMÁTICA
+        LR.AFN a0 = new LR.AFN();
+        a0.createAFN("__SIMBOLO__");
+        a0.asignaToken(LR.Tokens.SIMBOLO);
+
+        LR.AFN a1 = new LR.AFN();
+        a1.createAFN("-");
+        LR.AFN a2 = new LR.AFN();
+        a2.createAFN(">");
+        a1.concatenacion(a2);
+        a1.asignaToken(LR.Tokens.FLECHA);
+
+        LR.AFN a3 = new LR.AFN();
+        a3.createAFN(";");
+        a3.asignaToken(LR.Tokens.PUNTO_COMA);
+
+        LR.AFN a4= new LR.AFN();
+        a4.createAFN("|");
+        a4.asignaToken(LR.Tokens.OR);
+
+        LR.AFN a5 = new LR.AFN();
+        a5.createAFN("__SIMBOLO__");
+        LR.AFN a6 = new LR.AFN();
+        a6.createAFN("'");
+        a5.concatenacion(a6);
+        a5.asignaToken(LR.Tokens.SIMBOLO);
+
+        LR.AFN a7 = new LR.AFN();
+        a7.createAFN("Ɛ");
+        a7.asignaToken(LR.Tokens.SIMBOLO);
+
+        //Array de automatas que crearan el AFN especial
+        ArrayList<LR.AFN> automatas = new ArrayList<>();
+        automatas.add(a0);
+        automatas.add(a1);
+        automatas.add(a3);
+        automatas.add(a4);
+        automatas.add(a5);
+        automatas.add(a7);
+
+        //Un afn especial es un AFN con un estado inicicial con transicion al los edos iniciales de un conjunto de automatas
+        LR.AFN special1 = new LR.AFN();
+        special1 = special1.makeAFNSpecial(automatas);
+
+        //Objeto AFD
+        LR.AFD D = special1.convertToAFD();
+        D.printAFD(); //Imprime la tabla e transiciones resultante de la conversion del AFN a AFD
+
+        String grammar = ""
+                + "E->E+T|E-T|T;"
+                + "T->T*P|T/P|P;"
+                + "P->P^F|F;"
+                + "F->(E)|n;";
+        //Símbolos terminales de la gramática
+        HashSet<String> vt = new HashSet<>();
+        vt.add("+");
+        vt.add("-");
+        vt.add("*");
+        vt.add("^");
+        vt.add("(");
+        vt.add(")");
+        vt.add("n");
+        vt.add("/");
+
+        //Símbolos no terminales de la gramática
+        HashSet<String> vn = new HashSet<>();
+        vn.add("E");
+        vn.add("T");
+        vn.add("F");
+        vn.add("P");
+
+        //G es un obj de la clase Grammar que recive sus reglas gramticales en un string
+        //Y sus symbolos termianles y no terminales
+        //su mapa  de reglas rm RulesMap se fromará en el descenso recursivo del análisis sintáctico
+        Grammar G = new Grammar(vt,vn,grammar);
+        G.LexicAnalize(D); //Analiza lexicamente la gramtica proporcionaada con su AFD asociado
+        G.SintaxAnalize(); //Analiza sintácticamente la gramática prorporcionada
+
+         */
         //PROBANDO LL1
         try {
-
             String nombreArchivo = "Gramatica1.txt";
-            TablaLL1 LL1 = new TablaLL1(nombreArchivo);
+            LL1 LL1 = new LL1(nombreArchivo);
             LL1.ConstruirTabla();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

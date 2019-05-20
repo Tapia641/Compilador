@@ -1,4 +1,4 @@
-package Clases;
+package LR;
 
 public class Nodo {
     private boolean isTerminal;
