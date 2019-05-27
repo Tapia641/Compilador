@@ -6,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Aplicacion extends Application {
+public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../Principal/principal.fxml"));
-        primaryStage.setTitle("COMPILADOR ESCOM");
+        Parent root = FXMLLoader.load(getClass().getResource("PrincipalFXML.fxml"));
+        primaryStage.setTitle("COMPILADOR-ESCOM");
         primaryStage.setScene(new Scene(root, 1200, 900));
         //primaryStage.setFullScreen(true);
         primaryStage.show();
