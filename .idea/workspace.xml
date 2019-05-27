@@ -2,49 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf0a003-fb8d-4e0b-85b9-08cbd4ac6a6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Clases/LR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clases/LR0AUX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/gramatica.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/gramatica2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/gramatica3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/inicio.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/auxiliares.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/lalr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/lr_cero.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/lr_uno.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/Aplicacion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/Controlador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/principal.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/unir.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Pruebas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Pruebas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/LR0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujar/automata.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/AFD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/AFN.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Estado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/FirFoll.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Grammar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/LR0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/LR0Table.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/LR1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/LR1Table.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/LRTools.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Lexico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Nodo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/RulesMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/SintaxGramaticExpresion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Token.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Tokens.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/Transicion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/sintaxAnalyze.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal/Aplicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal/principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal/unir.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pruebas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pruebas.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="406" column="27" selection-start-line="406" selection-start-column="27" selection-end-line="406" selection-end-column="27" />
+            <state relative-caret-position="355">
+              <caret line="375" column="9" lean-forward="true" selection-start-line="375" selection-start-column="9" selection-end-line="375" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onUnirAFNButtonClicked#0;class#ControladorPrincipal#0" />
@@ -251,6 +211,12 @@
             </path>
             <path>
               <item name="Compilador" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compilador" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Principal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compilador" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -374,13 +340,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548821665112</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Concatenacion terminada">
-      <created>1549428847763</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1549428847763</updated>
     </task>
     <task id="LOCAL-00017" summary="Probando cerradura epsilon">
       <created>1549511954839</created>
@@ -718,7 +677,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558381644659</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="LR agregado">
+      <created>1558936680391</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1558936680391</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView">
@@ -732,16 +698,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18456376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18456376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32719547" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23229462" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28470254" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.562323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -783,7 +748,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Creando analizador" />
     <MESSAGE value="Tabla ya con tokens" />
     <MESSAGE value="Tokens establecidos" />
     <MESSAGE value="Iniciando con el Analizador Lexico" />
@@ -808,7 +772,8 @@
     <MESSAGE value="AS: GG se empieza a crear la tabla LL1" />
     <MESSAGE value="LL1 Terminado" />
     <MESSAGE value="LR0: Creando funciones esenciales" />
-    <option name="LAST_COMMIT_MESSAGE" value="LR0: Creando funciones esenciales" />
+    <MESSAGE value="LR agregado" />
+    <option name="LAST_COMMIT_MESSAGE" value="LR agregado" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1161,8 +1126,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="406" column="27" selection-start-line="406" selection-start-column="27" selection-end-line="406" selection-end-column="27" />
+        <state relative-caret-position="355">
+          <caret line="375" column="9" lean-forward="true" selection-start-line="375" selection-start-column="9" selection-end-line="375" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onUnirAFNButtonClicked#0;class#ControladorPrincipal#0" />
