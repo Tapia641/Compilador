@@ -90,8 +90,8 @@ class LR_UNO(LR_CERO):
         self.tabla = [["err"] * self.num_columnas for i in range(self.num_filas)]
 
     def construir_tabla(self):
-        print('PRODUCCIONES:')
-        self.imprimir_gramatica()
+        #print('PRODUCCIONES:')
+        #self.imprimir_gramatica()
         for I in self.conjuntos:
             for A, valor in self.no_terminales.items():
                 temp = self.mover(I.conjunto, A)
@@ -121,4 +121,4 @@ class LR_UNO(LR_CERO):
                         i = I.numero
                         j = len(self.no_terminales) + self.terminales.get('$') - 1
                         self.agregar_elemento(i, j, 'ACC')
-        self.imprimir_tabla("Tabla LR(1):")
+        self.imprimir_tabla("")

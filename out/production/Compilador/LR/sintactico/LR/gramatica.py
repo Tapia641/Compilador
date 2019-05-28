@@ -1,6 +1,6 @@
 import re
 import string
-
+import os
 
 class Gramatica:
     def __init__(self, archivo):
@@ -13,6 +13,9 @@ class Gramatica:
         self.extendido = None
 
     def leer_archivo(self):
+        #print(os.path.abspath("src/LR/"),"\\",self.nombre_archivo)
+        #name = "src/LR/" + self.nombre_archivo
+        #archivo = open(os.path.abspath(name),'r')
         archivo = open(self.nombre_archivo, 'r')
         primera = 0
         j = 1

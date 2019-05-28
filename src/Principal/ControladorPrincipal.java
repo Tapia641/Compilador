@@ -3,38 +3,36 @@ package Principal;
 import Clases.AFD;
 import Clases.AFN;
 import Clases.LR;
-import com.jfoenix.controls.JFXTextArea;
 import Dibujar.Draw;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import javax.swing.*;
 
 public class ControladorPrincipal {
 
     @FXML
-    private JFXTextArea JFXTextAreaTabla = null;
     private HashSet<AFN> ConjuntoAFN = new HashSet<>();
-    private VBox pnl_scroll;
 
     @FXML
     private ImageView ImageViewGrafo = new ImageView();
+
+    @FXML
+    private TableView<String> MiTabla = new TableView<>();
 
     @FXML
     private void onCrearAFNButtonClicked(MouseEvent event) {
@@ -139,7 +137,7 @@ public class ControladorPrincipal {
 
                         /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                         ImageViewGrafo.setImage(image);
-                        ImageViewGrafo.setFitWidth(200);
+                        ImageViewGrafo.setFitWidth(500);
                         ImageViewGrafo.setPreserveRatio(true);
                         ImageViewGrafo.setSmooth(true);
                         ImageViewGrafo.setCache(true);
@@ -186,7 +184,7 @@ public class ControladorPrincipal {
 
                         /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                         ImageViewGrafo.setImage(image);
-                        ImageViewGrafo.setFitWidth(200);
+                        ImageViewGrafo.setFitWidth(500);
                         ImageViewGrafo.setPreserveRatio(true);
                         ImageViewGrafo.setSmooth(true);
                         ImageViewGrafo.setCache(true);
@@ -232,7 +230,7 @@ public class ControladorPrincipal {
 
                         /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                         ImageViewGrafo.setImage(image);
-                        ImageViewGrafo.setFitWidth(200);
+                        ImageViewGrafo.setFitWidth(500);
                         ImageViewGrafo.setPreserveRatio(true);
                         ImageViewGrafo.setSmooth(true);
                         ImageViewGrafo.setCache(true);
@@ -277,7 +275,7 @@ public class ControladorPrincipal {
 
                         /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                         ImageViewGrafo.setImage(image);
-                        ImageViewGrafo.setFitWidth(200);
+                        ImageViewGrafo.setFitWidth(500);
                         ImageViewGrafo.setPreserveRatio(true);
                         ImageViewGrafo.setSmooth(true);
                         ImageViewGrafo.setCache(true);
@@ -344,7 +342,7 @@ public class ControladorPrincipal {
 
                         /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
                         ImageViewGrafo.setImage(image);
-                        ImageViewGrafo.setFitWidth(200);
+                        ImageViewGrafo.setFitWidth(500);
                         ImageViewGrafo.setPreserveRatio(true);
                         ImageViewGrafo.setSmooth(true);
                         ImageViewGrafo.setCache(true);
@@ -403,9 +401,75 @@ public class ControladorPrincipal {
 
     @FXML
     public void onAnalizadorLRButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
-        LR L = new LR();
-        L.EjecutarPython();
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Abrir Archivo");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
+        File file = chooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            LR L = new LR();
+            //0 para LALR
+            //1 LR0
+            //2 LR1
+            L.EjecutarPython(file.getAbsolutePath(), "0");
+
+            Vector<String> Tabla = L.getTabla();
+            Tabla.remove(0);
+
+            String[] aux = Tabla.get(0).split("(?=\\s)");
+            for (int i = 0; i < aux.length; i++) {
+                TableColumn<String,String> col = new TableColumn(aux[i]);
+                //col.setCellValueFactory(new PropertyValueFactory<>(aux[i]));
+                col.setCellValueFactory((x -> new SimpleObjectProperty<>("Just String")));
+                col.setMinWidth(100);
+                MiTabla.getColumns().addAll(col);
+            }
+
+            // add data
+            LlenarDatos(Tabla);
+            /*
+            for (int i = 1; i < Tabla.size(); i++) {
+                String[] aux2 = Tabla.get(i).split("(?=\\s)");
+
+                for (int j = 0; j < aux2.length; j++) {
+                    System.err.println(aux2[j]);
+                    MiTabla.getItems().addAll(aux2[j]);
+                }
+            }*/
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
+    @FXML
+    public void onImportarAutómataButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("OUT Files", "*.out"));
+        File file = chooser.showOpenDialog(new Stage());
 
+        if (file != null) {
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void LlenarDatos(Vector<String> V) {
+        ObservableList data = FXCollections.observableArrayList();
+        for (int j = 1; j < V.size(); j++) {
+            String[] aux = V.get(j).split("(?=\\s)");
+            ObservableList<String> row = FXCollections.observableArrayList();
+            for (int i = 0; i < aux.length; i++) {
+                row.add(aux[i]);
+            }
+            data.add(row);
+        }
+        MiTabla.setItems(data);
+    }
 }

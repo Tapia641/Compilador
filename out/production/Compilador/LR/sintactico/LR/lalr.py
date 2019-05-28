@@ -112,15 +112,15 @@ class LALR(LR_UNO):
         self.tabla = [["err"] * self.num_columnas for i in range(self.num_filas)]
 
     def construir_tabla(self):
-        print('PRODUCCIONES:')
-        self.imprimir_gramatica()
+        #print('PRODUCCIONES:')
+        #self.imprimir_gramatica()
         for I in self.conjuntos:
             for A, valor in self.no_terminales.items():
                 temp = self.mover(I.conjunto, A)
                 num = self.ya_existe(self.conjuntos, temp)
                 if num:
                     i = I.numero
-                    j = valor-1
+                    j = valor - 1
                     self.agregar_elemento(i, j, num)
             for elemento in I.conjunto:
                 if elemento.tipo == self.TIPO_A:
@@ -128,21 +128,21 @@ class LALR(LR_UNO):
                     num = self.ya_existe(self.conjuntos, temp)
                     if num:
                         i = I.numero
-                        j = len(self.no_terminales)+self.terminales.get(elemento.der[elemento.punto])-1
-                        self.agregar_elemento(i, j, "d"+str(num))
+                        j = len(self.no_terminales) + self.terminales.get(elemento.der[elemento.punto]) - 1
+                        self.agregar_elemento(i, j, "d" + str(num))
 
                 if elemento.tipo == self.TIPO_B:
                     if elemento.izq != self.extendido:
                         llave = elemento.izq + '->' + elemento.der
                         r = self.gramatica_id.get(llave)
                         i = I.numero
-                        j = len(self.no_terminales)+self.terminales.get(elemento.terminal)-1
+                        j = len(self.no_terminales) + self.terminales.get(elemento.terminal) - 1
                         self.agregar_elemento(i, j, "r" + str(r))
                     else:
                         i = I.numero
-                        j = len(self.no_terminales)+self.terminales.get('$')-1
+                        j = len(self.no_terminales) + self.terminales.get('$') - 1
                         self.agregar_elemento(i, j, 'ACC')
-        self.imprimir_tabla("Tabla LALR:")
+        self.imprimir_tabla("")
 
     def ya_existe(self, lista, kernel):
         aux = set()

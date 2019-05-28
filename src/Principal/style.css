@@ -1,0 +1,18 @@
+.button {
+-fx-background-radius: 12;
+-jfx-button-type: RAISED;
+-fx-background-color: #1f3c88;
+-fx-text-fill: white;
+}
+
+.backgroundPaneLadoIzquierdo{
+    -fx-background-color: #dae1e7;
+}
+
+.backgroundPaneCentro{
+    -fx-background-color: #ffff;
+}
+
+.backgroundPaneSuperior{
+    -fx-background-color: linear-gradient(to left,#448AFF,#303F9F);
+}

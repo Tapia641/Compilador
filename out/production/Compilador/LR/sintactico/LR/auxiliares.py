@@ -100,7 +100,7 @@ class Auxiliares(Gramatica):
         claves = list()
         for clave, valor in self.gramatica.items():
             for v in valor.get("producciones"):
-                if N == v[len(v)-1]:
+                if N == v[len(v) - 1]:
                     claves.append(clave)
         return claves
 
@@ -109,8 +109,8 @@ class Auxiliares(Gramatica):
         for clave, valor in self.gramatica.items():
             for v in valor.get("producciones"):
                 for m in re.finditer(N, v):
-                    if m.start() != len(v)-1:
-                        simbolos.append({"clave": clave, "cadena": v[m.start()+1:]})
+                    if m.start() != len(v) - 1:
+                        simbolos.append({"clave": clave, "cadena": v[m.start() + 1:]})
         return simbolos
 
     def obtener_producciones(self, N):

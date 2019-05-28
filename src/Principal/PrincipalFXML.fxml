@@ -7,10 +7,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -19,162 +19,124 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="766.0" prefWidth="1293.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Principal.ControladorPrincipal">
+<VBox prefHeight="845.0" prefWidth="1293.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Principal.ControladorPrincipal">
     <children>
-        <MenuBar VBox.vgrow="NEVER">
+      <Pane prefHeight="114.0" prefWidth="1293.0" styleClass="backgroundPaneSuperior" stylesheets="@style.css">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="167.0" layoutX="-4.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/ESCOM.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="134.0" layoutY="28.0" text="Escuela Superior de Cómputo" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+        <MenuBar prefHeight="0.0" prefWidth="1293.0" VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="Archivo">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Nuevo"/>
-                        <MenuItem mnemonicParsing="false" text="Importar Autómata"/>
-                        <MenuItem mnemonicParsing="false" text="Exportar Autómata"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" text="Importar Gramática"/>
-                        <MenuItem mnemonicParsing="false" text="Exportar Gramática"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" text="Salir"/>
+                        <MenuItem mnemonicParsing="false" text="Nuevo" />
+                        <MenuItem mnemonicParsing="false" text="Importar Autómata" />
+                        <MenuItem mnemonicParsing="false" text="Exportar Autómata" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Importar Gramática" />
+                        <MenuItem mnemonicParsing="false" text="Exportar Gramática" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Salir" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Opciones">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Opción 1"/>
-                        <MenuItem mnemonicParsing="false" text="Opción 2"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" text="Mostrar Todo"/>
-                        <MenuItem mnemonicParsing="false" text="Lista de autómatas"/>
+                        <MenuItem mnemonicParsing="false" text="Opción 1" />
+                        <MenuItem mnemonicParsing="false" text="Opción 2" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Mostrar Todo" />
+                        <MenuItem mnemonicParsing="false" text="Lista de autómatas" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Ayuda">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Acerca del proyecto"/>
+                        <MenuItem mnemonicParsing="false" text="Acerca del proyecto" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <SplitPane dividerPositions="0.2505567928730512, 0.48997772828507796" focusTraversable="true" prefHeight="-1.0"
-                   prefWidth="-1.0" VBox.vgrow="ALWAYS">
+        <SplitPane dividerPositions="0.16731216111541442, 0.6142525174283501" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <items>
                 <AnchorPane style="-fx-background-color: ffff;">
                     <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0"
-                               style="&#10;" text="AFN" textAlignment="CENTER" textFill="#757575" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="AFN" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
-                                <Font size="18.0" fx:id="x1"/>
+                                <Font size="18.0" fx:id="x1" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN" buttonType="RAISED" layoutX="24.0" layoutY="48.0"
-                                   onMouseClicked="#onCrearAFNButtonClicked" prefHeight="31.0" prefWidth="177.0"
-                                   style="-fx-background-color: #607D8B;" text="Crear" textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN1" buttonType="RAISED" layoutX="24.0" layoutY="87.0"
-                                   onMouseClicked="#onUnirAFNButtonClicked" prefHeight="31.0" prefWidth="177.0"
-                                   style="-fx-background-color: #607D8B;" text="Unir" textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN11" buttonType="RAISED" layoutX="24.0" layoutY="126.0"
-                                   onMouseClicked="#onConcatenarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0"
-                                   style="-fx-background-color: #607D8B;" text="Concatenar" textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN111" buttonType="RAISED" layoutX="23.0" layoutY="165.0"
-                                   onMouseClicked="#onCerraduraPositivaAFNButtonClicked" prefHeight="31.0"
-                                   prefWidth="177.0" style="-fx-background-color: #607D8B;" text="Cerradura +"
-                                   textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN1111" buttonType="RAISED" layoutX="23.0" layoutY="204.0"
-                                   onMouseClicked="#onCerraduraEstrellaAFNButtonClicked" prefHeight="31.0"
-                                   prefWidth="177.0" style="-fx-background-color: #607D8B;" text="Cerradura *"
-                                   textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN11111" buttonType="RAISED" layoutX="22.0" layoutY="241.0"
-                                   onMouseClicked="#onCerraduraKleenAFNButtonClicked" prefHeight="31.0"
-                                   prefWidth="177.0" style="-fx-background-color: #607D8B;" text="Cerradura Kleen"
-                                   textFill="WHITE"/>
-                        <Label alignment="CENTER" layoutX="24.0" layoutY="282.0" minWidth="60.0" prefWidth="-1.0"
-                               style="&#10;" text="AFD" textAlignment="CENTER" textFill="#757575" wrapText="false">
+                  <Pane prefHeight="710.0" prefWidth="441.0" styleClass="backgroundPaneLadoIzquierdo" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <JFXButton fx:id="JFXButtonCrearAFN" buttonType="RAISED" layoutX="24.0" layoutY="48.0" onMouseClicked="#onCrearAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Crear" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN1" buttonType="RAISED" layoutX="24.0" layoutY="87.0" onMouseClicked="#onUnirAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Unir" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN11" buttonType="RAISED" layoutX="24.0" layoutY="126.0" onMouseClicked="#onConcatenarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Concatenar" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN111" buttonType="RAISED" layoutX="23.0" layoutY="165.0" onMouseClicked="#onCerraduraPositivaAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Cerradura +" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN1111" buttonType="RAISED" layoutX="23.0" layoutY="204.0" onMouseClicked="#onCerraduraEstrellaAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Cerradura *" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN11111" buttonType="RAISED" layoutX="22.0" layoutY="241.0" onMouseClicked="#onCerraduraKleenAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Cerradura Kleen" textFill="WHITE" />
+                        <Label alignment="CENTER" layoutX="24.0" layoutY="282.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="AFD" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
-                                <Font size="18.0" fx:id="x11"/>
+                                <Font size="18.0" fx:id="x11" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN111111" buttonType="RAISED" layoutX="24.0" layoutY="309.0"
-                                   onMouseClicked="#onExportarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0"
-                                   style="-fx-background-color: #607D8B;" text="Convertir" textFill="WHITE"/>
-                        <Label alignment="CENTER" layoutX="24.0" layoutY="355.0" minWidth="60.0" prefWidth="-1.0"
-                               style="&#10;" text="Analizador Léxico" textAlignment="CENTER" textFill="#757575"
-                               wrapText="false">
+                        <JFXButton fx:id="JFXButtonCrearAFN111111" buttonType="RAISED" layoutX="24.0" layoutY="309.0" onMouseClicked="#onExportarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Convertir" textFill="WHITE" />
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="380.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Analizador Léxico" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
-                                <Font size="18.0" fx:id="x111"/>
+                                <Font size="18.0" fx:id="x111" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN1111111" buttonType="RAISED" layoutX="24.0" layoutY="382.0"
-                                   prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #607D8B;"
-                                   text="Importar" textFill="WHITE"/>
-                        <JFXTextField layoutX="27.0" layoutY="425.0" prefHeight="31.0" prefWidth="273.0"
-                                      text="Ingresa la cadena a evaluar"/>
-                        <Label alignment="CENTER" layoutX="29.0" layoutY="502.0" minWidth="60.0" prefWidth="-1.0"
-                               style="&#10;" text="Analizador Sintáctico" textAlignment="CENTER" textFill="#757575"
-                               wrapText="false">
+                        <JFXButton fx:id="JFXButtonCrearAFN1111111" buttonType="RAISED" layoutX="27.0" layoutY="407.0" onMouseClicked="#onImportarAutómataButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Importar" textFill="WHITE" />
+                        <JFXTextField layoutX="26.0" layoutY="450.0" prefHeight="31.0" prefWidth="177.0" promptText="Ingresa una cadena" />
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="553.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Analizador Sintáctico" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
-                                <Font size="18.0" fx:id="x1111"/>
+                                <Font size="18.0" fx:id="x1111" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN11111111" buttonType="RAISED" layoutX="24.0" layoutY="529.0"
-                                   onMouseClicked="#onAnalizadorLRButtonClicked" prefHeight="31.0" prefWidth="177.0"
-                                   style="-fx-background-color: #607D8B;" text="Importar" textFill="WHITE"/>
-                        <JFXTextField layoutX="27.0" layoutY="576.0" prefHeight="31.0" prefWidth="273.0"
-                                      text="Ingresa la cadena a evaluar"/>
+                        <JFXButton fx:id="JFXButtonCrearAFN11111111" buttonType="RAISED" layoutX="25.0" layoutY="588.0" onMouseClicked="#onAnalizadorLRButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Importar" textFill="WHITE" />
+                        <JFXTextField layoutX="29.0" layoutY="626.0" prefHeight="31.0" prefWidth="176.0" promptText="Ingresa una cadena" />
+                  <JFXButton fx:id="JFXButtonCrearAFN11111112" buttonType="RAISED" layoutX="24.0" layoutY="496.0" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #e14594;" stylesheets="@style.css" text="Analizar" textFill="WHITE" />
+                  <JFXButton fx:id="JFXButtonCrearAFN111111121" buttonType="RAISED" layoutX="23.0" layoutY="668.0" prefHeight="31.0" prefWidth="177.0" ripplerFill="BLACK" style="-fx-background-color: #e14594;" stylesheets="@style.css" text="Analizar" textFill="WHITE" />
                     </children>
                 </AnchorPane>
-                <ScrollPane prefHeight="544.0" prefWidth="194.0" style="-fx-background-color: ffff;">
-                    <content>
-                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="710.0" prefWidth="301.0"
-                                    style="-fx-background-color: ffff;">
-                            <children>
-                                <ImageView id="ImageViewGrafo" fx:id="ImageViewGrafo" fitHeight="486.0" fitWidth="207.0"
-                                           layoutY="41.0" pickOnBounds="true" smooth="false"
-                                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0"/>
-                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0"
-                                       style="-fx-background-color: ffff;" text="Autómata" textAlignment="CENTER"
-                                       textFill="#757575" wrapText="false"/>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </ScrollPane>
-                <AnchorPane prefHeight="544.0" prefWidth="502.0" style="-fx-background-color: ffff;">
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="backgroundPaneCentro" stylesheets="@style.css">
+               <children>
+                          <ImageView id="ImageViewGrafo" fx:id="ImageViewGrafo" fitHeight="657.0" fitWidth="569.0" pickOnBounds="true" smooth="false" />
+               </children>
+            </Pane>
+                <AnchorPane prefHeight="699.0" prefWidth="300.0" style="-fx-background-color: ffff;">
                     <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="112.0" layoutY="14.0" style="&#10;" text="Tabla "
-                               textAlignment="CENTER" textFill="#757575" wrapText="false"/>
-                        <TableView layoutX="-1.0" layoutY="53.0" prefHeight="491.0" prefWidth="469.0"
-                                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN12" buttonType="RAISED" layoutX="181.0" layoutY="12.0"
-                                   prefHeight="31.0" prefWidth="60.0" style="-fx-background-color: #607D8B;" text="LL1"
-                                   textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN121" buttonType="RAISED" layoutX="253.0" layoutY="12.0"
-                                   prefHeight="31.0" prefWidth="60.0" style="-fx-background-color: #607D8B;" text="LR0"
-                                   textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN1211" buttonType="RAISED" layoutX="324.0" layoutY="12.0"
-                                   prefHeight="31.0" prefWidth="60.0" style="-fx-background-color: #607D8B;" text="LR1"
-                                   textFill="WHITE"/>
-                        <JFXButton fx:id="JFXButtonCrearAFN12111" buttonType="RAISED" layoutX="394.0" layoutY="12.0"
-                                   prefHeight="31.0" prefWidth="60.0" style="-fx-background-color: #607D8B;" text="LALR"
-                                   textFill="WHITE"/>
+                        <Label alignment="CENTER" font="$x1" layoutX="74.0" layoutY="14.0" style="&#10;" text="Tabla " textAlignment="CENTER" textFill="#757575" wrapText="false" />
+                        <TableView fx:id="MiTabla" layoutX="103.0" layoutY="53.0" prefHeight="491.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
+                        <JFXButton fx:id="JFXButtonCrearAFN12" buttonType="RAISED" layoutX="148.0" layoutY="12.0" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LL1" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN121" buttonType="RAISED" layoutX="223.0" layoutY="12.0" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LR0" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN1211" buttonType="RAISED" layoutX="299.0" layoutY="12.0" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LR1" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN12111" buttonType="RAISED" layoutX="372.0" layoutY="12.0" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LALR" textFill="WHITE" />
                     </children>
                 </AnchorPane>
             </items>
         </SplitPane>
         <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
             <children>
-                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Escuela Superior de Cómputo"
-                       HBox.hgrow="ALWAYS">
+                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Escuela Superior de Cómputo" HBox.hgrow="ALWAYS">
                     <font>
-                        <Font size="11.0" fx:id="x3"/>
+                        <Font size="11.0" fx:id="x3" />
                     </font>
                     <textFill>
-                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4"/>
+                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
                     </textFill>
                 </Label>
-                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS"/>
-                <Label font="$x3" maxWidth="-1.0" text="Autor: Luis Enrique Hernández Tapia" textFill="$x4"
-                       HBox.hgrow="NEVER"/>
+                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+                <Label font="$x3" maxWidth="-1.0" text="Autor: Luis Enrique Hernández Tapia" textFill="$x4" HBox.hgrow="NEVER" />
             </children>
             <padding>
-                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
             </padding>
         </HBox>
     </children>

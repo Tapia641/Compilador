@@ -11,8 +11,8 @@ public class Principal extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("PrincipalFXML.fxml"));
-        primaryStage.setTitle("COMPILADOR-ESCOM");
-        primaryStage.setScene(new Scene(root, 1200, 900));
+        primaryStage.setTitle("ESCOM");
+        primaryStage.setScene(new Scene(root, 1900, 1000));
         //primaryStage.setFullScreen(true);
         primaryStage.show();
     }

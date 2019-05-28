@@ -132,8 +132,8 @@ class LR_CERO(Auxiliares, Tipo):
         return False
 
     def construir_tabla(self):
-        print('PRODUCCIONES:')
-        self.imprimir_gramatica()
+        #print('PRODUCCIONES:')
+        #self.imprimir_gramatica()
         for I in self.conjuntos:
             for X, valor in self.no_terminales.items():
                 temp = self.mover(I.conjunto, X)
@@ -163,7 +163,7 @@ class LR_CERO(Auxiliares, Tipo):
                         j = len(self.no_terminales) + self.terminales.get("$") - 1
                         self.agregar_elemento(i, j, "ACE")
 
-        self.imprimir_tabla("Tabla LR(0):")
+        self.imprimir_tabla("")
 
     def agregar_elemento(self, i, j, num):
         if self.tabla[i][j] == "err":

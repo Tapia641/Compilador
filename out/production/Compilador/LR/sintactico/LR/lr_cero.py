@@ -79,7 +79,7 @@ class LR_CERO(Auxiliares, Tipo):
         conjunto = set()
         for i in I:
             if i.punto < len(i.der) and i.der[i.punto] == X:
-                ele = Elemento(i.izq, i.der, i.punto+1)
+                ele = Elemento(i.izq, i.der, i.punto + 1)
                 ele.set_tipo(self.terminales)
                 conjunto.add(ele)
         return frozenset(conjunto)
@@ -132,22 +132,22 @@ class LR_CERO(Auxiliares, Tipo):
         return False
 
     def construir_tabla(self):
-        print('PRODUCCIONES:')
-        self.imprimir_gramatica()
+        #print('PRODUCCIONES:')
+        #self.imprimir_gramatica()
         for I in self.conjuntos:
             for X, valor in self.no_terminales.items():
                 temp = self.mover(I.conjunto, X)
                 num = self.ya_existe(self.conjuntos, temp)
                 if num:
-                    self.agregar_elemento(I.numero, valor-1, num)
+                    self.agregar_elemento(I.numero, valor - 1, num)
             for elemento in I.conjunto:
                 if elemento.tipo == self.TIPO_A:
                     temp = self.mover(I.conjunto, elemento.der[elemento.punto])
                     num = self.ya_existe(self.conjuntos, temp)
                     if num:
                         i = I.numero
-                        j = len(self.no_terminales) + self.terminales.get(elemento.der[elemento.punto])-1
-                        self.agregar_elemento(i, j, "d"+str(num))
+                        j = len(self.no_terminales) + self.terminales.get(elemento.der[elemento.punto]) - 1
+                        self.agregar_elemento(i, j, "d" + str(num))
 
                 if elemento.tipo == self.TIPO_B:
                     if elemento.izq != self.extendido:
@@ -156,14 +156,14 @@ class LR_CERO(Auxiliares, Tipo):
                             llave = elemento.izq + '->' + elemento.der
                             r = self.gramatica_id.get(llave)
                             i = I.numero
-                            j = len(self.no_terminales) + self.terminales.get(sig)-1
+                            j = len(self.no_terminales) + self.terminales.get(sig) - 1
                             self.agregar_elemento(i, j, "r" + str(r))
                     else:
                         i = I.numero
-                        j = len(self.no_terminales)+self.terminales.get("$")-1
+                        j = len(self.no_terminales) + self.terminales.get("$") - 1
                         self.agregar_elemento(i, j, "ACE")
 
-        self.imprimir_tabla("Tabla LR(0):")
+        self.imprimir_tabla("")
 
     def agregar_elemento(self, i, j, num):
         if self.tabla[i][j] == "err":
