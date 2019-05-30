@@ -1,9 +1,10 @@
 package Principal;
 
-import Clases.AFD;
-import Clases.AFN;
-import Clases.AnalizadorLexico;
-import Clases.LR;
+import Clases.*;
+import Clases.AnalizadorSintactico.AritmeticaBasica;
+import Clases.AnalizadorSintactico.Calculadora;
+import Clases.AnalizadorSintactico.ExpresionesRegulares;
+import Clases.AnalizadorSintactico.GramaticaDeGramaticas;
 import Dibujar.Draw;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -41,7 +42,16 @@ public class ControladorPrincipal {
     private ImageView ImageViewGrafo = new ImageView();
 
     @FXML
-    private TableView<ObservableList<String>> MiTabla = new TableView<>();
+    private TableView<ObservableList<String>> TablaLL1 = new TableView<>();
+
+    @FXML
+    private TableView<ObservableList<String>> TablaLR0 = new TableView<>();
+
+    @FXML
+    private TableView<ObservableList<String>> TablaLR1 = new TableView<>();
+
+    @FXML
+    private TableView<ObservableList<String>> TablaLALR = new TableView<>();
 
     @FXML
     private JFXTextField CadenaLexico;
@@ -424,6 +434,53 @@ public class ControladorPrincipal {
 
     /*ÁREA LOS ANALIZADORES*////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
+    public void onLL1ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Abrir Archivo");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
+        File file = chooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            /*LA LIMPIAMOS*/
+            TablaLL1.getColumns().clear();
+            TablaLL1.getItems().clear();
+
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+
+            LL1 L = new LL1(file.getName());
+            L.ConstruirTabla();
+
+            Vector<Vector<String>> Tabla = L.getMatriz();
+
+            String[] aux = new String[Tabla.get(0).size()];
+            for (int i = 0; i < Tabla.get(0).size(); i++) {
+                aux[i]= Tabla.get(0).get(i);
+            }
+
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            dataGenerator.setLOREM(aux);
+
+            List<String> columnNames = dataGenerator.getNext(aux.length);
+
+            for (int i = 0; i < columnNames.size(); i++) {
+                final int finalIdx = i;
+                TableColumn<ObservableList<String>, String> column = new TableColumn<>(aux[i]);
+                column.setMinWidth(100);
+                column.setSortable(false);
+                column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
+                );
+                TablaLL1.getColumns().add(column);
+            }
+
+            CargarDatos(Tabla.get(1), TablaLL1);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @FXML
     public void onLR0ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Abrir Archivo");
@@ -433,8 +490,8 @@ public class ControladorPrincipal {
 
         if (file != null) {
             /*LA LIMPIAMOS*/
-            MiTabla.getColumns().clear();
-            MiTabla.getItems().clear();
+            TablaLR0.getColumns().clear();
+            TablaLR0.getItems().clear();
 
             JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
             LR L = new LR();
@@ -461,10 +518,10 @@ public class ControladorPrincipal {
                 column.setSortable(false);
                 column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
                 );
-                MiTabla.getColumns().add(column);
+                TablaLR0.getColumns().add(column);
             }
 
-            CargarDatos(Tabla);
+            CargarDatos(Tabla, TablaLR0);
 
 
         } else {
@@ -482,8 +539,8 @@ public class ControladorPrincipal {
 
         if (file != null) {
             /*LA LIMPIAMOS*/
-            MiTabla.getColumns().clear();
-            MiTabla.getItems().clear();
+            TablaLR1.getColumns().clear();
+            TablaLR1.getItems().clear();
 
             JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
             LR L = new LR();
@@ -510,10 +567,10 @@ public class ControladorPrincipal {
                 column.setSortable(false);
                 column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
                 );
-                MiTabla.getColumns().add(column);
+                TablaLR1.getColumns().add(column);
             }
 
-            CargarDatos(Tabla);
+            CargarDatos(Tabla, TablaLR1);
 
 
         } else {
@@ -531,8 +588,8 @@ public class ControladorPrincipal {
 
         if (file != null) {
             /*LA LIMPIAMOS*/
-            MiTabla.getColumns().clear();
-            MiTabla.getItems().clear();
+            TablaLALR.getColumns().clear();
+            TablaLALR.getItems().clear();
 
             JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
             LR L = new LR();
@@ -559,10 +616,10 @@ public class ControladorPrincipal {
                 column.setSortable(false);
                 column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
                 );
-                MiTabla.getColumns().add(column);
+                TablaLALR.getColumns().add(column);
             }
 
-            CargarDatos(Tabla);
+            CargarDatos(Tabla, TablaLALR);
 
 
         } else {
@@ -570,11 +627,11 @@ public class ControladorPrincipal {
         }
     }
 
-    public void CargarDatos(Vector<String> T){
+    public void CargarDatos(Vector<String> T, TableView Tipo){
         for (int i = 1; i < T.size(); i++) {
             TestDataGenerator dataGenerator = new TestDataGenerator();
             dataGenerator.setLOREM(T.get(i).split("(?=\\s)"));
-            MiTabla.getItems().add(
+            Tipo.getItems().add(
                     FXCollections.observableArrayList(
                             dataGenerator.getNext(T.size()-1)
                     )
@@ -616,6 +673,7 @@ public class ControladorPrincipal {
                 AnalizarLexicamente.Lexico(CadenaLexico.getText(), AFD_Importado.getMatriz());
                 Vector<Pair<String, Integer>> Resultado = AnalizarLexicamente.getTablaLexema();
 
+                /*MOSTRAMOS LOS TOKENS ASOCIADOS*/
                 System.err.println(Resultado);
 
             }else{
@@ -658,12 +716,27 @@ public class ControladorPrincipal {
         /*COMPARAMOS QUE HAYA UNA CADENA DE TEXTO INGRESADA*/
         if (!CadenaSintactico.getText().equals("")){
             if (AFD_Importado!=null){
+
                 /*PODEMOS TRABAJAR CON EL AUTÓMATA SELECCIONADO*/
                 AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
                 AnalizarLexicamente.Lexico(CadenaSintactico.getText(), AFD_Importado.getMatriz());
                 Vector<Pair<String, Integer>> Resultado = AnalizarLexicamente.getTablaLexema();
 
-                System.err.println(Resultado);
+                if (Nombre_Archivo.equals("AritmeticaBasica.out")){
+                    AritmeticaBasica AE = new AritmeticaBasica();
+                    AE.AnalizarSintacticamente(AnalizarLexicamente.getPila());
+                }else if (Nombre_Archivo.equals("Calculadora.out")){
+                    Calculadora C = new Calculadora();
+                    C.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
+                }else if (Nombre_Archivo.equals("ExpresionesRegulares.out")){
+                    ExpresionesRegulares ER = new ExpresionesRegulares();
+                    ER.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
+                }else if (Nombre_Archivo.equals("GramaticaDeGramaticas.out")){
+                    GramaticaDeGramaticas GG = new GramaticaDeGramaticas();
+                    GG.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
+                }else{
+                    System.err.println("No es ninguno previamente creado");
+                }
             }else{
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
                 JOptionPane.showMessageDialog(null,"No has importado un autómata", "Error",0);

@@ -87,7 +87,7 @@ class LR_UNO(LR_CERO):
         self.conjuntos = set(lista)
         self.num_columnas = len(self.terminales) + len(self.no_terminales)
         self.num_filas = indice
-        self.tabla = [["err"] * self.num_columnas for i in range(self.num_filas)]
+        self.tabla = [["Error"] * self.num_columnas for i in range(self.num_filas)]
 
     def construir_tabla(self):
         #print('PRODUCCIONES:')
@@ -120,5 +120,5 @@ class LR_UNO(LR_CERO):
                     else:
                         i = I.numero
                         j = len(self.no_terminales) + self.terminales.get('$') - 1
-                        self.agregar_elemento(i, j, 'ACC')
+                        self.agregar_elemento(i, j, 'ACEPTACION')
         self.imprimir_tabla("")

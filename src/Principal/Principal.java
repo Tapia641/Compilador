@@ -12,7 +12,9 @@ public class Principal extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("PrincipalFXML.fxml"));
         primaryStage.setTitle("ESCOM");
-        primaryStage.setScene(new Scene(root, 1900, 1000));
+        Scene primary = new Scene(root, 1910, 1000);
+        primary.getStylesheets().add(Principal.class.getResource("bootstrap2.css").toExternalForm());
+        primaryStage.setScene(primary);
         //primaryStage.setFullScreen(true);
         primaryStage.show();
     }

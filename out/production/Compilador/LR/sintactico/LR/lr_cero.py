@@ -119,7 +119,7 @@ class LR_CERO(Auxiliares, Tipo):
         self.conjuntos = set(lista)
         self.num_columnas = len(self.terminales) + len(self.no_terminales)
         self.num_filas = indice
-        self.tabla = [["err"] * self.num_columnas for i in range(self.num_filas)]
+        self.tabla = [["Error"] * self.num_columnas for i in range(self.num_filas)]
 
     def ya_existe(self, lista, kernel):
         aux = set()
@@ -161,12 +161,12 @@ class LR_CERO(Auxiliares, Tipo):
                     else:
                         i = I.numero
                         j = len(self.no_terminales) + self.terminales.get("$") - 1
-                        self.agregar_elemento(i, j, "ACE")
+                        self.agregar_elemento(i, j, "ACEPTACION")
 
         self.imprimir_tabla("")
 
     def agregar_elemento(self, i, j, num):
-        if self.tabla[i][j] == "err":
+        if self.tabla[i][j] == "Error":
             self.tabla[i][j] = set()
         self.tabla[i][j].add(num)
 

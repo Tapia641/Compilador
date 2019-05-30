@@ -22,6 +22,7 @@ public class LL1 {
     private static String[][] Memo;
     private HashSet<Vector<String>> Analizado;
     private String Gramatica;
+    private Vector<Vector<String>> Matriz;
 
     public LL1(String archivo) throws IOException {
 
@@ -43,7 +44,7 @@ public class LL1 {
         AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
         try {
             //IMPORTAMOS HASMAP DE GRAMATICA DE GRAMATICAS PREVIAMENTE REALIZADA
-            afd.LeerObject("GramaticaDeGramaticas");
+            afd.LeerObject("GramaticaDeGramaticas.out");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -197,7 +198,7 @@ public class LL1 {
     public void ConstruirTabla() {
 
         /*ELEMENTOS NECESARIOS PARA LA TABLA*/
-        Vector<Vector<String>> Matriz = new Vector<>();
+        Matriz = new Vector<>();
         Vector<String> AuxTerminales = new Vector<>(), AuxNoTerminales = new Vector<>();
         String[][] Matrix = new String[NoTerminales.size() + Terminales.size() + 1][Terminales.size() + 1];
 
@@ -314,6 +315,10 @@ public class LL1 {
             System.out.println(c);
         }
 
+    }
+
+    public Vector<Vector<String>> getMatriz(){
+        return Matriz;
     }
 
     public HashSet<String> getTerminales() {

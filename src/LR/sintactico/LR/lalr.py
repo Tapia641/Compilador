@@ -109,7 +109,7 @@ class LALR(LR_UNO):
             self.conjuntos.add(lista_conjuntos[j])
             j += 1
         self.num_filas = len(self.conjuntos)
-        self.tabla = [["err"] * self.num_columnas for i in range(self.num_filas)]
+        self.tabla = [["Error"] * self.num_columnas for i in range(self.num_filas)]
 
     def construir_tabla(self):
         #print('PRODUCCIONES:')
@@ -141,7 +141,7 @@ class LALR(LR_UNO):
                     else:
                         i = I.numero
                         j = len(self.no_terminales) + self.terminales.get('$') - 1
-                        self.agregar_elemento(i, j, 'ACC')
+                        self.agregar_elemento(i, j, 'ACEPTACION')
         self.imprimir_tabla("")
 
     def ya_existe(self, lista, kernel):

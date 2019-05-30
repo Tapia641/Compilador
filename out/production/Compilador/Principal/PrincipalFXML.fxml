@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -69,42 +71,47 @@
             <items>
                 <AnchorPane prefWidth="314.0" style="-fx-background-color: ffff;">
                     <children>
-                  <Pane layoutY="-49.0" prefHeight="798.0" prefWidth="328.0" styleClass="backgroundPaneLadoIzquierdo" stylesheets="@style.css" AnchorPane.bottomAnchor="-49.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-49.0">
+                  <Pane layoutY="-49.0" prefHeight="798.0" prefWidth="328.0" AnchorPane.bottomAnchor="-49.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-49.0">
                      <children>
                         <Label alignment="CENTER" layoutX="28.0" layoutY="11.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="AFN" textAlignment="CENTER" textFill="#757575" wrapText="false">
                            <font>
                               <Font size="18.0" fx:id="x112" />
                            </font>
                         </Label>
+                              <JFXButton fx:id="JFXButtonCrearAFN" buttonType="RAISED" layoutX="22.0" layoutY="81.0" onMouseClicked="#onCrearAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Crear" textFill="WHITE" />
+                              <JFXButton fx:id="JFXButtonCrearAFN1" buttonType="RAISED" layoutX="22.0" layoutY="122.0" onMouseClicked="#onUnirAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Unir" textFill="WHITE" />
+                              <JFXButton fx:id="JFXButtonCrearAFN11" buttonType="RAISED" layoutX="22.0" layoutY="162.0" onMouseClicked="#onConcatenarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Concatenar" textFill="WHITE" />
+                              <JFXButton fx:id="JFXButtonCrearAFN111" buttonType="RAISED" layoutX="22.0" layoutY="202.0" onMouseClicked="#onCerraduraPositivaAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Cerradura +" textFill="WHITE" />
                      </children></Pane>
-                        <JFXButton fx:id="JFXButtonCrearAFN" buttonType="RAISED" layoutX="24.0" layoutY="48.0" onMouseClicked="#onCrearAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Crear" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN1" buttonType="RAISED" layoutX="24.0" layoutY="87.0" onMouseClicked="#onUnirAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Unir" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN11" buttonType="RAISED" layoutX="24.0" layoutY="126.0" onMouseClicked="#onConcatenarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Concatenar" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN111" buttonType="RAISED" layoutX="23.0" layoutY="165.0" onMouseClicked="#onCerraduraPositivaAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Cerradura +" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN1111" buttonType="RAISED" layoutX="23.0" layoutY="204.0" onMouseClicked="#onCerraduraEstrellaAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Cerradura *" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN11111" buttonType="RAISED" layoutX="22.0" layoutY="241.0" onMouseClicked="#onCerraduraKleenAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Cerradura Kleen" textFill="WHITE" />
+                  <Label alignment="CENTER" layoutX="22.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="AFN" textAlignment="CENTER" textFill="#757575" wrapText="false">
+                     <font>
+                        <Font size="18.0" fx:id="x113" />
+                     </font>
+                  </Label>
+                        <JFXButton fx:id="JFXButtonCrearAFN1111" buttonType="RAISED" layoutX="23.0" layoutY="193.0" onMouseClicked="#onCerraduraEstrellaAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Cerradura *" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN11111" buttonType="RAISED" layoutX="22.0" layoutY="234.0" onMouseClicked="#onCerraduraKleenAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Cerradura Kleen" textFill="WHITE" />
                         <Label alignment="CENTER" layoutX="24.0" layoutY="282.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="AFD" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
                                 <Font size="18.0" fx:id="x11" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN111111" buttonType="RAISED" layoutX="24.0" layoutY="309.0" onMouseClicked="#onExportarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Convertir" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN111111" buttonType="RAISED" layoutX="24.0" layoutY="309.0" onMouseClicked="#onExportarAFNButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="danger" stylesheets="@bootstrap2.css" text="Convertir" textFill="WHITE" />
                         <Label alignment="CENTER" layoutX="28.0" layoutY="380.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Analizador Léxico" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
                                 <Font size="18.0" fx:id="x111" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN1111111" buttonType="RAISED" layoutX="27.0" layoutY="407.0" onMouseClicked="#onImportarLexicoButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Importar" textFill="WHITE" />
-                        <JFXTextField fx:id="CadenaLexico" layoutX="26.0" layoutY="450.0" prefHeight="31.0" prefWidth="177.0" promptText="Ingresa una cadena" />
+                        <JFXButton fx:id="JFXButtonCrearAFN1111111" buttonType="RAISED" layoutX="27.0" layoutY="407.0" onMouseClicked="#onImportarLexicoButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Importar" textFill="WHITE" />
+                        <JFXTextField fx:id="CadenaLexico" layoutX="26.0" layoutY="450.0" prefHeight="31.0" prefWidth="177.0" promptText="Ingresa una cadena" stylesheets="@bootstrap2.css" />
                         <Label alignment="CENTER" layoutX="28.0" layoutY="553.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Analizador Sintáctico" textAlignment="CENTER" textFill="#757575" wrapText="false">
                             <font>
                                 <Font size="18.0" fx:id="x1111" />
                             </font>
                         </Label>
-                        <JFXButton fx:id="JFXButtonCrearAFN11111111" buttonType="RAISED" layoutX="25.0" layoutY="588.0" onMouseClicked="#onImportarSintacticoButtonClicked" prefHeight="31.0" prefWidth="177.0" stylesheets="@style.css" text="Importar" textFill="WHITE" />
-                        <JFXTextField fx:id="CadenaSintactico" layoutX="29.0" layoutY="626.0" prefHeight="31.0" prefWidth="176.0" promptText="Ingresa una cadena" />
-                  <JFXButton fx:id="JFXButtonCrearAFN11111112" buttonType="RAISED" layoutX="24.0" layoutY="496.0" onMouseClicked="#onAnalizadorLexicoButtonClicked" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #e14594;" stylesheets="@style.css" text="Analizar" textFill="WHITE" />
-                  <JFXButton fx:id="JFXButtonCrearAFN111111121" buttonType="RAISED" layoutX="23.0" layoutY="668.0" onMouseClicked="#onAnalizadorSintacticoButtonClicked" prefHeight="31.0" prefWidth="177.0" ripplerFill="BLACK" style="-fx-background-color: #e14594;" stylesheets="@style.css" text="Analizar" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN11111111" buttonType="RAISED" layoutX="25.0" layoutY="588.0" onMouseClicked="#onImportarSintacticoButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="primary" stylesheets="@bootstrap2.css" text="Importar" textFill="WHITE" />
+                        <JFXTextField fx:id="CadenaSintactico" layoutX="24.0" layoutY="626.0" prefHeight="31.0" prefWidth="176.0" promptText="Ingresa una cadena" />
+                  <JFXButton fx:id="JFXButtonCrearAFN11111112" buttonType="RAISED" layoutX="24.0" layoutY="496.0" onMouseClicked="#onAnalizadorLexicoButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="success" stylesheets="@bootstrap2.css" text="Analizar" textFill="WHITE" />
+                  <JFXButton fx:id="JFXButtonCrearAFN111111121" buttonType="RAISED" layoutX="23.0" layoutY="668.0" onMouseClicked="#onAnalizadorSintacticoButtonClicked" prefHeight="31.0" prefWidth="177.0" ripplerFill="BLACK" styleClass="success" stylesheets="@bootstrap2.css" text="Analizar" textFill="WHITE" />
                     </children>
                 </AnchorPane>
             <Pane prefHeight="200.0" prefWidth="200.0" styleClass="backgroundPaneCentro" stylesheets="@style.css">
@@ -112,17 +119,58 @@
                           <ImageView id="ImageViewGrafo" fx:id="ImageViewGrafo" fitHeight="657.0" fitWidth="569.0" pickOnBounds="true" smooth="false" />
                </children>
             </Pane>
-                <AnchorPane prefHeight="699.0" prefWidth="300.0" style="-fx-background-color: ffff;">
+                <AnchorPane prefHeight="699.0" prefWidth="776.0" style="-fx-background-color: ffff;">
                     <children>
                         <Label alignment="CENTER" layoutX="74.0" layoutY="14.0" style="&#10;" text="Tabla " textAlignment="CENTER" textFill="#757575" wrapText="false">
                      <font>
                                 <Font size="18.0" fx:id="x1" />
                      </font></Label>
-                        <TableView fx:id="MiTabla" layoutX="103.0" layoutY="53.0" prefHeight="491.0" prefWidth="391.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0" />
-                        <JFXButton fx:id="JFXButtonCrearAFN12" buttonType="RAISED" layoutX="148.0" layoutY="12.0" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LL1" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN121" buttonType="RAISED" layoutX="223.0" layoutY="12.0" onMouseClicked="#onLR0ButtonClicked" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LR0" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN1211" buttonType="RAISED" layoutX="299.0" layoutY="12.0" onMouseClicked="#onLR1ButtonClicked" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LR1" textFill="WHITE" />
-                        <JFXButton fx:id="JFXButtonCrearAFN12111" buttonType="RAISED" layoutX="372.0" layoutY="12.0" onMouseClicked="#onLALRButtonClicked" prefHeight="31.0" prefWidth="60.0" stylesheets="@style.css" text="LALR" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN12" buttonType="RAISED" layoutX="148.0" layoutY="12.0" onMouseClicked="#onLL1ButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LL1" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN121" buttonType="RAISED" layoutX="223.0" layoutY="12.0" onMouseClicked="#onLR0ButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LR0" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN1211" buttonType="RAISED" layoutX="299.0" layoutY="12.0" onMouseClicked="#onLR1ButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LR1" textFill="WHITE" />
+                        <JFXButton fx:id="JFXButtonCrearAFN12111" buttonType="RAISED" layoutX="372.0" layoutY="12.0" onMouseClicked="#onLALRButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LALR" textFill="WHITE" />
+                  <Accordion layoutX="35.0" layoutY="179.0" stylesheets="@bootstrap2.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                     <panes>
+                        <TitledPane prefHeight="100.0" prefWidth="868.0" styleClass="primary" text="LL1">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="TablaLL1" prefHeight="200.0" prefWidth="200.0" stylesheets="@bootstrap2.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane expanded="false" styleClass="success" text="LR0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="TablaLR0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane expanded="false" styleClass="info" text="LR1">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="TablaLR1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane expanded="false" styleClass="warning" text="LALR">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="TablaLALR" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                     </panes>
+                  </Accordion>
+                  <JFXTextField fx:id="CadenaLexico1" layoutX="448.0" layoutY="13.0" prefHeight="31.0" prefWidth="355.0" promptText="Ingresa una cadena" stylesheets="@bootstrap2.css" />
+                  <JFXButton fx:id="JFXButtonCrearAFN111111122" buttonType="RAISED" layoutX="832.0" layoutY="12.0" onMouseClicked="#onAnalizadorLexicoButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="success" stylesheets="@bootstrap2.css" text="Analizar" textFill="WHITE" />
                     </children>
                 </AnchorPane>
             </items>
