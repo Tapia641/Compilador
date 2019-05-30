@@ -59,7 +59,7 @@ class Gramatica:
             }})
         self.gramatica.get(izq).get("producciones").append(der)
         for c in der:
-            expr_regular = re.match("[a-df-z\(\)\+\-\*]", c)
+            expr_regular = re.match("[a-df-z\(\)\+\-\*\/]", c)
             if expr_regular is not None and c not in self.terminales:
                 self.terminales.update({c: j})
                 j += 1

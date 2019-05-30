@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fbf0a003-fb8d-4e0b-85b9-08cbd4ac6a6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Principal/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_8.xml" afterDir="false" />
+    <list default="true" id="fbf0a003-fb8d-4e0b-85b9-08cbd4ac6a6a" name="Default Changelist" comment="Se agrega un diseño prototipo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/LR.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/LR.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/LR/inicio.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/LR/inicio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/auxiliares.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/auxiliares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/gramatica.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/gramatica.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/lalr.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/lalr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/lr_cero.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/lr_cero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/lr_uno.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/LR/sintactico/LR/lr_uno.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/META-INF/Compilador.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/Principal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/PrincipalFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/PrincipalFXML.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/LR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/LR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/AFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AFD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujar/automata.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/inicio.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LR/inicio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/sintactico/LR/lalr.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/lalr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/sintactico/LR/lr_cero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/lr_cero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LR/sintactico/LR/lr_uno.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LR/sintactico/LR/lr_uno.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -49,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="467" column="50" selection-start-line="467" selection-start-column="50" selection-end-line="467" selection-end-column="50" />
+            <state relative-caret-position="104">
+              <caret line="426" column="90" selection-start-line="426" selection-start-column="90" selection-end-line="426" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onCrearAFNButtonClicked#0;class#ControladorPrincipal#0" />
@@ -61,19 +44,45 @@
                 <element signature="method#onConcatenarAFNButtonClicked#0;class#ControladorPrincipal#0" />
                 <element signature="method#MessageInput#0;class#ControladorPrincipal#0" />
                 <element signature="method#onExportarAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onLR0#0;class#ControladorPrincipal#0" />
+                <element signature="method#onLR0ButtonClicked#1;class#ControladorPrincipal#0" />
+                <element signature="method#onLR0ButtonClicked#1;class#ControladorPrincipal#0" />
+                <element signature="method#CargarDatos#0;class#ControladorPrincipal#0" />
                 <element signature="method#onImportarAutómataButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onImportarLexicoButtonClicked#1;class#ControladorPrincipal#0" />
+                <element signature="class#TestDataGenerator#0;class#ControladorPrincipal#0" />
+                <element signature="e#22871#22872#0" expanded="true" />
+                <element signature="e#22926#22927#0" expanded="true" />
+                <element signature="e#22971#22972#0" expanded="true" />
+                <element signature="e#23007#23008#0" expanded="true" />
+                <element signature="e#26823#26824#0" expanded="true" />
+                <element signature="e#26869#26870#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="61" column="57" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pruebas.java">
+        <entry file="file://$PROJECT_DIR$/src/Clases/AFD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
+            <state relative-caret-position="229">
+              <caret line="513" column="27" lean-forward="true" selection-start-line="513" selection-start-column="27" selection-end-line="513" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#Ir_A#1;class#AFD#0" />
+                <element signature="method#Mover#0;class#AFD#0" />
               </folding>
             </state>
           </provider>
@@ -82,34 +91,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Principal/Principal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Principal/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/LR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1837#1838#0" expanded="true" />
-                <element signature="e#1887#1888#0" expanded="true" />
-                <element signature="e#1916#1917#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,6 +126,8 @@
       <find>ERROR</find>
       <find>imprimir_tabla</find>
       <find>print</find>
+      <find>100</find>
+      <find>StackPane</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Automatas/ExpresionesRegulares.txt" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/Calculadora.java" />
         <option value="$PROJECT_DIR$/src/Clases/Tokens.java" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java" />
@@ -190,16 +176,17 @@
         <option value="$PROJECT_DIR$/src/Pruebas.java" />
         <option value="$PROJECT_DIR$/src/Clases/LR0.java" />
         <option value="$PROJECT_DIR$/src/Clases/LR0AUX.java" />
-        <option value="$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py" />
         <option value="$PROJECT_DIR$/src/Clases/LR.java" />
         <option value="$PROJECT_DIR$/src/LR/inicio.py" />
         <option value="$PROJECT_DIR$/src/LR/sintactico/LR/lr_cero.py" />
         <option value="$PROJECT_DIR$/src/LR/sintactico/LR/lr_uno.py" />
         <option value="$PROJECT_DIR$/src/LR/sintactico/LR/lalr.py" />
-        <option value="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" />
         <option value="$PROJECT_DIR$/src/Principal/styleImage.css" />
         <option value="$PROJECT_DIR$/src/Principal/Principal.java" />
         <option value="$PROJECT_DIR$/src/Principal/style.css" />
+        <option value="$PROJECT_DIR$/src/Clases/AFD.java" />
+        <option value="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py" />
       </list>
     </option>
   </component>
@@ -210,8 +197,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="125" />
+    <option name="x" value="270" />
+    <option name="y" value="-14" />
     <option name="width" value="1440" />
     <option name="height" value="775" />
   </component>
@@ -224,8 +211,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,6 +237,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -736,20 +723,20 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19261745" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19530201" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32719547" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30878186" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.562323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.3611898" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26912183" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" weight="0.7082153" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3186969" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -858,18 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/AFD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="14" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Ir_A#1;class#AFD#0" />
-            <element signature="method#Mover#0;class#AFD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Principal/unir.fxml" />
     <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/AritmeticaBasica.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -913,16 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LR/inicio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LR/sintactico/LR/lr_cero.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -960,29 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/LR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1837#1838#0" expanded="true" />
-            <element signature="e#1887#1888#0" expanded="true" />
-            <element signature="e#1916#1917#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/util/Callback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -1012,10 +954,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pruebas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Principal/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LR/inicio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/LR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="59" column="28" lean-forward="true" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="e#1837#1838#0" expanded="true" />
+            <element signature="e#1887#1888#0" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AFD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="513" column="27" lean-forward="true" selection-start-line="513" selection-start-column="27" selection-end-line="513" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Ir_A#1;class#AFD#0" />
+            <element signature="method#Mover#0;class#AFD#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Principal/Principal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="467" column="50" selection-start-line="467" selection-start-column="50" selection-end-line="467" selection-end-column="50" />
+        <state relative-caret-position="104">
+          <caret line="426" column="90" selection-start-line="426" selection-start-column="90" selection-end-line="426" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onCrearAFNButtonClicked#0;class#ControladorPrincipal#0" />
@@ -1026,43 +1039,30 @@
             <element signature="method#onConcatenarAFNButtonClicked#0;class#ControladorPrincipal#0" />
             <element signature="method#MessageInput#0;class#ControladorPrincipal#0" />
             <element signature="method#onExportarAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onLR0#0;class#ControladorPrincipal#0" />
+            <element signature="method#onLR0ButtonClicked#1;class#ControladorPrincipal#0" />
+            <element signature="method#onLR0ButtonClicked#1;class#ControladorPrincipal#0" />
+            <element signature="method#CargarDatos#0;class#ControladorPrincipal#0" />
             <element signature="method#onImportarAutómataButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onImportarLexicoButtonClicked#1;class#ControladorPrincipal#0" />
+            <element signature="class#TestDataGenerator#0;class#ControladorPrincipal#0" />
+            <element signature="e#22871#22872#0" expanded="true" />
+            <element signature="e#22926#22927#0" expanded="true" />
+            <element signature="e#22971#22972#0" expanded="true" />
+            <element signature="e#23007#23008#0" expanded="true" />
+            <element signature="e#26823#26824#0" expanded="true" />
+            <element signature="e#26869#26870#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml">
+    <entry file="file://$PROJECT_DIR$/src/LR/sintactico/LR/gramatica.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pruebas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="113" column="19" selection-start-line="113" selection-start-column="19" selection-end-line="113" selection-end-column="19" />
+        <state relative-caret-position="189">
+          <caret line="61" column="57" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="57" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Principal/Principal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Principal/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>

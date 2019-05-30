@@ -2,29 +2,38 @@ package Principal;
 
 import Clases.AFD;
 import Clases.AFN;
+import Clases.AnalizadorLexico;
 import Clases.LR;
 import Dibujar.Draw;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleObjectProperty;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import javafx.util.Pair;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 import javax.swing.*;
 
 public class ControladorPrincipal {
 
+    /*VARIABLES A UTILIZAR*/////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
     private HashSet<AFN> ConjuntoAFN = new HashSet<>();
 
@@ -32,8 +41,22 @@ public class ControladorPrincipal {
     private ImageView ImageViewGrafo = new ImageView();
 
     @FXML
-    private TableView<String> MiTabla = new TableView<>();
+    private TableView<ObservableList<String>> MiTabla = new TableView<>();
 
+    @FXML
+    private JFXTextField CadenaLexico;
+
+    @FXML
+    private JFXTextField CadenaSintactico;
+
+    @FXML
+    private StackPane mySP;
+
+    private AFD AFD_Importado = null;
+
+    private String Nombre_Archivo = null;
+
+    /*ÁREA DE LOS AUTOMÁTAS*////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
     private void onCrearAFNButtonClicked(MouseEvent event) {
 
@@ -399,8 +422,9 @@ public class ControladorPrincipal {
         }
     }
 
+    /*ÁREA LOS ANALIZADORES*////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
-    public void onAnalizadorLRButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
+    public void onLR0ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
@@ -408,36 +432,40 @@ public class ControladorPrincipal {
         File file = chooser.showOpenDialog(new Stage());
 
         if (file != null) {
+            /*LA LIMPIAMOS*/
+            MiTabla.getColumns().clear();
+            MiTabla.getItems().clear();
+
             JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
             LR L = new LR();
             //0 para LALR
             //1 LR0
             //2 LR1
-            L.EjecutarPython(file.getAbsolutePath(), "0");
+            L.EjecutarPython(file.getAbsolutePath(), "1");
+
 
             Vector<String> Tabla = L.getTabla();
             Tabla.remove(0);
 
             String[] aux = Tabla.get(0).split("(?=\\s)");
-            for (int i = 0; i < aux.length; i++) {
-                TableColumn<String,String> col = new TableColumn(aux[i]);
-                //col.setCellValueFactory(new PropertyValueFactory<>(aux[i]));
-                col.setCellValueFactory((x -> new SimpleObjectProperty<>("Just String")));
-                col.setMinWidth(100);
-                MiTabla.getColumns().addAll(col);
+
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            dataGenerator.setLOREM(aux);
+
+            List<String> columnNames = dataGenerator.getNext(aux.length);
+
+            for (int i = 0; i < columnNames.size(); i++) {
+                final int finalIdx = i;
+                TableColumn<ObservableList<String>, String> column = new TableColumn<>(aux[i]);
+                column.setMinWidth(100);
+                column.setSortable(false);
+                column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
+                );
+                MiTabla.getColumns().add(column);
             }
 
-            // add data
-            LlenarDatos(Tabla);
-            /*
-            for (int i = 1; i < Tabla.size(); i++) {
-                String[] aux2 = Tabla.get(i).split("(?=\\s)");
+            CargarDatos(Tabla);
 
-                for (int j = 0; j < aux2.length; j++) {
-                    System.err.println(aux2[j]);
-                    MiTabla.getItems().addAll(aux2[j]);
-                }
-            }*/
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
@@ -445,31 +473,250 @@ public class ControladorPrincipal {
     }
 
     @FXML
-    public void onImportarAutómataButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
+    public void onLR1ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
         FileChooser chooser = new FileChooser();
-        chooser.setTitle("Open File");
+        chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("OUT Files", "*.out"));
+                new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
         File file = chooser.showOpenDialog(new Stage());
 
         if (file != null) {
+            /*LA LIMPIAMOS*/
+            MiTabla.getColumns().clear();
+            MiTabla.getItems().clear();
+
             JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            LR L = new LR();
+            //0 para LALR
+            //1 LR0
+            //2 LR1
+            L.EjecutarPython(file.getAbsolutePath(), "2");
+
+
+            Vector<String> Tabla = L.getTabla();
+            Tabla.remove(0);
+
+            String[] aux = Tabla.get(0).split("(?=\\s)");
+
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            dataGenerator.setLOREM(aux);
+
+            List<String> columnNames = dataGenerator.getNext(aux.length);
+
+            for (int i = 0; i < columnNames.size(); i++) {
+                final int finalIdx = i;
+                TableColumn<ObservableList<String>, String> column = new TableColumn<>(aux[i]);
+                column.setMinWidth(100);
+                column.setSortable(false);
+                column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
+                );
+                MiTabla.getColumns().add(column);
+            }
+
+            CargarDatos(Tabla);
+
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void LlenarDatos(Vector<String> V) {
-        ObservableList data = FXCollections.observableArrayList();
-        for (int j = 1; j < V.size(); j++) {
-            String[] aux = V.get(j).split("(?=\\s)");
-            ObservableList<String> row = FXCollections.observableArrayList();
-            for (int i = 0; i < aux.length; i++) {
-                row.add(aux[i]);
+    @FXML
+    public void onLALRButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Abrir Archivo");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
+        File file = chooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            /*LA LIMPIAMOS*/
+            MiTabla.getColumns().clear();
+            MiTabla.getItems().clear();
+
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            LR L = new LR();
+            //0 para LALR
+            //1 LR0
+            //2 LR1
+            L.EjecutarPython(file.getAbsolutePath(), "0");
+
+
+            Vector<String> Tabla = L.getTabla();
+            Tabla.remove(0);
+
+            String[] aux = Tabla.get(0).split("(?=\\s)");
+
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            dataGenerator.setLOREM(aux);
+
+            List<String> columnNames = dataGenerator.getNext(aux.length);
+
+            for (int i = 0; i < columnNames.size(); i++) {
+                final int finalIdx = i;
+                TableColumn<ObservableList<String>, String> column = new TableColumn<>(aux[i]);
+                column.setMinWidth(100);
+                column.setSortable(false);
+                column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
+                );
+                MiTabla.getColumns().add(column);
             }
-            data.add(row);
+
+            CargarDatos(Tabla);
+
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
-        MiTabla.setItems(data);
+    }
+
+    public void CargarDatos(Vector<String> T){
+        for (int i = 1; i < T.size(); i++) {
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            dataGenerator.setLOREM(T.get(i).split("(?=\\s)"));
+            MiTabla.getItems().add(
+                    FXCollections.observableArrayList(
+                            dataGenerator.getNext(T.size()-1)
+                    )
+            );
+        }
+    }
+
+    @FXML
+    public void onImportarLexicoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException, ClassNotFoundException {
+
+        /*EJECUTAMOS EL FILECHOOSER*/
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Abrir un archivo");
+
+        /*FILTRAMOS LOS ARCHIVOS PARA SOLO VER LOS .OUT*/
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("OUT Files", "*.out"));
+
+        /*LO MOSTRAMOS EN ESTA ESCENA*/
+        File file = chooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            AFD_Importado = new AFD();
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(),"Exito", JOptionPane.PLAIN_MESSAGE);
+            AFD_Importado.LeerObject(file.getAbsolutePath());
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
+        }
+    }
+
+    @FXML
+    public void onAnalizadorLexicoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
+
+        /*COMPARAMOS QUE HAYA UNA CADENA DE TEXTO INGRESADA*/
+        if (!CadenaLexico.getText().equals("")){
+            if (AFD_Importado!=null){
+                /*PODEMOS TRABAJAR CON EL AUTÓMATA SELECCIONADO*/
+                AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
+                AnalizarLexicamente.Lexico(CadenaLexico.getText(), AFD_Importado.getMatriz());
+                Vector<Pair<String, Integer>> Resultado = AnalizarLexicamente.getTablaLexema();
+
+                System.err.println(Resultado);
+
+            }else{
+                /*MOSTRAMOS UNA ALERTA DE ERROR*/
+                JOptionPane.showMessageDialog(null,"No has importado un autómata", "Error",0);
+            }
+        }else{
+            /*MOSTRAMOS UNA ALERTA DE ERROR*/
+            JOptionPane.showMessageDialog(null,"No has ingresado ninguna cadena", "Error",0);
+        }
+    }
+
+    @FXML
+    public void onImportarSintacticoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException, ClassNotFoundException {
+        /*EJECUTAMOS EL FILECHOOSER*/
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Abrir un archivo");
+
+        /*FILTRAMOS LOS ARCHIVOS PARA SOLO VER LOS .OUT*/
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("OUT Files", "*.out"));
+
+        /*LO MOSTRAMOS EN ESTA ESCENA*/
+        File file = chooser.showOpenDialog(new Stage());
+
+        if (file != null) {
+            AFD_Importado = new AFD();
+            Nombre_Archivo = file.getName();
+            System.err.println(Nombre_Archivo);
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(),"Exito", JOptionPane.PLAIN_MESSAGE);
+            AFD_Importado.LeerObject(file.getAbsolutePath());
+        } else {
+            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
+        }
+    }
+
+    @FXML
+    public void onAnalizadorSintacticoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
+
+        /*COMPARAMOS QUE HAYA UNA CADENA DE TEXTO INGRESADA*/
+        if (!CadenaSintactico.getText().equals("")){
+            if (AFD_Importado!=null){
+                /*PODEMOS TRABAJAR CON EL AUTÓMATA SELECCIONADO*/
+                AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
+                AnalizarLexicamente.Lexico(CadenaSintactico.getText(), AFD_Importado.getMatriz());
+                Vector<Pair<String, Integer>> Resultado = AnalizarLexicamente.getTablaLexema();
+
+                System.err.println(Resultado);
+            }else{
+                /*MOSTRAMOS UNA ALERTA DE ERROR*/
+                JOptionPane.showMessageDialog(null,"No has importado un autómata", "Error",0);
+            }
+        }else{
+            /*MOSTRAMOS UNA ALERTA DE ERROR*/
+            JOptionPane.showMessageDialog(null,"No has ingresado ninguna cadena", "Error",0);
+        }
+    }
+
+    private static class TestDataGenerator {
+        private static String[] LOREM;
+
+        public static void setLOREM(String[] LOREM) {
+            TestDataGenerator.LOREM = LOREM;
+        }
+
+        public static String[] getLOREM() {
+            return LOREM;
+        }
+
+        private int curWord = 0;
+
+        List<String> getNext(int nWords) {
+            List<String> words = new ArrayList<>();
+            for (int i = 0; i < nWords; i++) {
+                if (curWord == Integer.MAX_VALUE) {
+                    curWord = 0;
+                }
+                words.add(LOREM[curWord % LOREM.length]);
+                curWord++;
+            }
+            return words;
+        }
+    }
+
+    @FXML
+    public void showInfoDialog(ActionEvent event) {
+        mySP = new StackPane();
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Titulo"));
+        content.setBody(new Text("holaaaaaaaaaaaaaaaaaaaaaaaaa"));
+            JFXDialog dialog = new JFXDialog(mySP,content, JFXDialog.DialogTransition.CENTER);
+        JFXButton button = new JFXButton("OK");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialog.close();
+            }
+        });
+        content.setActions(button);
+        dialog.show();
     }
 }
+
+
