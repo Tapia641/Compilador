@@ -259,6 +259,15 @@ public class AnalizadorLexico {
         Cola.add(token);
     }
 
+    public String getStringTabla(){
+        String Total = "";
+
+        for (Pair<String, Integer> X: Resultado){
+            Total += "LEXEMA: " + X.getKey() + "\t TOKEN: " + X.getValue() + "\n";
+        }
+        return Total;
+    }
+
     public void ConvertirMatriz() {
         /*PARA EL JTABLE*/
         DefaultTableModel datos = new DefaultTableModel();

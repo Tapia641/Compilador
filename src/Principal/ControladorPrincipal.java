@@ -16,6 +16,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -452,7 +454,6 @@ public class ControladorPrincipal {
             L.ConstruirTabla();
 
             Vector<Vector<String>> Tabla = L.getMatriz();
-
             String[] aux = new String[Tabla.get(0).size()];
             for (int i = 0; i < Tabla.get(0).size(); i++) {
                 aux[i]= Tabla.get(0).get(i);
@@ -473,7 +474,7 @@ public class ControladorPrincipal {
                 TablaLL1.getColumns().add(column);
             }
 
-            CargarDatos(Tabla.get(1), TablaLL1);
+            //CargarDatos(Tabla.get(1), TablaLL1);
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
@@ -639,6 +640,24 @@ public class ControladorPrincipal {
         }
     }
 
+    /*SOBRE CARGA DE CARGA DE DATOS*/
+    public void CargaDatos(Vector<Vector<String>> T, TableView Tipo){
+        for (int i = 1; i < T.size(); i++) {
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            //aux[]
+            for (int j = 0; j < T.get(i).size(); j++) {
+
+            }
+
+            //dataGenerator.setLOREM(T.get(i).split("(?=\\s)"));
+            Tipo.getItems().add(
+                    FXCollections.observableArrayList(
+                            dataGenerator.getNext(T.size()-1)
+                    )
+            );
+        }
+    }
+
     @FXML
     public void onImportarLexicoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException, ClassNotFoundException {
 
@@ -675,6 +694,7 @@ public class ControladorPrincipal {
 
                 /*MOSTRAMOS LOS TOKENS ASOCIADOS*/
                 System.err.println(Resultado);
+                alertCreator("Analizador Léxico","", AnalizarLexicamente.getStringTabla());
 
             }else{
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
@@ -773,21 +793,22 @@ public class ControladorPrincipal {
         }
     }
 
-    @FXML
-    public void showInfoDialog(ActionEvent event) {
-        mySP = new StackPane();
-        JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Titulo"));
-        content.setBody(new Text("holaaaaaaaaaaaaaaaaaaaaaaaaa"));
-            JFXDialog dialog = new JFXDialog(mySP,content, JFXDialog.DialogTransition.CENTER);
-        JFXButton button = new JFXButton("OK");
-        button.setOnAction(new EventHandler<ActionEvent>() {
+    private void alertCreator(String title, String header, String content) {
+        //mySP.setStyle("-fx-background-color: rgba(0, 100, 100, 0.5); -fx-background-radius: 10;");
+        JFXDialogLayout dialogContent = new JFXDialogLayout();
+        dialogContent.setHeading(new Text(header == null ? title : title + "\n" + header));
+        dialogContent.setBody(new Text(content));
+        JFXButton close = new JFXButton("Aceptar");
+        close.getStyleClass().add("JFXButton");
+        dialogContent.setActions(close);
+        JFXDialog dialog = new JFXDialog(mySP, dialogContent, JFXDialog.DialogTransition.CENTER);
+        close.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent __) {
                 dialog.close();
             }
         });
-        content.setActions(button);
         dialog.show();
     }
 }
