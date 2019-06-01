@@ -12,13 +12,14 @@ public class GramaticaDeGramaticas {
     private Stack<Integer> Pila;
     private Vector<Pair<String, Integer>> V;
     private HashSet<String> C;
-    private boolean Correcto = false;
+    private boolean Correcto;
 
     public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
         this.V = V;
         C = new HashSet<>();
         Stack<Integer> PilaAux = new Stack<>();
         this.Pila = new Stack<>();
+        Correcto = false;
 
         for (Pair<String, Integer> P : V) {
             PilaAux.push(P.getValue());
@@ -36,9 +37,12 @@ public class GramaticaDeGramaticas {
             System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
         } else {
             System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
-            Correcto = false;
         }
 
+    }
+
+    public boolean getR(){
+        return Correcto;
     }
 
     public boolean G(){

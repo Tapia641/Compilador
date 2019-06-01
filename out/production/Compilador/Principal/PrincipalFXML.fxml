@@ -140,7 +140,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView fx:id="TablaLL1" prefHeight="200.0" prefWidth="200.0" stylesheets="@bootstrap2.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TableView fx:id="TablaLL1" prefHeight="200.0" prefWidth="200.0" stylesheets="@bootstrap2.css" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </content>
@@ -174,8 +174,8 @@
                         </TitledPane>
                      </panes>
                   </Accordion>
-                  <JFXTextField fx:id="CadenaLexico1" layoutX="448.0" layoutY="13.0" prefHeight="31.0" prefWidth="355.0" promptText="Ingresa una cadena" stylesheets="@bootstrap2.css" />
-                  <JFXButton fx:id="JFXButtonCrearAFN111111122" buttonType="RAISED" layoutX="832.0" layoutY="12.0" onMouseClicked="#onAnalizadorLexicoButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="success" stylesheets="@bootstrap2.css" text="Analizar" textFill="WHITE" />
+                  <JFXTextField fx:id="CadenaTabla" layoutX="448.0" layoutY="13.0" prefHeight="31.0" prefWidth="355.0" promptText="Ingresa una cadena" stylesheets="@bootstrap2.css" />
+                  <JFXButton fx:id="JFXButtonCrearAFN111111122" buttonType="RAISED" layoutX="832.0" layoutY="12.0" onMouseClicked="#onAnalizadorTablaButtonClicked" prefHeight="31.0" prefWidth="177.0" styleClass="success" stylesheets="@bootstrap2.css" text="Analizar" textFill="WHITE" />
                     </children>
                 </AnchorPane>
             </items>

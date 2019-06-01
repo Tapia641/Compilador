@@ -36,12 +36,14 @@ public class Calculadora {
     private Stack<Integer> Pila;
     private Vector<Pair<String, Integer>> V;
     private HashSet<String> C;
+    private boolean R;
 
     public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
         this.V = V;
         C = new HashSet<>();
         Stack<Integer> PilaAux = new Stack<>();
         this.Pila = new Stack<>();
+        R = false;
 
         for (Pair<String, Integer> P : V) {
             System.out.println(P.getValue());
@@ -57,10 +59,19 @@ public class Calculadora {
         //COMIENZA A EVALUAR
         System.out.print("G->");
         if (G(N)) {
+            R = true;
             System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
             System.out.println("EL RESULTADO DE LA OPERACION ES: " + N.getValue());
         } else System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
 
+    }
+
+    public boolean getR(){
+        return R;
+    }
+
+    public double getResultado(){
+        return N.getValue();
     }
 
      //INICIAMOS CON EL ANÁLISIS SINTÁCTICO

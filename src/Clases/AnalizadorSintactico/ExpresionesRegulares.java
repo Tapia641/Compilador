@@ -15,12 +15,16 @@ public class ExpresionesRegulares {
     private Stack<Integer> Pila;
     private HashSet<String> C;
     private Vector<Pair<String, Integer>> V;
+    private boolean R;
+    private AFN f;
+
 
     public void AnalizarSintacticamente(Vector<Pair<String, Integer>> V) {
         this.V = V;
         C = new HashSet<>();
         Stack<Integer> PilaAux = new Stack<>();
         this.Pila = new Stack<>();
+        R = false;
 
         for (Pair<String, Integer> P : V) {
             System.out.println(P.getValue());
@@ -33,8 +37,8 @@ public class ExpresionesRegulares {
             this.Pila.push(PilaAux.get(i));
         }
 
+        f = new AFN();
         //COMIENZA A EVALUAR
-        AFN f = new AFN();
         if (E(f)) {
             System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
             System.out.println("EL RESULTADO DE LA EXPRESION REGULAR ES LA SIGUIENTE:");
@@ -43,10 +47,18 @@ public class ExpresionesRegulares {
             Draw D = new Draw();
             D.Dibuja(f.DibujarAFN());
             System.out.println(f.ImprimeAFN());
+            R = true;
 
         } else System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
 
+    }
 
+    public boolean getR(){
+        return R;
+    }
+
+    public AFN getResultado(){
+        return f;
     }
 
 

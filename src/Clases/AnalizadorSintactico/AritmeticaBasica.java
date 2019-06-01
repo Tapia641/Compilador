@@ -13,7 +13,11 @@ public class AritmeticaBasica {
 
     private Stack<Integer> Pila;
 
+    /*NOS RETORNA EL RESULTADO DE EVALUAR LA CADENA SINTACTICAMENTE*/
+    private boolean R;
+
     public void AnalizarSintacticamente(Stack<Integer> Pila) {
+        R = false;
         this.Pila = new Stack<>();
 
         /* INVERTIMOS LA PILA PARA TRABAJAR CON COMODIDAD */
@@ -26,9 +30,18 @@ public class AritmeticaBasica {
 
         //COMIENZA A EVALUAR
         System.out.println("E->");
-        if (E()) System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
-        else System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
+        if (E()){
+            System.out.println("CADENA SINTÁCTICAMENTE CORRECTA");
+            R = true;
+        }
+        else{
+            System.err.println("CADENA SINTÁCTICAMENTE INCORRECTO");
+        }
 
+    }
+
+    public boolean getR(){
+        return R;
     }
 
     public boolean E() {

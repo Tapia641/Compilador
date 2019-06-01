@@ -273,7 +273,7 @@ public class LL1 {
                         regla += Tabla.get(P.getValue() - 1).get(x);
                     }
                     if (regla.equals(" ")) {
-                        regla += "EPSILON";
+                        regla = "EPSILON";
                     }
                     String u = "";
                     u += regla + "," + P.getValue();
@@ -286,7 +286,7 @@ public class LL1 {
                         }
                     }
                     //System.err.println(x);
-                    Matriz.get(x).set(col, u);
+                    Matriz.get(x).set(col, "{"+u+"}");
 
                     //Matrix[fila][col] = "1111111111";
                     //System.out.println(fila + ", " + col);
@@ -303,12 +303,17 @@ public class LL1 {
         for (int j = 0; j < Matriz.size(); j++) {
             for (int k = 0; k < Matriz.get(0).size(); k++) {
                 if (Matriz.get(j).get(0).equals(Matriz.get(0).get(k))) {
-                    Matriz.get(j).set(k, "Pop");
+                    if (Matriz.get(j).get(0).equals("$")){
+                        Matriz.get(j).set(k, "{ACEPTACION}");
+                    }else{
+                        Matriz.get(j).set(k, "pop");
+                    }
                 }
                 //System.out.println(Matriz.get(j).get(0).equals(Matriz.get(0).get(k)));
             }
 
         }
+        Matriz.get(0).set(0, "Vn & Vt & {$}");
 
         /*IMPRIMIMOS*/
         for (Vector<String> c : Matriz) {

@@ -260,11 +260,13 @@ public class AnalizadorLexico {
     }
 
     public String getStringTabla(){
+        /*CADENA QUE OBTIENE TODOS LOS DATOS DEL VECTOR DE PAIR*/
         String Total = "";
 
         for (Pair<String, Integer> X: Resultado){
-            Total += "LEXEMA: " + X.getKey() + "\t TOKEN: " + X.getValue() + "\n";
+            Total += "Lexema: " + X.getKey() + " \tToken: " + X.getValue() + "\n";
         }
+
         return Total;
     }
 

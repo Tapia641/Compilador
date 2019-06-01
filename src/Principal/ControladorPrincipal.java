@@ -21,12 +21,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -62,11 +63,16 @@ public class ControladorPrincipal {
     private JFXTextField CadenaSintactico;
 
     @FXML
+    private JFXTextField CadenaTabla;
+
+    @FXML
     private StackPane mySP;
 
     private AFD AFD_Importado = null;
 
     private String Nombre_Archivo = null;
+
+    private Vector<Vector<String>> MEMOLL1, MEMOLR0, MEMOLR1, MEMOLALR;
 
     /*ÁREA DE LOS AUTOMÁTAS*////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
@@ -435,8 +441,49 @@ public class ControladorPrincipal {
     }
 
     /*ÁREA LOS ANALIZADORES*////////////////////////////////////////////////////////////////////////////////////////////
+
     @FXML
-    public void onLL1ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
+    public void onAnalizadorTablaButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
+
+        /*COMPARAMOS QUE HAYA UNA CADENA DE TEXTO INGRESADA*/
+        if (!CadenaTabla.getText().equals("")) {
+
+            List<String> choices = new ArrayList<>();
+            if (MEMOLL1 != null)
+                choices.add("Tabla LL1");
+            if (MEMOLR0 != null)
+                choices.add("Tabla LR0");
+            if (MEMOLR1 != null)
+                choices.add("Tabla LR1");
+            if (MEMOLALR != null)
+                choices.add("Tabla LALR");
+            if (!choices.isEmpty()){
+                ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
+                //dialog.setTitle("Choice Dialog");
+                dialog.setHeaderText("Analizar Sintácticamente");
+                dialog.setContentText("Utilizar: ");
+                Optional<String> result = dialog.showAndWait();
+
+                if (result.isPresent()) {
+                    System.err.println(result.get());
+
+                }else{
+                    /*MOSTRAMOS UNA ALERTA DE ERROR*/
+                    JOptionPane.showMessageDialog(null, "No has seleccionado ninguna tabla", "Error", 0);
+                }
+            }else{
+                /*MOSTRAMOS UNA ALERTA DE ERROR*/
+                JOptionPane.showMessageDialog(null, "Crea por lo menos una tabla :o", "Error", 0);
+            }
+
+        } else {
+            /*MOSTRAMOS UNA ALERTA DE ERROR*/
+            JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+        }
+    }
+
+    @FXML
+    public void onLL1ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
@@ -454,13 +501,15 @@ public class ControladorPrincipal {
             L.ConstruirTabla();
 
             Vector<Vector<String>> Tabla = L.getMatriz();
+
+            /*PONEMOS LAS COLUMNAS EN FOR MATO DE SPLIT[]*/
             String[] aux = new String[Tabla.get(0).size()];
             for (int i = 0; i < Tabla.get(0).size(); i++) {
-                aux[i]= Tabla.get(0).get(i);
+                aux[i] = Tabla.get(0).get(i);
             }
 
             TestDataGenerator dataGenerator = new TestDataGenerator();
-            dataGenerator.setLOREM(aux);
+            TestDataGenerator.setLOREM(aux);
 
             List<String> columnNames = dataGenerator.getNext(aux.length);
 
@@ -474,7 +523,36 @@ public class ControladorPrincipal {
                 TablaLL1.getColumns().add(column);
             }
 
-            //CargarDatos(Tabla.get(1), TablaLL1);
+            /*PASAMOS A FORMATO DE VECTOR DE STRING*/
+            Vector<String> TablaAux = new Vector<>();
+            String cadena = "", cadaux = "";
+            for (int i = 1; i < Tabla.size(); i++) {
+                for (int j = 0; j < Tabla.get(i).size(); j++) {
+//                    System.err.println(Tabla.get(i).get(j));
+//                    if (Tabla.get(i).get(j).contains(" ")){
+////                        cadaux = Tabla.get(i).get(j);
+////                        cadaux.replaceAll("(\\s)","");
+////                        cadena += cadaux;
+//                        cadena += Tabla.get(i).get(j);
+//
+//                    }else{
+                    cadena += Tabla.get(i).get(j) + " ";
+//                    }
+                }
+                if (i == 1) {
+                    TablaAux.add(cadena);
+                }
+                TablaAux.add(cadena);
+                cadena = "";
+            }
+
+            //System.err.println(TablaAux);
+
+            CargarDatos(TablaAux, TablaLL1);
+
+            /*RECUERAMOS LOS DATOS PARA QUE PODAMOS REALIZAR EL ANÁLISIS COMODAMENTE*/
+            MEMOLL1 = new Vector<>();
+            RecuperarDatos(TablaLL1, MEMOLL1);
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
@@ -482,7 +560,7 @@ public class ControladorPrincipal {
     }
 
     @FXML
-    public void onLR0ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
+    public void onLR0ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
@@ -496,7 +574,7 @@ public class ControladorPrincipal {
 
             JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
             LR L = new LR();
-            //0 para LALR
+            //0 LALR
             //1 LR0
             //2 LR1
             L.EjecutarPython(file.getAbsolutePath(), "1");
@@ -508,7 +586,7 @@ public class ControladorPrincipal {
             String[] aux = Tabla.get(0).split("(?=\\s)");
 
             TestDataGenerator dataGenerator = new TestDataGenerator();
-            dataGenerator.setLOREM(aux);
+            TestDataGenerator.setLOREM(aux);
 
             List<String> columnNames = dataGenerator.getNext(aux.length);
 
@@ -524,6 +602,10 @@ public class ControladorPrincipal {
 
             CargarDatos(Tabla, TablaLR0);
 
+            /*RECUERAMOS LOS DATOS PARA QUE PODAMOS REALIZAR EL ANÁLISIS COMODAMENTE*/
+            MEMOLR0 = new Vector<>();
+            RecuperarDatos(TablaLR0, MEMOLR0);
+
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
@@ -531,7 +613,7 @@ public class ControladorPrincipal {
     }
 
     @FXML
-    public void onLR1ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
+    public void onLR1ButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
@@ -557,7 +639,7 @@ public class ControladorPrincipal {
             String[] aux = Tabla.get(0).split("(?=\\s)");
 
             TestDataGenerator dataGenerator = new TestDataGenerator();
-            dataGenerator.setLOREM(aux);
+            TestDataGenerator.setLOREM(aux);
 
             List<String> columnNames = dataGenerator.getNext(aux.length);
 
@@ -573,6 +655,10 @@ public class ControladorPrincipal {
 
             CargarDatos(Tabla, TablaLR1);
 
+            /*RECUERAMOS LOS DATOS PARA QUE PODAMOS REALIZAR EL ANÁLISIS COMODAMENTE*/
+            MEMOLR1 = new Vector<>();
+            RecuperarDatos(TablaLR1, MEMOLR1);
+
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
@@ -580,7 +666,7 @@ public class ControladorPrincipal {
     }
 
     @FXML
-    public void onLALRButtonClicked(javafx.scene.input.MouseEvent event) throws IOException{
+    public void onLALRButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
@@ -606,7 +692,7 @@ public class ControladorPrincipal {
             String[] aux = Tabla.get(0).split("(?=\\s)");
 
             TestDataGenerator dataGenerator = new TestDataGenerator();
-            dataGenerator.setLOREM(aux);
+            TestDataGenerator.setLOREM(aux);
 
             List<String> columnNames = dataGenerator.getNext(aux.length);
 
@@ -622,40 +708,55 @@ public class ControladorPrincipal {
 
             CargarDatos(Tabla, TablaLALR);
 
+            /*RECUERAMOS LOS DATOS PARA QUE PODAMOS REALIZAR EL ANÁLISIS COMODAMENTE*/
+            MEMOLALR = new Vector<>();
+            RecuperarDatos(TablaLALR, MEMOLALR);
+
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void CargarDatos(Vector<String> T, TableView Tipo){
+    public void CargarDatos(Vector<String> T, TableView Tipo) {
         for (int i = 1; i < T.size(); i++) {
             TestDataGenerator dataGenerator = new TestDataGenerator();
-            dataGenerator.setLOREM(T.get(i).split("(?=\\s)"));
+            TestDataGenerator.setLOREM(T.get(i).split("(\\s)"));
             Tipo.getItems().add(
                     FXCollections.observableArrayList(
-                            dataGenerator.getNext(T.size()-1)
+                            dataGenerator.getNext(T.size() - 1)
                     )
             );
         }
     }
 
-    /*SOBRE CARGA DE CARGA DE DATOS*/
-    public void CargaDatos(Vector<Vector<String>> T, TableView Tipo){
-        for (int i = 1; i < T.size(); i++) {
-            TestDataGenerator dataGenerator = new TestDataGenerator();
-            //aux[]
-            for (int j = 0; j < T.get(i).size(); j++) {
+    public void RecuperarDatos(TableView<ObservableList<String>> t, Vector<Vector<String>> V) {
+        Vector<String> Columnas = new Vector<>(), Filas;
+        int numCol = 0;
 
-            }
-
-            //dataGenerator.setLOREM(T.get(i).split("(?=\\s)"));
-            Tipo.getItems().add(
-                    FXCollections.observableArrayList(
-                            dataGenerator.getNext(T.size()-1)
-                    )
-            );
+        for (TableColumn<ObservableList<String>, ?> column : t.getColumns()) {
+            Columnas.add(column.getText());
+            numCol++;
+            //System.err.println(column.getText());
         }
+        //0
+        V.add(Columnas);
+
+        for (int i = 0; i < t.getItems().size(); i++) {
+            //System.err.println(t.getItems().get(i));
+            Filas = new Vector<>();
+            for (int j = 0; j < numCol; j++) {
+                Filas.add(t.getItems().get(i).get(j));
+            }
+            V.add(Filas);
+        }
+//
+//        for (Vector<String> v: V){
+//            for (String k : v){
+//                System.out.print(k);
+//            }
+//            System.out.println();
+//        }
     }
 
     @FXML
@@ -674,7 +775,7 @@ public class ControladorPrincipal {
 
         if (file != null) {
             AFD_Importado = new AFD();
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(),"Exito", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(), "Exito", JOptionPane.PLAIN_MESSAGE);
             AFD_Importado.LeerObject(file.getAbsolutePath());
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
@@ -685,8 +786,8 @@ public class ControladorPrincipal {
     public void onAnalizadorLexicoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
 
         /*COMPARAMOS QUE HAYA UNA CADENA DE TEXTO INGRESADA*/
-        if (!CadenaLexico.getText().equals("")){
-            if (AFD_Importado!=null){
+        if (!CadenaLexico.getText().equals("")) {
+            if (AFD_Importado != null) {
                 /*PODEMOS TRABAJAR CON EL AUTÓMATA SELECCIONADO*/
                 AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
                 AnalizarLexicamente.Lexico(CadenaLexico.getText(), AFD_Importado.getMatriz());
@@ -694,15 +795,15 @@ public class ControladorPrincipal {
 
                 /*MOSTRAMOS LOS TOKENS ASOCIADOS*/
                 System.err.println(Resultado);
-                alertCreator("Analizador Léxico","", AnalizarLexicamente.getStringTabla());
+                alertCreator("Analizador Léxico", "", AnalizarLexicamente.getStringTabla());
 
-            }else{
+            } else {
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
-                JOptionPane.showMessageDialog(null,"No has importado un autómata", "Error",0);
+                JOptionPane.showMessageDialog(null, "No has importado un autómata", "Error", 0);
             }
-        }else{
+        } else {
             /*MOSTRAMOS UNA ALERTA DE ERROR*/
-            JOptionPane.showMessageDialog(null,"No has ingresado ninguna cadena", "Error",0);
+            JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
         }
     }
 
@@ -723,7 +824,7 @@ public class ControladorPrincipal {
             AFD_Importado = new AFD();
             Nombre_Archivo = file.getName();
             System.err.println(Nombre_Archivo);
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(),"Exito", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(), "Exito", JOptionPane.PLAIN_MESSAGE);
             AFD_Importado.LeerObject(file.getAbsolutePath());
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
@@ -734,36 +835,72 @@ public class ControladorPrincipal {
     public void onAnalizadorSintacticoButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
 
         /*COMPARAMOS QUE HAYA UNA CADENA DE TEXTO INGRESADA*/
-        if (!CadenaSintactico.getText().equals("")){
-            if (AFD_Importado!=null){
+        if (!CadenaSintactico.getText().equals("")) {
+            if (AFD_Importado != null) {
 
                 /*PODEMOS TRABAJAR CON EL AUTÓMATA SELECCIONADO*/
                 AnalizadorLexico AnalizarLexicamente = new AnalizadorLexico();
                 AnalizarLexicamente.Lexico(CadenaSintactico.getText(), AFD_Importado.getMatriz());
                 Vector<Pair<String, Integer>> Resultado = AnalizarLexicamente.getTablaLexema();
 
-                if (Nombre_Archivo.equals("AritmeticaBasica.out")){
+                if (Nombre_Archivo.equals("AritmeticaBasica.out")) {
                     AritmeticaBasica AE = new AritmeticaBasica();
                     AE.AnalizarSintacticamente(AnalizarLexicamente.getPila());
-                }else if (Nombre_Archivo.equals("Calculadora.out")){
+                    if (AE.getR()) {
+                        alertCreator("Analizador Sintáctico", "¡Éxito!", "Cadena sintácticamente correcta");
+                    } else {
+                        alertCreator("Analizador Sintáctico", "¡Error!", "Cadena sintácticamente incorrecta");
+                    }
+                } else if (Nombre_Archivo.equals("Calculadora.out")) {
                     Calculadora C = new Calculadora();
                     C.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
-                }else if (Nombre_Archivo.equals("ExpresionesRegulares.out")){
+                    if (C.getR()) {
+                        alertCreator("Analizador Sintáctico", "¡Éxito!", "Cadena sintácticamente correcta" +
+                                "\n El resultado es: " + C.getResultado());
+                    } else {
+                        alertCreator("Analizador Sintáctico", "¡Error!", "Cadena sintácticamente incorrecta");
+                    }
+                } else if (Nombre_Archivo.equals("ExpresionesRegulares.out")) {
                     ExpresionesRegulares ER = new ExpresionesRegulares();
                     ER.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
-                }else if (Nombre_Archivo.equals("GramaticaDeGramaticas.out")){
+                    if (ER.getR()) {
+                        alertCreator("Analizador Sintáctico", "¡Éxito!", "Cadena sintácticamente correcta" +
+                                "\n El resultado se ha dibujado ;)");
+                        Draw p = new Draw();
+                        AFN f = new AFN();
+                        f = ER.getResultado();
+                        p.Dibuja(f.DibujarAFN());
+
+                        /* SOLUCIÓN A LA RUTA DEL AUTÓMATA */
+                        Image image = new Image("file:///" + new File("src/Dibujar/automata.png").getAbsolutePath());
+
+                        /* CONFIGURACIÓN DE LA IMAGEN A MOSTRAR */
+                        ImageViewGrafo.setImage(image);
+                        ImageViewGrafo.setFitWidth(500);
+                        ImageViewGrafo.setPreserveRatio(true);
+                        ImageViewGrafo.setSmooth(true);
+                        ImageViewGrafo.setCache(true);
+                    } else {
+                        alertCreator("Analizador Sintáctico", "¡Error!", "Cadena sintácticamente incorrecta");
+                    }
+                } else if (Nombre_Archivo.equals("GramaticaDeGramaticas.out")) {
                     GramaticaDeGramaticas GG = new GramaticaDeGramaticas();
                     GG.AnalizarSintacticamente(AnalizarLexicamente.getTablaLexema());
-                }else{
+                    if (GG.getR()) {
+                        alertCreator("Analizador Sintáctico", "¡Éxito!", "Cadena sintácticamente correcta");
+                    } else {
+                        alertCreator("Analizador Sintáctico", "¡Error!", "Cadena sintácticamente incorrecta");
+                    }
+                } else {
                     System.err.println("No es ninguno previamente creado");
                 }
-            }else{
+            } else {
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
-                JOptionPane.showMessageDialog(null,"No has importado un autómata", "Error",0);
+                JOptionPane.showMessageDialog(null, "No has importado un autómata", "Error", 0);
             }
-        }else{
+        } else {
             /*MOSTRAMOS UNA ALERTA DE ERROR*/
-            JOptionPane.showMessageDialog(null,"No has ingresado ninguna cadena", "Error",0);
+            JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
         }
     }
 
