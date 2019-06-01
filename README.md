@@ -1,7 +1,13 @@
 # Proyecto para la materia de compiladores.
 
-* Simple interfaz gráfica que construye AFN
-* Convierte un AFN a AFD
+* Simple interfaz gráfica que construye AFN.
+* Convierte un AFN a AFD.
+* Analiza una cadena Léxicamente.
+* Analiza una cadena Sintácticamente.
+* Genera la Tabla LL1.
+* Genera la Tabla LR0.
+* Genera la Tabla LR1.
+* Genera la Tabla LALR.
 
 ## Instrucciones
 
