@@ -172,6 +172,15 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
+                        <TitledPane expanded="false" styleClass="danger" stylesheets="@bootstrap2.css" text="Resultado">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="TablaResultado" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
                      </panes>
                   </Accordion>
                   <JFXTextField fx:id="CadenaTabla" layoutX="448.0" layoutY="13.0" prefHeight="31.0" prefWidth="355.0" promptText="Ingresa una cadena" stylesheets="@bootstrap2.css" />
@@ -191,7 +200,7 @@
                     </textFill>
                 </Label>
                 <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-                <Label font="$x3" maxWidth="-1.0" text="Autor: Luis Enrique Hernández Tapia" textFill="$x4" HBox.hgrow="NEVER" />
+                <Label font="$x3" maxWidth="-1.0" text="Autores: Luis Enrique Hernández Tapia. Galilea América Loretto Estrada" textFill="$x4" HBox.hgrow="NEVER" />
             </children>
             <padding>
                 <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

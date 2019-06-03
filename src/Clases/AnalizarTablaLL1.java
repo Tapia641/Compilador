@@ -3,7 +3,6 @@ package Clases;
 import java.util.HashSet;
 import java.util.Stack;
 import java.util.Vector;
-import java.util.regex.Pattern;
 
 public class AnalizarTablaLL1 {
     //N+N*(N-N)$
@@ -14,6 +13,7 @@ public class AnalizarTablaLL1 {
     private HashSet<String> Terminales;
     private boolean R;
     private String Analisis;
+    private Vector<String> TablaResultado;
 
     public AnalizarTablaLL1(String cadena, Vector<Vector<String>> tabla) {
         this.cadena = cadena;
@@ -21,7 +21,13 @@ public class AnalizarTablaLL1 {
         Terminales = new HashSet<>();
         Resultado = new Vector<>();
         R = false;
+        TablaResultado = new Vector<>();
         Analisis = "Pila: \tCadena: \tAcción\n";
+        TablaResultado.add(Analisis);
+    }
+
+    public Vector<String> getTablaResultado() {
+        return TablaResultado;
     }
 
     public String getAnalisis() {
@@ -81,7 +87,9 @@ public class AnalizarTablaLL1 {
         }
 
         System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-        Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+        Analisis = Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+        TablaResultado.add(Analisis);
+
 
         /*COMENZAMOS CON EL ANÁLISIS*/
         while (!PilaCadena.isEmpty()) {
@@ -130,11 +138,15 @@ public class AnalizarTablaLL1 {
                 if (accion.contains("EPSILON")) {
                     PilaCadena.push(Columna.charAt(0));
                     System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-                    Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    Analisis = Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    TablaResultado.add(Analisis);
+
 
                 } else if (accion.contains("pop")) {
                     System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-                    Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    Analisis = Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    TablaResultado.add(Analisis);
+
 
                     //PilaCadena.pop();
                     //Pila.pop();
@@ -159,7 +171,9 @@ public class AnalizarTablaLL1 {
                     PilaCadena.push(Columna.charAt(0));
 
                     System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-                    Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    Analisis = Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    TablaResultado.add(Analisis);
+
 
                 } else {
                     //Pila.push(Fila);
@@ -180,7 +194,9 @@ public class AnalizarTablaLL1 {
                     //Pila.push(separador[0]);
                     PilaCadena.push(Columna.charAt(0));
                     System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-                    Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    Analisis = Pila + "\t" + PilaCadena.toString() + "\t" + accion +"\n";
+                    TablaResultado.add(Analisis);
+
 
                 }
             }

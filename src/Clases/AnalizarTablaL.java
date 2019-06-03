@@ -20,6 +20,11 @@ public class AnalizarTablaL {
     private boolean R;
     private String Analisis;
     private Vector<String> Reglas;
+    private Vector<String> TablaResultado;
+
+    public Vector<String> getTablaResultado() {
+        return TablaResultado;
+    }
 
     public void setReglas(String archivo) throws IOException {
         Reglas = new Vector<>();
@@ -47,7 +52,9 @@ public class AnalizarTablaL {
         Terminales = new HashSet<>();
         Resultado = new Vector<>();
         R = false;
-        Analisis = "Pila: \tCadena: \tAcción\n";
+        TablaResultado = new Vector<>();
+        Analisis = "Pila \tCadena \tAcción\n";
+        TablaResultado.add(Analisis);
     }
 
     public String getAnalisis() {
@@ -75,7 +82,9 @@ public class AnalizarTablaL {
         }
 
         System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-        Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion + "\n";
+        Analisis = Pila + " \t" + PilaCadena.toString() + " \t" + accion + "\n";
+        TablaResultado.add(Analisis);
+
 
         /*COMENZAMOS CON EL ANÁLISIS*/
         while (!PilaCadena.isEmpty()) {
@@ -145,7 +154,8 @@ public class AnalizarTablaL {
                     //PilaCadena.push(Columna.charAt(0));
 
                     System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-                    Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion + "\n";
+                    Analisis = Pila + " \t" + PilaCadena.toString() + " \t" + accion + "\n";
+                    TablaResultado.add(Analisis);
 
                 } else {
                     /*OBTENEMOS LA REGLA DEL LADO DERECHO PARA SACAR SU LONGITUD*/
@@ -218,7 +228,8 @@ public class AnalizarTablaL {
 
 
                     System.out.println("Pila: " + Pila.toString() + " Cadena " + PilaCadena.toString() + " Accion " + accion);
-                    Analisis += Pila + "\t" + PilaCadena.toString() + "\t" + accion + "\n";
+                    Analisis = Pila + " \t" + PilaCadena.toString() + " \t" + accion + "\n";
+                    TablaResultado.add(Analisis);
 
                 }
             }

@@ -1,4 +1,4 @@
-        //Automata para la Calculadora
+
         f1.CrearBasico('+'); f1.setToken(10);
         f2.CrearBasico('-'); f2.setToken(20);
         f3.CrearBasico('*'); f3.setToken(30);
@@ -7,7 +7,7 @@
         f6.CrearBasico('('); f6.setToken(60);
         f7.CrearBasico(')'); f7.setToken(70);
         f8.CrearBasico("SIN"); f8.setToken(80);
-        f9.CrearBasico("COS"); f9.setToken(60);
+        f9.CrearBasico("COS"); f9.setToken(90);
         f10.CrearBasico("TAN"); f10.setToken(100);
         f11.CrearBasico("EXP"); f11.setToken(110);
         f12.CrearBasico("LOG"); f12.setToken(120);
@@ -23,6 +23,7 @@
 
         f14.Concatenar(f15);
         f15.CrearBasico(0, 9);
+        f15.CerraduraPositiva();
         f14.Unir(f15); f14.setToken(140);
 
         conjuntoAFN.add(f1);
@@ -39,4 +40,10 @@
         conjuntoAFN.add(f12);
         conjuntoAFN.add(f13);
         conjuntoAFN.add(f14);
-        //Fin
+
+        AFD a = new AFD();
+        try {
+            a.convertirAFD(conjuntoAFN, "Calculadora");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }

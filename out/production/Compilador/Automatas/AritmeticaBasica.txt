@@ -1,4 +1,4 @@
-//Automata para la Aritmética Básica
+//Automata para la Aritmï¿½tica Bï¿½sica
         f1.CrearBasico('+');
         f1.setToken(10);
         f2.CrearBasico('-');
@@ -20,6 +20,7 @@
         f8.Concatenar(f9);
         f7.Concatenar(f8);
         f8.CrearBasico(0, 9);
+        f8.CerraduraPositiva();
         f7.Unir(f8);
         f7.setToken(70);
 
@@ -31,3 +32,10 @@
         conjuntoAFN.add(f6);
         conjuntoAFN.add(f7);
         //Fin
+
+               AFD a = new AFD();
+                try {
+                    a.convertirAFD(conjuntoAFN, "AritmeticaBasica");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }

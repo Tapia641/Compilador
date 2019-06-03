@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.*;
 
@@ -57,6 +58,9 @@ public class ControladorPrincipal {
     private TableView<ObservableList<String>> TablaLALR = new TableView<>();
 
     @FXML
+    private TableView<ObservableList<String>> TablaResultado = new TableView<>();
+
+    @FXML
     private JFXTextField CadenaLexico;
 
     @FXML
@@ -78,16 +82,21 @@ public class ControladorPrincipal {
     @FXML
     private void onCrearAFNButtonClicked(MouseEvent event) {
 
-        String a = MessageInput("AFN", "Ingresa un carácter");
+        String a = MessageInput("AFN", "Ingresa un carácter","A \t 0,9");
 
         /* PEDIMOS QUE INGRESE UN CARÁCTER */
         //String S = JOptionPane.showInputDialog(null, "Ingresa una letra", "Crear AFN", JOptionPane.QUESTION_MESSAGE);
 
         if (a.length() < 2) {
             if (a.equals("")) {
-                JOptionPane.showMessageDialog(null, "Cadena vacia", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Cadena vacia", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                showAlert("Error","La cadena de texto está vacia","", Alert.AlertType.ERROR);
             } else {
                 AFN f = new AFN().CrearBasico(a.charAt(0));
+
+                String tok = MessageInput("Token", "Ingresa un Token:","10");
+                f.setToken(Integer.parseInt(tok));
+
                 ConjuntoAFN.add(f);
                 //JFXTextAreaTabla.setText(f.ImprimeAFN());
                 Draw p = new Draw();
@@ -105,6 +114,10 @@ public class ControladorPrincipal {
             }
         } else if (a.length() == 3) {
             AFN f = new AFN().CrearBasico(a.charAt(0), a.charAt(2));
+
+            String tok = MessageInput("Token", "Ingresa un Token:","10");
+            f.setToken(Integer.parseInt(tok));
+
             ConjuntoAFN.add(f);
             //JFXTextAreaTabla.setText(f.ImprimeAFN());
             Draw p = new Draw();
@@ -121,14 +134,17 @@ public class ControladorPrincipal {
             ImageViewGrafo.setCache(true);
 
         } else {
-            JOptionPane.showMessageDialog(null, "Ingresaste más de un carácter", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Ingresaste más de un carácter", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Ingresaste más de un carácter","", Alert.AlertType.ERROR);
+
         }
     }
 
     @FXML
     private void onUnirAFNButtonClicked(MouseEvent event) {
         if (ConjuntoAFN.size() <= 1) {
-            JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Crea un autómata más ;D","", Alert.AlertType.ERROR);
         } else {
             List<String> choices = new ArrayList<>();
 
@@ -196,7 +212,9 @@ public class ControladorPrincipal {
     @FXML
     private void onCerraduraPositivaAFNButtonClicked(MouseEvent event) {
         if (ConjuntoAFN.size() <= 0) {
-            JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Crea un autómata más ;D","", Alert.AlertType.ERROR);
+
         } else {
             List<String> choices = new ArrayList<>();
 
@@ -242,7 +260,8 @@ public class ControladorPrincipal {
     @FXML
     private void onCerraduraEstrellaAFNButtonClicked(MouseEvent event) {
         if (ConjuntoAFN.size() <= 0) {
-            JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Crea un autómata más ;D","", Alert.AlertType.ERROR);
         } else {
             List<String> choices = new ArrayList<>();
 
@@ -287,7 +306,9 @@ public class ControladorPrincipal {
     @FXML
     private void onCerraduraKleenAFNButtonClicked(MouseEvent event) {
         if (ConjuntoAFN.size() <= 0) {
-            JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Crea un autómata más ;D","", Alert.AlertType.ERROR);
+
         } else {
             List<String> choices = new ArrayList<>();
 
@@ -333,7 +354,9 @@ public class ControladorPrincipal {
     @FXML
     public void onConcatenarAFNButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
         if (ConjuntoAFN.size() <= 1) {
-            JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Crea un autómata más ;D","", Alert.AlertType.ERROR);
+
         } else {
             List<String> choices = new ArrayList<>();
 
@@ -398,13 +421,12 @@ public class ControladorPrincipal {
 
     }
 
-    public String MessageInput(String Titulo, String mensaje) {
-        TextInputDialog dialog = new TextInputDialog("walter");
+    public String MessageInput(String Titulo, String mensaje, String ejemplo) {
+        TextInputDialog dialog = new TextInputDialog(ejemplo);
         dialog.setTitle("");
         dialog.setHeaderText(Titulo);
         dialog.setContentText(mensaje);
 
-        // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             return result.get();
@@ -416,9 +438,11 @@ public class ControladorPrincipal {
     public void onExportarAFNButtonClicked(javafx.scene.input.MouseEvent event) throws IOException {
 
         if (ConjuntoAFN.size() <= 0) {
-            JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Crea un autómata más ;)", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","Crea un autómata más ;D","", Alert.AlertType.ERROR);
+
         } else {
-            String nombre = MessageInput("Convertir Autómata", "Elige uno: ");
+            String nombre = MessageInput("Convertir Autómata", "Nombre: ","MiAutómata");
             AFD afd1 = new AFD();
             afd1.convertirAFD(ConjuntoAFN, nombre);
 
@@ -436,8 +460,18 @@ public class ControladorPrincipal {
             ImageViewGrafo.setPreserveRatio(true);
             ImageViewGrafo.setSmooth(true);
             ImageViewGrafo.setCache(true);
-            JOptionPane.showMessageDialog(null, "¡Eres un crack!");
+
+            //JOptionPane.showMessageDialog(null, "¡Éxito!");
+            showAlert("AFD","El autómata se ha convertido","Éxito",Alert.AlertType.INFORMATION);
         }
+    }
+
+    public void showAlert(String titulo, String middle, String fin, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(middle);
+        alert.setContentText(fin);
+        alert.showAndWait();
     }
 
     /*ÁREA LOS ANALIZADORES*////////////////////////////////////////////////////////////////////////////////////////////
@@ -476,7 +510,8 @@ public class ControladorPrincipal {
                         } else {
                             f += "RECHAZADA";
                         }
-                        alertCreator("Resultado:", f, AT.getAnalisis());
+                        alertCreator("Resultado:", f,"");
+                        ponerDatos(AT.getTablaResultado(),TablaResultado);
 
                     } else if (result.get().equals("Tabla LR0")) {
                         AnalizarTablaL AT = new AnalizarTablaL(CadenaTabla.getText(), MEMOLR0);
@@ -488,7 +523,9 @@ public class ControladorPrincipal {
                         } else {
                             f = "RECHAZADA";
                         }
-                        alertCreator("Resultado:", f, AT.getAnalisis());
+
+                        alertCreator("Resultado:", f,"");
+                        ponerDatos(AT.getTablaResultado(),TablaResultado);
 
                     }else if (result.get().equals("Tabla LR1")){
                         AnalizarTablaL AT = new AnalizarTablaL(CadenaTabla.getText(), MEMOLR1);
@@ -500,7 +537,10 @@ public class ControladorPrincipal {
                         } else {
                             f = "RECHAZADA";
                         }
-                        alertCreator("Resultado:", f, AT.getAnalisis());
+
+                        alertCreator("Resultado:", f,"");
+                        ponerDatos(AT.getTablaResultado(),TablaResultado);
+
                     }else if (result.get().equals("Tabla LALR")){
                         AnalizarTablaL AT = new AnalizarTablaL(CadenaTabla.getText(), MEMOLALR);
                         AT.setReglas(fileLALR.getAbsolutePath());
@@ -511,21 +551,28 @@ public class ControladorPrincipal {
                         } else {
                             f = "RECHAZADA";
                         }
-                        alertCreator("Resultado:", f, AT.getAnalisis());
+                        alertCreator("Resultado:", f,"");
+                        ponerDatos(AT.getTablaResultado(),TablaResultado);
                     }
 
                 } else {
                     /*MOSTRAMOS UNA ALERTA DE ERROR*/
-                    JOptionPane.showMessageDialog(null, "No has seleccionado ninguna tabla", "Error", 0);
+                    //JOptionPane.showMessageDialog(null, "No has seleccionado ninguna tabla", "Error", 0);
+                    showAlert("Error","No has seleccionado ninguna tabla :O","", Alert.AlertType.ERROR);
+
                 }
             } else {
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
-                JOptionPane.showMessageDialog(null, "Crea por lo menos una tabla :o", "Error", 0);
+                //JOptionPane.showMessageDialog(null, "Crea por lo menos una tabla :o", "Error", 0);
+                showAlert("Error","Crea por lo menos una tabla  ;D","", Alert.AlertType.ERROR);
+
             }
 
         } else {
             /*MOSTRAMOS UNA ALERTA DE ERROR*/
-            JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+            //JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+            showAlert("Error","No has ingresado ninguna cadena ;D","", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -542,7 +589,9 @@ public class ControladorPrincipal {
             TablaLL1.getColumns().clear();
             TablaLL1.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            //JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            showAlert("Abrir un archivo de texto","Se importó " + file.getAbsolutePath(),"", Alert.AlertType.WARNING);
+
 
             LL1 L = new LL1(file.getName());
             L.ConstruirTabla();
@@ -602,7 +651,9 @@ public class ControladorPrincipal {
             RecuperarDatos(TablaLL1, MEMOLL1);
 
         } else {
-            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","No has seleccionado ningún archivo =(","", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -619,7 +670,9 @@ public class ControladorPrincipal {
             TablaLR0.getColumns().clear();
             TablaLR0.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + fileLR0.getAbsolutePath());
+            //JOptionPane.showMessageDialog(null, "Se importó: " + fileLR0.getAbsolutePath());
+            showAlert("Abrir un archivo de texto","Se importó " + fileLR0.getAbsolutePath(),"", Alert.AlertType.WARNING);
+
             LR L = new LR();
             //0 LALR
             //1 LR0
@@ -656,6 +709,8 @@ public class ControladorPrincipal {
 
         } else {
             JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Error","No has seleccionado ningún archivo =(" ,"", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -672,7 +727,9 @@ public class ControladorPrincipal {
             TablaLR1.getColumns().clear();
             TablaLR1.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + fileLR1.getAbsolutePath());
+            //JOptionPane.showMessageDialog(null, "Se importó: " + fileLR1.getAbsolutePath());
+            showAlert("Abrir un archivo de texto","Se importó " + fileLR1.getAbsolutePath(),"", Alert.AlertType.WARNING);
+
             LR L = new LR();
             //0 para LALR
             //1 LR0
@@ -708,7 +765,9 @@ public class ControladorPrincipal {
 
 
         } else {
-            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Abrir un archivo de texto","No has seleccionado ningún archivo","", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -725,7 +784,9 @@ public class ControladorPrincipal {
             TablaLALR.getColumns().clear();
             TablaLALR.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + fileLALR.getAbsolutePath());
+            //JOptionPane.showMessageDialog(null, "Se importó: " + fileLALR.getAbsolutePath());
+            showAlert("Abrir un archivo de texto","Se importó  " + fileLALR.getAbsolutePath(),"", Alert.AlertType.WARNING);
+
             LR L = new LR();
             //0 para LALR
             //1 LR0
@@ -761,7 +822,9 @@ public class ControladorPrincipal {
 
 
         } else {
-            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            showAlert("Abrir un archivo de texto","No has seleccionado ningún archivo =(","", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -822,10 +885,12 @@ public class ControladorPrincipal {
 
         if (file != null) {
             AFD_Importado = new AFD();
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(), "Exito", JOptionPane.PLAIN_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(), "Exito", JOptionPane.PLAIN_MESSAGE);
+            showAlert("Abrir un archivo de texto","Se importó " + file.getAbsolutePath(),"", Alert.AlertType.WARNING);
             AFD_Importado.LeerObject(file.getAbsolutePath());
         } else {
-            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
+            //JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
+            showAlert("Abrir un archivo de texto","No has seleccionado ningún archivo =(","", Alert.AlertType.ERROR);
         }
     }
 
@@ -846,11 +911,15 @@ public class ControladorPrincipal {
 
             } else {
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
-                JOptionPane.showMessageDialog(null, "No has importado un autómata", "Error", 0);
+                //JOptionPane.showMessageDialog(null, "No has importado un autómata", "Error", 0);
+                showAlert("Abrir un autómata","No has importado un autómata =(","", Alert.AlertType.ERROR);
+
             }
         } else {
             /*MOSTRAMOS UNA ALERTA DE ERROR*/
-            JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+            //JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+            showAlert("Analizar","No has ingresado ninguna cadena =(","", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -871,10 +940,12 @@ public class ControladorPrincipal {
             AFD_Importado = new AFD();
             Nombre_Archivo = file.getName();
             System.err.println(Nombre_Archivo);
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(), "Exito", JOptionPane.PLAIN_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath(), "Exito", JOptionPane.PLAIN_MESSAGE);
+            showAlert("Abrir un archivo","Se importó " + file.getAbsolutePath(),"", Alert.AlertType.WARNING);
             AFD_Importado.LeerObject(file.getAbsolutePath());
         } else {
-            JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
+            //JOptionPane.showMessageDialog(null, "No seleccionó ningún archivo :(", "¡Error!", 0);
+            showAlert("Abrir un archivo","No has seleccionado ningún archivo =(","", Alert.AlertType.ERROR);
         }
     }
 
@@ -943,11 +1014,15 @@ public class ControladorPrincipal {
                 }
             } else {
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
-                JOptionPane.showMessageDialog(null, "No has importado un autómata", "Error", 0);
+                //JOptionPane.showMessageDialog(null, "No has importado un autómata", "Error", 0);
+                showAlert("Abrir un archivo","No has importado un autómata","", Alert.AlertType.ERROR);
+
             }
         } else {
             /*MOSTRAMOS UNA ALERTA DE ERROR*/
-            JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+            //JOptionPane.showMessageDialog(null, "No has ingresado ninguna cadena", "Error", 0);
+            showAlert("Analizar","No has ingresado ninguna cadena","", Alert.AlertType.ERROR);
+
         }
     }
 
@@ -995,6 +1070,50 @@ public class ControladorPrincipal {
         });
         dialog.show();
     }
+
+    private void ponerDatos(Vector<String> T, TableView Tipo){
+
+        /*LA LIMPIAMOS*/
+        Tipo.getColumns().clear();
+        Tipo.getItems().clear();
+
+
+        Vector<String> Tabla = T;
+        String[] aux = Tabla.get(0).split(Pattern.quote("\t"));
+
+        //Tabla.remove(0);
+
+        TestDataGenerator dataGenerator = new TestDataGenerator();
+        TestDataGenerator.setLOREM(aux);
+
+        List<String> columnNames = dataGenerator.getNext(aux.length);
+
+        for (int i = 0; i < columnNames.size(); i++) {
+            final int finalIdx = i;
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(aux[i]);
+            column.setMinWidth(300);
+            column.setSortable(false);
+            column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
+            );
+            Tipo.getColumns().add(column);
+        }
+
+        CargarDatos2(Tabla, Tipo);
+    }
+
+    public void CargarDatos2(Vector<String> T, TableView Tipo) {
+        for (int i = 1; i < T.size(); i++) {
+            TestDataGenerator dataGenerator = new TestDataGenerator();
+            TestDataGenerator.setLOREM(T.get(i).split(Pattern.quote("\t")));
+            Tipo.getItems().add(
+                    FXCollections.observableArrayList(
+                            dataGenerator.getNext(T.size() - 1)
+                    )
+            );
+        }
+    }
+
+
 }
 
 

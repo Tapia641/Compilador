@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class Pruebas {
     public static void main(String[] args) {
-
+/*
         HashSet<AFN> conjuntoAFN = new HashSet<>();
         AFN f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16;
         f1 = new AFN();
@@ -35,7 +35,7 @@ public class Pruebas {
         f6.CrearBasico('('); f6.setToken(60);
         f7.CrearBasico(')'); f7.setToken(70);
         f8.CrearBasico("SIN"); f8.setToken(80);
-        f9.CrearBasico("COS"); f9.setToken(60);
+        f9.CrearBasico("COS"); f9.setToken(90);
         f10.CrearBasico("TAN"); f10.setToken(100);
         f11.CrearBasico("EXP"); f11.setToken(110);
         f12.CrearBasico("LOG"); f12.setToken(120);
