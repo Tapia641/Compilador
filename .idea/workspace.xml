@@ -2,30 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf0a003-fb8d-4e0b-85b9-08cbd4ac6a6a" name="Default Changelist" comment="Se agrega un diseño prototipo">
-      <change afterPath="$PROJECT_DIR$/src/Clases/AnalizarTabla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clases/AnalizarTablaL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clases/AnalizarTablaLL1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gramatica2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GramaticaLL1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GramaticaLL1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorLexico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/AritmeticaBasica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/AritmeticaBasica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/Calculadora.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/Calculadora.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/ExpresionesRegulares.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/ExpresionesRegulares.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/GramaticaDeGramaticas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizadorSintactico/GramaticaDeGramaticas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/LL1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Clases/LL1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/LR0AUX.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Dibujar/automata.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compilador/Clases/AnalizarTabla.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal$TestDataGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal$TestDataGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/ControladorPrincipal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Compilador/Principal/PrincipalFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilador/Principal/PrincipalFXML.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorLexico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorLexico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/AritmeticaBasica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/AritmeticaBasica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/Calculadora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/Calculadora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/ExpresionesRegulares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/AnalizarTabla.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/LL1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/LL1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/LR0AUX.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dibujar/automata.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dibujar/automata.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml" afterDir="false" />
     </list>
@@ -48,31 +34,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Clases/AnalizarTabla.java">
+        <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="e#304#305#0" expanded="true" />
-                <element signature="e#333#334#0" expanded="true" />
-                <element signature="e#377#378#0" expanded="true" />
-                <element signature="e#413#414#0" expanded="true" />
-                <element signature="e#461#462#0" expanded="true" />
-                <element signature="e#489#490#0" expanded="true" />
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#576#577#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/LL1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="315" column="39" selection-start-line="315" selection-start-column="39" selection-end-line="315" selection-end-column="39" />
+            <state relative-caret-position="454">
+              <caret line="513" column="40" lean-forward="true" selection-start-line="513" selection-start-column="40" selection-end-line="513" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#onCrearAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onUnirAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onCerraduraPositivaAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onCerraduraEstrellaAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onCerraduraKleenAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onConcatenarAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#MessageInput#0;class#ControladorPrincipal#0" />
+                <element signature="method#onExportarAFNButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onLL1ButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onLR0ButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onLR1ButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onLALRButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#CargarDatos#0;class#ControladorPrincipal#0" />
+                <element signature="method#RecuperarDatos#0;class#ControladorPrincipal#0" />
+                <element signature="method#onImportarLexicoButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onAnalizadorLexicoButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onImportarSintacticoButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="method#onAnalizadorSintacticoButtonClicked#0;class#ControladorPrincipal#0" />
+                <element signature="class#TestDataGenerator#0;class#ControladorPrincipal#0" />
+                <element signature="method#alertCreator#0;class#ControladorPrincipal#0" />
+                <element signature="e#38963#38964#0" expanded="true" />
+                <element signature="e#39009#39010#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,13 +97,16 @@
       <find>StackPane</find>
       <find>token</find>
       <find>ACEP</find>
-      <find>err</find>
       <find>ace</find>
       <find>ACEPT</find>
       <find>scene</find>
       <find />
       <find>$</find>
       <find>POP</find>
+      <find>spli</find>
+      <find>split</find>
+      <find>PilaCadena</find>
+      <find>err</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,8 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Clases/RulesMap.java" />
-        <option value="$PROJECT_DIR$/src/Clases/LR0/LRTools.java" />
         <option value="$PROJECT_DIR$/src/Clases/LR0/LR0.java" />
         <option value="$PROJECT_DIR$/src/Clases/Grammar.java" />
         <option value="$PROJECT_DIR$/src/Clases/LR0/Lexico.java" />
@@ -171,9 +161,11 @@
         <option value="$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java" />
         <option value="$PROJECT_DIR$/GramaticaLL1.txt" />
         <option value="$PROJECT_DIR$/Gramatica2.txt" />
-        <option value="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" />
         <option value="$PROJECT_DIR$/src/Clases/LL1.java" />
         <option value="$PROJECT_DIR$/src/Clases/AnalizarTabla.java" />
+        <option value="$PROJECT_DIR$/src/Clases/AnalizarTablaLL1.java" />
+        <option value="$PROJECT_DIR$/src/Clases/AnalizarTablaL.java" />
+        <option value="$PROJECT_DIR$/src/Principal/ControladorPrincipal.java" />
       </list>
     </option>
   </component>
@@ -183,7 +175,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="270" />
     <option name="y" value="-15" />
     <option name="width" value="1440" />
@@ -198,8 +190,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -232,6 +222,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -714,22 +706,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14697987" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14899328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32719547" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.31586403" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49731544" visible="true" weight="0.16288953" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.26912183" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="8" sideWeight="0.5013423" side_tool="true" visible="true" weight="0.47308782" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.3186969" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5026846" side_tool="true" weight="0.3753541" />
+      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49932885" weight="0.3186969" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
@@ -796,8 +789,12 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Compilador$Principal.ic" NAME="Principal Coverage Results" MODIFIED="1559482919195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Interfaces.fxml.*</FILTER>
+    </SUITE>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/LR/Token.java" />
     <entry file="file://$PROJECT_DIR$/src/LR/Transicion.java" />
     <entry file="file://$PROJECT_DIR$/src/LR/Estado.java" />
     <entry file="file://$PROJECT_DIR$/src/LR/AFD.java" />
@@ -998,12 +995,12 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Principal/PrincipalFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="6" column="21" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="21" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorSintactico/GramaticaDeGramaticas.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1012,85 +1009,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gramatica2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/LR0AUX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/LR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1809#1810#0" expanded="true" />
-            <element signature="e#1837#1838#0" expanded="true" />
-            <element signature="e#1887#1888#0" expanded="true" />
-            <element signature="e#1916#1917#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="668" column="92" selection-start-line="668" selection-start-column="92" selection-end-line="668" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onCrearAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onUnirAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onCerraduraPositivaAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="e#6804#6929#1" />
-            <element signature="method#onCerraduraEstrellaAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onCerraduraKleenAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onConcatenarAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#MessageInput#0;class#ControladorPrincipal#0" />
-            <element signature="method#onExportarAFNButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onAnalizadorTablaButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onLL1ButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onLR0ButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onLR1ButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onLALRButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#CargarDatos#0;class#ControladorPrincipal#0" />
-            <element signature="method#RecuperarDatos#0;class#ControladorPrincipal#0" />
-            <element signature="method#onImportarLexicoButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onAnalizadorLexicoButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onImportarSintacticoButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="method#onAnalizadorSintacticoButtonClicked#0;class#ControladorPrincipal#0" />
-            <element signature="class#TestDataGenerator#0;class#ControladorPrincipal#0" />
-            <element signature="e#36427#37256#1" />
-            <element signature="e#36696#36697#0" expanded="true" />
-            <element signature="e#36742#36743#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Gramatica2.txt" />
+    <entry file="file://$PROJECT_DIR$/src/Clases/LR0AUX.java" />
     <entry file="file://$PROJECT_DIR$/GramaticaLL1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/LL1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="315" column="39" selection-start-line="315" selection-start-column="39" selection-end-line="315" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1104,18 +1028,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorLexico.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/LL1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3939">
-          <caret line="269" column="21" lean-forward="true" selection-start-line="269" selection-start-column="21" selection-end-line="269" selection-end-column="21" />
+        <state relative-caret-position="121">
+          <caret line="175" column="14" selection-start-line="175" selection-start-column="14" selection-end-line="175" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizarTabla.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/LR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="121">
+          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="e#1837#1838#0" expanded="true" />
+            <element signature="e#1887#1888#0" expanded="true" />
+            <element signature="e#1916#1917#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizadorLexico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="261" column="12" selection-start-line="261" selection-start-column="12" selection-end-line="261" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizarTablaLL1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2069">
+          <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#797#798#0" expanded="true" />
             <element signature="e#304#305#0" expanded="true" />
             <element signature="e#333#334#0" expanded="true" />
             <element signature="e#377#378#0" expanded="true" />
@@ -1124,6 +1077,55 @@
             <element signature="e#489#490#0" expanded="true" />
             <element signature="e#547#548#0" expanded="true" />
             <element signature="e#576#577#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/AnalizarTablaL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2346">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
+            <element signature="e#1428#1429#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Principal/ControladorPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="513" column="40" lean-forward="true" selection-start-line="513" selection-start-column="40" selection-end-line="513" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#onCrearAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onUnirAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onCerraduraPositivaAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onCerraduraEstrellaAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onCerraduraKleenAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onConcatenarAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#MessageInput#0;class#ControladorPrincipal#0" />
+            <element signature="method#onExportarAFNButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onLL1ButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onLR0ButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onLR1ButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onLALRButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#CargarDatos#0;class#ControladorPrincipal#0" />
+            <element signature="method#RecuperarDatos#0;class#ControladorPrincipal#0" />
+            <element signature="method#onImportarLexicoButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onAnalizadorLexicoButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onImportarSintacticoButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="method#onAnalizadorSintacticoButtonClicked#0;class#ControladorPrincipal#0" />
+            <element signature="class#TestDataGenerator#0;class#ControladorPrincipal#0" />
+            <element signature="method#alertCreator#0;class#ControladorPrincipal#0" />
+            <element signature="e#38963#38964#0" expanded="true" />
+            <element signature="e#39009#39010#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -313,7 +313,7 @@ public class LL1 {
             }
 
         }
-        Matriz.get(0).set(0, "Vn & Vt & {$}");
+        Matriz.get(0).set(0, "Vn & Vt");
 
         /*IMPRIMIMOS*/
         for (Vector<String> c : Matriz) {

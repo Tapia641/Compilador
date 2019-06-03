@@ -134,7 +134,7 @@
                         <JFXButton fx:id="JFXButtonCrearAFN121" buttonType="RAISED" layoutX="223.0" layoutY="12.0" onMouseClicked="#onLR0ButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LR0" textFill="WHITE" />
                         <JFXButton fx:id="JFXButtonCrearAFN1211" buttonType="RAISED" layoutX="299.0" layoutY="12.0" onMouseClicked="#onLR1ButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LR1" textFill="WHITE" />
                         <JFXButton fx:id="JFXButtonCrearAFN12111" buttonType="RAISED" layoutX="372.0" layoutY="12.0" onMouseClicked="#onLALRButtonClicked" prefHeight="31.0" prefWidth="60.0" styleClass="primary" stylesheets="@bootstrap2.css" text="LALR" textFill="WHITE" />
-                  <Accordion layoutX="35.0" layoutY="179.0" stylesheets="@bootstrap2.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                  <Accordion layoutY="50.0" stylesheets="@bootstrap2.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                      <panes>
                         <TitledPane prefHeight="100.0" prefWidth="868.0" styleClass="primary" text="LL1">
                            <content>

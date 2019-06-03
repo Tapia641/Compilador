@@ -16,8 +16,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,6 +36,8 @@ import javax.swing.*;
 public class ControladorPrincipal {
 
     /*VARIABLES A UTILIZAR*/////////////////////////////////////////////////////////////////////////////////////////////
+    private File fileLR0, fileLR1, fileLALR;
+
     @FXML
     private HashSet<AFN> ConjuntoAFN = new HashSet<>();
 
@@ -457,7 +457,7 @@ public class ControladorPrincipal {
                 choices.add("Tabla LR1");
             if (MEMOLALR != null)
                 choices.add("Tabla LALR");
-            if (!choices.isEmpty()){
+            if (!choices.isEmpty()) {
                 ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
                 //dialog.setTitle("Choice Dialog");
                 dialog.setHeaderText("Analizar Sintácticamente");
@@ -465,13 +465,60 @@ public class ControladorPrincipal {
                 Optional<String> result = dialog.showAndWait();
 
                 if (result.isPresent()) {
-                    System.err.println(result.get());
+                    //System.err.println(result.get());
+                    //Para la tabla LL1
+                    if (result.get().equals("Tabla LL1")) {
+                        AnalizarTablaLL1 AT = new AnalizarTablaLL1(CadenaTabla.getText(), MEMOLL1);
+                        AT.Analiza();
+                        String f = "";
+                        if (AT.getR()) {
+                            f += "ACEPTADA";
+                        } else {
+                            f += "RECHAZADA";
+                        }
+                        alertCreator("Resultado:", f, AT.getAnalisis());
 
-                }else{
+                    } else if (result.get().equals("Tabla LR0")) {
+                        AnalizarTablaL AT = new AnalizarTablaL(CadenaTabla.getText(), MEMOLR0);
+                        AT.setReglas(fileLR0.getAbsolutePath());
+                        AT.Analiza();
+                        String f;
+                        if (AT.getR()) {
+                            f = "ACEPTADA";
+                        } else {
+                            f = "RECHAZADA";
+                        }
+                        alertCreator("Resultado:", f, AT.getAnalisis());
+
+                    }else if (result.get().equals("Tabla LR1")){
+                        AnalizarTablaL AT = new AnalizarTablaL(CadenaTabla.getText(), MEMOLR1);
+                        AT.setReglas(fileLR1.getAbsolutePath());
+                        AT.Analiza();
+                        String f;
+                        if (AT.getR()) {
+                            f = "ACEPTADA";
+                        } else {
+                            f = "RECHAZADA";
+                        }
+                        alertCreator("Resultado:", f, AT.getAnalisis());
+                    }else if (result.get().equals("Tabla LALR")){
+                        AnalizarTablaL AT = new AnalizarTablaL(CadenaTabla.getText(), MEMOLALR);
+                        AT.setReglas(fileLALR.getAbsolutePath());
+                        AT.Analiza();
+                        String f;
+                        if (AT.getR()) {
+                            f = "ACEPTADA";
+                        } else {
+                            f = "RECHAZADA";
+                        }
+                        alertCreator("Resultado:", f, AT.getAnalisis());
+                    }
+
+                } else {
                     /*MOSTRAMOS UNA ALERTA DE ERROR*/
                     JOptionPane.showMessageDialog(null, "No has seleccionado ninguna tabla", "Error", 0);
                 }
-            }else{
+            } else {
                 /*MOSTRAMOS UNA ALERTA DE ERROR*/
                 JOptionPane.showMessageDialog(null, "Crea por lo menos una tabla :o", "Error", 0);
             }
@@ -565,19 +612,19 @@ public class ControladorPrincipal {
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
-        File file = chooser.showOpenDialog(new Stage());
+        fileLR0 = chooser.showOpenDialog(new Stage());
 
-        if (file != null) {
+        if (fileLR0 != null) {
             /*LA LIMPIAMOS*/
             TablaLR0.getColumns().clear();
             TablaLR0.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "Se importó: " + fileLR0.getAbsolutePath());
             LR L = new LR();
             //0 LALR
             //1 LR0
             //2 LR1
-            L.EjecutarPython(file.getAbsolutePath(), "1");
+            L.EjecutarPython(fileLR0.getAbsolutePath(), "1");
 
 
             Vector<String> Tabla = L.getTabla();
@@ -618,19 +665,19 @@ public class ControladorPrincipal {
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
-        File file = chooser.showOpenDialog(new Stage());
+        fileLR1 = chooser.showOpenDialog(new Stage());
 
-        if (file != null) {
+        if (fileLR1 != null) {
             /*LA LIMPIAMOS*/
             TablaLR1.getColumns().clear();
             TablaLR1.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "Se importó: " + fileLR1.getAbsolutePath());
             LR L = new LR();
             //0 para LALR
             //1 LR0
             //2 LR1
-            L.EjecutarPython(file.getAbsolutePath(), "2");
+            L.EjecutarPython(fileLR1.getAbsolutePath(), "2");
 
 
             Vector<String> Tabla = L.getTabla();
@@ -671,19 +718,19 @@ public class ControladorPrincipal {
         chooser.setTitle("Abrir Archivo");
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
-        File file = chooser.showOpenDialog(new Stage());
+        fileLALR = chooser.showOpenDialog(new Stage());
 
-        if (file != null) {
+        if (fileLALR != null) {
             /*LA LIMPIAMOS*/
             TablaLALR.getColumns().clear();
             TablaLALR.getItems().clear();
 
-            JOptionPane.showMessageDialog(null, "Se importó: " + file.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "Se importó: " + fileLALR.getAbsolutePath());
             LR L = new LR();
             //0 para LALR
             //1 LR0
             //2 LR1
-            L.EjecutarPython(file.getAbsolutePath(), "0");
+            L.EjecutarPython(fileLALR.getAbsolutePath(), "0");
 
 
             Vector<String> Tabla = L.getTabla();
