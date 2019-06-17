@@ -28,6 +28,8 @@ Cosas que necesitas para ejecutar correctamente la aplicación
 ## Contribuyentes
 
 * **Luis Enrique Hernández Tapia** - *Autor* - [Tapia641](https://github.com/Tapia641)
+* **Galilea América Loretto Estrada** - *Colaborador* - [Bucketh](https://github.com/Bucketh)
+
 
 ## Licencia
 
